@@ -1,0 +1,69 @@
+{
+  "navigation": {
+    "home": "الرئيسية",
+    "wheel": "العجلة",
+    "diary": "المذكرات",
+    "modules": "الوحدات",
+    "progress": "التقدم",
+    "community": "المجتمع",
+    "settings": "الإعدادات"
+  },
+  "settings": {
+    "title": "الإعدادات",
+    "theme": "المظهر",
+    "language": "اللغة",
+    "darkMode": "الوضع الداكن",
+    "lightMode": "الوضع الفاتح",
+    "arabic": "العربية",
+    "english": "الإنجليزية",
+    "musicSettings": "إعدادات الموسيقى",
+    "backgroundMusic": "موسيقى الخلفية",
+    "backgroundMusicDesc": "تفعيل الموسيقى الهادئة أثناء استخدام التطبيق",
+    "alerts": "التنبيهات",
+    "dailyReminder": "تذكير الكتابة اليومية",
+    "dailyReminderDesc": "تحديد الوقت المفضل لتذكير الكتابة اليومية",
+    "gratitudeReminder": "تذكير كتابة الامتنان",
+    "gratitudeReminderDesc": "تحديد الوقت المفضل لتذكير كتابة الامتنان",
+    "privacy": "الخصوصية",
+    "dataPolicy": "سياسة التعامل مع البيانات",
+    "aboutEnji": "حول إنجي"
+  },
+  "home": {
+    "title": "مرحباً بك",
+    "subtitle": "رحلتك في الصحة النفسية تبدأ هنا",
+    "description": "تطبيق شامل لتتبع ومراقبة صحتك النفسية والعاطفية"
+  },
+  "wheel": {
+    "title": "عجلة المشاعر التفاعلية",
+    "description": "اكتشف وحدد مشاعرك الحالية"
+  },
+  "diary": {
+    "title": "كتابة المذكرات",
+    "description": "سجل أفكارك ومشاعرك اليومية"
+  },
+  "modules": {
+    "title": "الوحدات التعليمية",
+    "description": "تعلم مهارات جديدة لإدارة صحتك النفسية"
+  },
+  "progress": {
+    "title": "التقدم",
+    "description": "تتبع تطورك ونموك الشخصي"
+  },
+  "community": {
+    "title": "المجتمع",
+    "description": "تواصل مع الآخرين وشارك تجربتك"
+  },
+  "common": {
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "delete": "حذف",
+    "edit": "تعديل",
+    "back": "رجوع",
+    "next": "التالي",
+    "previous": "السابق",
+    "loading": "جاري التحميل...",
+    "error": "حدث خطأ",
+    "success": "تم بنجاح"
+  }
+}
+

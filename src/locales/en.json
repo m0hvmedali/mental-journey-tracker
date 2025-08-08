@@ -1,0 +1,69 @@
+{
+  "navigation": {
+    "home": "Home",
+    "wheel": "Wheel",
+    "diary": "Diary",
+    "modules": "Modules",
+    "progress": "Progress",
+    "community": "Community",
+    "settings": "Settings"
+  },
+  "settings": {
+    "title": "Settings",
+    "theme": "Theme",
+    "language": "Language",
+    "darkMode": "Dark Mode",
+    "lightMode": "Light Mode",
+    "arabic": "Arabic",
+    "english": "English",
+    "musicSettings": "Music Settings",
+    "backgroundMusic": "Background Music",
+    "backgroundMusicDesc": "Enable calming music during app usage",
+    "alerts": "Alerts",
+    "dailyReminder": "Daily Entry Reminder",
+    "dailyReminderDesc": "Set preferred time for daily entry reminders",
+    "gratitudeReminder": "Gratitude Writing Reminder",
+    "gratitudeReminderDesc": "Set preferred time for gratitude writing reminders",
+    "privacy": "Privacy",
+    "dataPolicy": "Data handling policy",
+    "aboutEnji": "About Enji"
+  },
+  "home": {
+    "title": "Welcome",
+    "subtitle": "Your mental health journey starts here",
+    "description": "A comprehensive app to track and monitor your mental and emotional health"
+  },
+  "wheel": {
+    "title": "Interactive Wheel of Feelings",
+    "description": "Discover and identify your current emotions"
+  },
+  "diary": {
+    "title": "Diary Entry",
+    "description": "Record your daily thoughts and feelings"
+  },
+  "modules": {
+    "title": "Learning Modules",
+    "description": "Learn new skills to manage your mental health"
+  },
+  "progress": {
+    "title": "Progress",
+    "description": "Track your development and personal growth"
+  },
+  "community": {
+    "title": "Community",
+    "description": "Connect with others and share your experience"
+  },
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "success": "Success"
+  }
+}
+
