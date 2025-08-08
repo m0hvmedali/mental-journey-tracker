@@ -39,7 +39,7 @@ const App = () => {
 
   // Placeholder images
   const placeholderImages = [
-   "https://picsum.photos/seed/book1/600/400",
+  //  "https://picsum.photos/seed/book1/600/400",
   "https://picsum.photos/seed/book2/600/400",
   "https://picsum.photos/seed/book3/600/400",
   "https://picsum.photos/seed/book4/600/400",
@@ -155,7 +155,7 @@ const App = () => {
     <div className="relative flex min-h-screen flex-col bg-[#f9f9fb] overflow-x-hidden" style={{ fontFamily: 'Lexend, Noto Sans, sans-serif' }}>
       
       {/* Header */}
-      <header className="flex items-center p-4 pb-2 justify-between">
+      <header className="flex justify-between items-center p-4 pb-2">
         <button onClick={() => nav(-1)} className="flex size-12 items-center text-[#101915]"><ArrowLeft size={24} /></button>
         <h2 className="flex-1 text-center pr-12 text-lg font-bold text-[#101915]">Gratitude & Respect</h2>
       </header>
@@ -177,7 +177,7 @@ const App = () => {
 
         {/* Journey Stats */}
         <Section title={
-          <span className="flex items-center gap-2">
+          <span className="flex gap-2 items-center">
           <ClockFading className="text-[#8d75d4] w-6 h-6" />
           Our Journey
         </span>
@@ -258,30 +258,30 @@ const Section = ({ title, children }) => (
 
 const MemoriesSection = ({ title, memories, onMemoryClick, isGratitude }) => {
     return (
-        <div className="my-10 px-4">
-          <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">{title}</h2>
+        <div className="px-4 my-10">
+          <h2 className="mb-6 text-2xl font-bold text-center text-gray-800">{title}</h2>
     
-          <div className="flex overflow-x-auto space-x-4 pb-4 px-1 scroll-smooth">
+          <div className="flex overflow-x-auto gap-4 px-1 pb-4 space-x-4 scroll-smooth">
             {memories.map((memory) => (
               <div
                 key={memory.id}
                 onClick={() => onMemoryClick(memory)}
                 className="min-w-[300px] max-w-[300px] bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow cursor-pointer flex-shrink-0"
               >
-                <div className="h-40 w-full">
+                <div className="w-full h-40">
                   <img
                     src={memory.image}
                     alt="memory"
-                    className="w-full h-full object-cover rounded-t-xl"
+                    className="object-cover w-full h-full rounded-t-xl"
                   />
                 </div>
     
                 <div className="p-4 bg-gray-50">
-                  <div className="border-l-4 border-purple-400 pl-3 mb-3">
-                  <p className="text-gray-800 text-sm font-medium leading-relaxed whitespace-pre-wrap">
+                  <div className="pl-3 mb-3 border-l-4 border-purple-400">
+                  <p className="text-sm font-medium leading-relaxed text-gray-800 whitespace-pre-wrap">
   “{memory.text.length > 10 ? memory.text.slice(0, 10) + '...' : memory.text}”
 </p>
-<p className="text-xs italic text-gray-400 mt-2">Tap to view full message</p>
+<p className="mt-2 text-xs italic text-gray-400">Tap to view full message</p>
 
                   </div>
                   <div className="flex justify-between text-xs text-gray-500">
@@ -307,28 +307,28 @@ const StatCard = ({ title, value }) => (
 
 const AboutSection = () => (
   <Section title="About Enji">
-    <div className="grid grid-cols-3 gap-15 overflow-x-auto  mb-3">
+    <div className="grid overflow-x-auto grid-cols-3 mb-3 gap-15">
       {[1, 2, 3].map(i => (
         <div key={i} className="aspect-square bg-gray-200 rounded-xl w-[130px] overflow-x-auto ">
 {i === 1 && (
   <img 
     src="/EngiImg/1000079730.jpg"
     alt="Profile photo 1"
-    className="w-full h-full object-cover rounded-xl"
+    className="object-cover w-full h-full rounded-xl"
   />
 )}
 {i === 2 && (
   <img 
     src="/EngiImg/494285616_1015545197383494_1141896882451877712_n.jpg"
     alt="Profile photo 2" 
-    className="w-full h-full object-cover rounded-xl"
+    className="object-cover w-full h-full rounded-xl"
   />
 )}
 {i === 3 && (
   <img 
     src="/EngiImg/Screenshot_20250506_233858_Facebook[1].jpg"
     alt="Profile photo 3"
-    className="w-full h-full object-cover rounded-xl"
+    className="object-cover w-full h-full rounded-xl"
   />
 )}
         </div>
@@ -344,7 +344,7 @@ const AboutSection = () => (
     A highly qualified mental health professional dedicated to providing compassionate, evidence-based care.
   </p>
   
-  <div className="grid md:grid-cols-2 gap-6">
+  <div className="grid gap-6 md:grid-cols-2">
     {/* <!-- Education Column --> */}
     <div className="bg-white p-6 rounded-xl shadow-sm border border-[#f0ebff]">
       <h3 className="text-xl font-semibold text-[#4a2c82] mb-4 flex items-center">
@@ -431,9 +431,9 @@ const MemoryModal = ({
   onClose,
   onSave
 }) => (
-  <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-    <div className="bg-white rounded-xl p-5 w-full max-w-md">
-      <h3 className="text-xl font-bold mb-4">Add Memory</h3>
+  <div className="flex fixed inset-0 z-50 justify-center items-center p-4 bg-black/50">
+    <div className="p-5 w-full max-w-md bg-white rounded-xl">
+      <h3 className="mb-4 text-xl font-bold">Add Memory</h3>
       
       <div className="space-y-4">
         <div>
@@ -459,7 +459,7 @@ const MemoryModal = ({
           <textarea
             value={memoryText}
             onChange={(e) => setMemoryText(e.target.value)}
-            className="w-full p-3 border rounded-lg"
+            className="p-3 w-full rounded-lg border"
             rows={3}
             required
           />
@@ -471,17 +471,17 @@ const MemoryModal = ({
             type="file"
             accept="image/*"
             onChange={handleImageUpload}
-            className="w-full p-2 border rounded-lg"
+            className="p-2 w-full rounded-lg border"
           />
           {memoryImage && (
-            <img src={memoryImage} alt="Preview" className="mt-2 w-20 h-20 object-cover rounded" />
+            <img src={memoryImage} alt="Preview" className="object-cover mt-2 w-20 h-20 rounded" />
           )}
         </div>
 
-        <div className="flex justify-end gap-2">
+        <div className="flex gap-2 justify-end">
           <button
             onClick={onClose}
-            className="px-4 py-2 border rounded-lg"
+            className="px-4 py-2 rounded-lg border"
           >
             Cancel
           </button>
@@ -499,15 +499,15 @@ const MemoryModal = ({
 );
 
 const MemoryDetailModal = ({ memory, onClose }) => (
-  <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-    <div className="bg-white rounded-xl p-5 w-full max-w-md">
+  <div className="flex fixed inset-0 z-50 justify-center items-center p-4 bg-black/50">
+    <div className="p-5 w-full max-w-md bg-white rounded-xl">
       <div className="flex justify-between items-center mb-4">
         <h3 className="text-xl font-bold">{memory.type === 'gratitude' ? 'Gratitude' : 'Memory'}</h3>
         <button onClick={onClose} className="text-gray-500">✕</button>
       </div>
 
       {memory.image && (
-        <img src={memory.image} alt="Memory" className="w-full h-48 object-cover rounded-lg mb-4" />
+        <img src={memory.image} alt="Memory" className="object-cover mb-4 w-full h-48 rounded-lg" />
       )}
 
       {memory.text && <p className="mb-4">{memory.text}</p>}
