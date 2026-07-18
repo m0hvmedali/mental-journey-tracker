@@ -1,6 +1,111 @@
-@import "tailwindcss/utilities.css";
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss/preflight.css";
+@import "tailwindcss/utilities.css";
 @import "tailwindcss";
 @import "tw-animate-css";
 
-  
+/* Tailwind v4: Enable dark mode via .dark class on html element */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* =====================================================
+   CSS Custom Properties — Light & Dark Themes
+   ===================================================== */
+:root {
+  /* Backgrounds */
+  --bg-primary: #f8fcfa;
+  --bg-secondary: #f0f9f5;
+  --bg-card: #ffffff;
+  --bg-input: #f9fbfa;
+  --bg-subtle: #e7f3ee;
+  --bg-muted: #f9f8fc;
+
+  /* Text */
+  --text-primary: #0e1b15;
+  --text-secondary: #4e9778;
+  --text-muted: #5a8c76;
+  --text-heading: #110e1b;
+
+  /* Borders */
+  --border-color: #e0e8e4;
+  --border-subtle: #eae7f3;
+
+  /* Accent */
+  --accent-green: #30e898;
+  --accent-purple: #6c42ea;
+  --accent-purple-light: #eae7f3;
+
+  /* Nav */
+  --nav-bg: #f8fcfa;
+  --nav-border: #e7f3ee;
+  --nav-active: #0e1b15;
+  --nav-inactive: #4e9778;
+
+  /* Settings */
+  --settings-bg: #f9f8fc;
+  --settings-item-bg: #f9f8fc;
+}
+
+.dark {
+  /* Backgrounds */
+  --bg-primary: #0f1a14;
+  --bg-secondary: #111d17;
+  --bg-card: #1a2820;
+  --bg-input: #1e2e24;
+  --bg-subtle: #1e2e24;
+  --bg-muted: #12101e;
+
+  /* Text */
+  --text-primary: #e2f0e8;
+  --text-secondary: #5ec68e;
+  --text-muted: #7ab898;
+  --text-heading: #f0e8ff;
+
+  /* Borders */
+  --border-color: #2a3e32;
+  --border-subtle: #2a2040;
+
+  /* Accent — same */
+  --accent-green: #30e898;
+  --accent-purple: #9b72ff;
+  --accent-purple-light: #2a1f4a;
+
+  /* Nav */
+  --nav-bg: #0f1a14;
+  --nav-border: #1e2e24;
+  --nav-active: #e2f0e8;
+  --nav-inactive: #5ec68e;
+
+  /* Settings */
+  --settings-bg: #12101e;
+  --settings-item-bg: #12101e;
+}
+
+/* =====================================================
+   Global Base Styles
+   ===================================================== */
+html, body, #root {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: 'Lexend', 'Noto Sans', sans-serif;
+}
+
+/* =====================================================
+   Utility Classes using CSS vars
+   ===================================================== */
+.themed-bg        { background-color: var(--bg-primary); }
+.themed-bg-card   { background-color: var(--bg-card); }
+.themed-bg-input  { background-color: var(--bg-input); }
+.themed-bg-subtle { background-color: var(--bg-subtle); }
+.themed-bg-muted  { background-color: var(--bg-muted); }
+
+.themed-text         { color: var(--text-primary); }
+.themed-text-muted   { color: var(--text-muted); }
+.themed-text-secondary { color: var(--text-secondary); }
+.themed-text-heading { color: var(--text-heading); }
+
+.themed-border       { border-color: var(--border-color); }
+.themed-border-subtle{ border-color: var(--border-subtle); }
+
+.themed-nav-bg     { background-color: var(--nav-bg); }
+.themed-nav-border { border-color: var(--nav-border); }

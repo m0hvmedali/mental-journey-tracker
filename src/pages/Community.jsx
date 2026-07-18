@@ -152,12 +152,12 @@ const App = () => {
   };
 
   return (
-    <div className="relative flex min-h-screen flex-col bg-[#f9f9fb] overflow-x-hidden" style={{ fontFamily: 'Lexend, Noto Sans, sans-serif' }}>
+    <div className="relative flex min-h-screen flex-col themed-bg overflow-x-hidden" style={{ fontFamily: 'Lexend, Noto Sans, sans-serif' }}>
       
       {/* Header */}
       <header className="flex justify-between items-center p-4 pb-2">
-        <button onClick={() => nav(-1)} className="flex size-12 items-center text-[#101915]"><ArrowLeft size={24} /></button>
-        <h2 className="flex-1 text-center pr-12 text-lg font-bold text-[#101915]">Gratitude & Respect</h2>
+        <button onClick={() => nav(-1)} className="flex size-12 items-center themed-text"><ArrowLeft size={24} /></button>
+        <h2 className="flex-1 text-center pr-12 text-lg font-bold themed-text">Gratitude & Respect</h2>
       </header>
       {/* Main Content */}
       <div className="flex-1 p-4">
@@ -165,11 +165,11 @@ const App = () => {
         {/* Impact Section */}
         <Section title="Her Impact">
           <div className="space-y-3">
-            <p className="text-[#121019] text-base font-medium">Journey Progress</p>
+            <p className="themed-text text-base font-medium">Journey Progress</p>
             <div className="rounded bg-[#d7d3e4]">
               <div className="h-2 rounded bg-[#bcadea]" style={{ width: '75%' }}></div>
             </div>
-            <p className="text-[#65578e] text-sm">Engi's guidance has been instrumental in my progress.</p>
+            <p className="themed-text-muted text-sm">Engi's guidance has been instrumental in my progress.</p>
           </div>
         </Section>
 
@@ -250,7 +250,7 @@ const App = () => {
 // Reusable Components
 const Section = ({ title, children }) => (
   <div className="mt-6">
-    <h2 className="text-[#121019] text-xl font-bold mb-3">{title}</h2>
+    <h2 className="themed-text text-xl font-bold mb-3">{title}</h2>
     {children}
   </div>
 );
@@ -259,14 +259,14 @@ const Section = ({ title, children }) => (
 const MemoriesSection = ({ title, memories, onMemoryClick, isGratitude }) => {
     return (
         <div className="px-4 my-10">
-          <h2 className="mb-6 text-2xl font-bold text-center text-gray-800">{title}</h2>
+          <h2 className="mb-6 text-2xl font-bold text-center themed-text">{title}</h2>
     
           <div className="flex overflow-x-auto gap-4 px-1 pb-4 space-x-4 scroll-smooth">
             {memories.map((memory) => (
               <div
                 key={memory.id}
                 onClick={() => onMemoryClick(memory)}
-                className="min-w-[300px] max-w-[300px] bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow cursor-pointer flex-shrink-0"
+                className="min-w-[300px] max-w-[300px] themed-bg-card rounded-xl shadow-md hover:shadow-lg transition-shadow cursor-pointer flex-shrink-0"
               >
                 <div className="w-full h-40">
                   <img
@@ -276,15 +276,15 @@ const MemoriesSection = ({ title, memories, onMemoryClick, isGratitude }) => {
                   />
                 </div>
     
-                <div className="p-4 bg-gray-50">
+                <div className="p-4 themed-bg-subtle">
                   <div className="pl-3 mb-3 border-l-4 border-purple-400">
-                  <p className="text-sm font-medium leading-relaxed text-gray-800 whitespace-pre-wrap">
-  “{memory.text.length > 10 ? memory.text.slice(0, 10) + '...' : memory.text}”
+                  <p className="text-sm font-medium leading-relaxed themed-text whitespace-pre-wrap">
+  "{memory.text.length > 10 ? memory.text.slice(0, 10) + '...' : memory.text}"
 </p>
-<p className="mt-2 text-xs italic text-gray-400">Tap to view full message</p>
+<p className="mt-2 text-xs italic themed-text-muted">Tap to view full message</p>
 
                   </div>
-                  <div className="flex justify-between text-xs text-gray-500">
+                  <div className="flex justify-between text-xs themed-text-muted">
                     <span className="italic">{memory.type}</span>
                     <span>{memory.date}</span>
                   </div>
@@ -299,9 +299,9 @@ const MemoriesSection = ({ title, memories, onMemoryClick, isGratitude }) => {
 
 
 const StatCard = ({ title, value }) => (
-  <div className="flex-1 p-4 border border-[#d7d3e4] rounded-xl">
-    <p className="text-[#121019] text-base">{title}</p>
-    <p className="text-[#121019] text-2xl font-bold">{value}</p>
+  <div className="flex-1 p-4 themed-border border rounded-xl themed-bg-card">
+    <p className="themed-text text-base">{title}</p>
+    <p className="themed-text text-2xl font-bold">{value}</p>
   </div>
 );
 
@@ -432,7 +432,7 @@ const MemoryModal = ({
   onSave
 }) => (
   <div className="flex fixed inset-0 z-50 justify-center items-center p-4 bg-black/50">
-    <div className="p-5 w-full max-w-md bg-white rounded-xl">
+    <div className="p-5 w-full max-w-md themed-bg-card rounded-xl">
       <h3 className="mb-4 text-xl font-bold">Add Memory</h3>
       
       <div className="space-y-4">
@@ -500,7 +500,7 @@ const MemoryModal = ({
 
 const MemoryDetailModal = ({ memory, onClose }) => (
   <div className="flex fixed inset-0 z-50 justify-center items-center p-4 bg-black/50">
-    <div className="p-5 w-full max-w-md bg-white rounded-xl">
+    <div className="p-5 w-full max-w-md themed-bg-card rounded-xl">
       <div className="flex justify-between items-center mb-4">
         <h3 className="text-xl font-bold">{memory.type === 'gratitude' ? 'Gratitude' : 'Memory'}</h3>
         <button onClick={onClose} className="text-gray-500">✕</button>

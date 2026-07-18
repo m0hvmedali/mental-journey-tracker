@@ -5,17 +5,17 @@ import { Slash, Zap, BookOpen, Activity } from 'lucide-react';
 
 export default function SuppressionVsRegulationPage() {
   return (
-    <div className="bg-gray-50 min-h-screen p-8">
- <header className="flex justify-between items-center  pb-2">
-        <button onClick={() => window.history.back()} className="flex size-12 shrink-0 items-center text-[#0e1b15]">
+    <div className="themed-bg min-h-screen p-8">
+ <header className="flex justify-between items-center pb-2">
+        <button onClick={() => window.history.back()} className="flex size-12 shrink-0 items-center themed-text">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="24" height="24" fill="currentColor"><path d="M224 128a8 8 0 0 1-8 8H59.31l58.35 58.34a8 8 0 0 1-11.32 11.32l-72-72a8 8 0 0 1 0-11.32l72-72a8 8 0 0 1 11.32 11.32L59.31 120H216a8 8 0 0 1 8 8Z"/></svg>
         </button>
-        <h2 className="flex-1 text-center pr-12 text-lg font-bold text-[#0e1b15]"> Suppression VS Regulation </h2>
+        <h2 className="flex-1 text-center pr-12 text-lg font-bold themed-text"> Suppression VS Regulation </h2>
       </header>     
        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
         {/* تعريفات */}
-        <Card className="bg-white shadow-md">
+        <Card className="themed-bg-card shadow-md themed-border border">
           <CardHeader className="flex items-center space-x-2">
             <Slash className="w-6 h-6 text-red-500" />
             <h2 className="text-xl font-semibold">كبت المشاعر (Suppression)</h2>
@@ -51,7 +51,7 @@ export default function SuppressionVsRegulationPage() {
           </CardContent>
         </Card>
 
-        <Card className="bg-white shadow-md">
+        <Card className="themed-bg-card shadow-md themed-border border">
           <CardHeader className="flex items-center space-x-2">
             <Zap className="w-6 h-6 text-green-500" />
             <h2 className="text-xl font-semibold">تنظيم المشاعر (Regulation)</h2>

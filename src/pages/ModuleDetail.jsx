@@ -109,13 +109,13 @@ export default function ModuleDetail() {
     if (!module) return <div className="p-4">Module not found.</div>;
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#f9fbfa] font-sans">
+    <div className="flex flex-col min-h-screen themed-bg font-sans">
       {/* Header */}
       <header className="flex justify-between items-center p-4 pb-2">
-        <button onClick={() => navigate(-1)} className="flex size-12 shrink-0 items-center text-[#0e1b15]">
+        <button onClick={() => navigate(-1)} className="flex size-12 shrink-0 items-center themed-text">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256"><path d="M224 128a8 8 0 0 1-8 8H59.31l58.35 58.34a8 8 0 0 1-11.32 11.32l-72-72a8 8 0 0 1 0-11.32l72-72a8 8 0 0 1 11.32 11.32L59.31 120H216a8 8 0 0 1 8 8Z"/></svg>
         </button>
-        <h2 className="flex-1 text-center pr-12 text-lg font-bold text-[#0e1b15]">{module.title}</h2>
+        <h2 className="flex-1 text-center pr-12 text-lg font-bold themed-text">{module.title}</h2>
       </header>
 
       <img src={module.hero} alt="banner" className="w-full object-cover aspect-[16/9]" />
@@ -123,24 +123,24 @@ export default function ModuleDetail() {
       <div className="px-4 py-5 space-y-6">
         {/* Overview */}
         <section>
-          <h3 className="text-xl font-bold mb-2 text-[#0e1b15]">Overview</h3>
-          <p className="text-sm text-[#374151] leading-relaxed whitespace-pre-line">{module.overview}</p>
+          <h3 className="text-xl font-bold mb-2 themed-text">Overview</h3>
+          <p className="text-sm themed-text-muted leading-relaxed whitespace-pre-line">{module.overview}</p>
         </section>
 
         {/* Objectives */}
         <section>
-          <h3 className="text-xl font-bold mb-2 text-[#0e1b15]">Learning Objectives</h3>
-          <ul className="list-disc list-inside space-y-1 text-sm text-[#0e1b15]">
+          <h3 className="text-xl font-bold mb-2 themed-text">Learning Objectives</h3>
+          <ul className="list-disc list-inside space-y-1 text-sm themed-text">
             {module.learningObjectives.map((o) => <li key={o}>{o}</li>)}
           </ul>
         </section>
 
         {/* Lessons */}
         <section>
-          <h3 className="text-xl font-bold mb-2 text-[#0e1b15]">Lessons</h3>
+          <h3 className="text-xl font-bold mb-2 themed-text">Lessons</h3>
           <div className="space-y-2">
             {module.lessons.map((l, idx) => (
-              <div key={idx} className="flex justify-between bg-[#e7f3ee] rounded-lg px-3 py-2 text-sm text-[#0e1b15]">
+              <div key={idx} className="flex justify-between themed-bg-subtle rounded-lg px-3 py-2 text-sm themed-text">
                 <span>{l.title}</span>
                 <span>{l.minutes} min</span>
               </div>
@@ -150,8 +150,8 @@ export default function ModuleDetail() {
 
         {/* Coping / Practices */}
         <section>
-          <h3 className="text-xl font-bold mb-2 text-[#0e1b15]">Practice Tips</h3>
-          <ul className="list-disc list-inside space-y-1 text-sm text-[#0e1b15]">
+          <h3 className="text-xl font-bold mb-2 themed-text">Practice Tips</h3>
+          <ul className="list-disc list-inside space-y-1 text-sm themed-text">
             {module.coping?.map((c) => <li key={c}>{c}</li>)}
           </ul>
         </section>

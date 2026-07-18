@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Accordion, AccordionItem } from '@/components/ui/accordion';
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion';
 import { CheckCircle2, AlertTriangle, BookOpen, Youtube, Headphones, BookAlert } from 'lucide-react';
 import { motion } from 'framer-motion';
 import ScrollToTopButton from '@/components/ScrollToTopButton';
@@ -21,8 +21,6 @@ const ERRORS = [
       'اسأل صديقًا محايدًا ليعطيك وصفًا أكثر دقة للموقف.',
       'حدد المواقف المحفزة: الضغوط، النقد، التوقعات العالية',
       'استخدم مفكرة لرصد 3 أفكار قطبية يومياً',
-
-
     ],
     sources: [
       { type: 'book', title: 'Feeling Good – David Burns', url: 'https://www.goodreads.com/en/book/show/215350', note: 'الفصل 3 يشرح الخطأ وأمثلة لإعادة الصياغة.' },
@@ -31,7 +29,7 @@ const ERRORS = [
   },
   {
     key: 'overGeneral',
-    name: ' التعميم (Over‑generalization)',
+    name: 'التعميم (Over‑generalization)',
     desc: 'اعتبار تجربة سلبية واحدة دليلاً قاطعًا على نمط دائم.',
     image: '/cognitive-bias-judgement-error-systematic-600nw-2236319449.webp',
     treatment: [
@@ -93,7 +91,7 @@ const ERRORS = [
   },
   {
     key: 'magnification',
-    name: 'التهويل والتهوين(Magnification / Minimization)',
+    name: 'التهويل والتهوين (Magnification / Minimization)',
     desc: 'تضخيم السلبيات أو تصغير الإيجابيات بشكل غير واقعي.',
     image: '/97fb1a103b72240222f1302188e6b999.jpg',
     treatment: [
@@ -129,7 +127,7 @@ const ERRORS = [
   },
   {
     key: 'labeling',
-    name: 'الوصمه(Labeling)',
+    name: 'الوصمه (Labeling)',
     desc: 'وضع تصنيف سلبي شامل للشخص بعد خطأ واحد.',
     image: '/Food-Labeling-Services-by-K-International.jpg',
     treatment: [
@@ -142,10 +140,10 @@ const ERRORS = [
   {
     key: 'personalization',
     name: 'الشخصنة (Personalization)',
-    desc: 'هي مغالطة منطقية حيث يتم مهاجمة شخصية أو صفات الشخص الذي يقدم حجة بدلاً من مناقشة الحجة نفسها [1، 11]. بمعنى آخر، بدلاً من الرد على فكرة أو حجة ما، يتم التركيز على الشخص الذي يطرحها ومهاجمته من خلال الإشارة إلى عيوبه أو صفاته السلبية.',
+    desc: 'مغالطة منطقية حيث يتم مهاجمة شخصية أو صفات الشخص بدلاً من مناقشة الحجة نفسها، أو ربط الأحداث الخارجية بالنفس دون دليل.',
     image: '/unnamed.png',
     treatment: [
-      'من خلال التركيز على جوهر الخلاف أو المشكلة، بدلاً من تحويلها إلى صراع شخصي.الشخصنة تعيق التواصل الفعال:لأنها تخلق بيئة غير آمنة وغير مريحة للنقاش.تجنب الشخصنة يساعد على الوصول إلى حلول أفضل:من خلال التركيز على المشكلة الفعلية، يمكن إيجاد حلول بناءة ومناسبة.',
+      'التركيز على جوهر الخلاف أو المشكلة بدلاً من تحويلها إلى صراع شخصي عاطفي.',
     ],
     sources: [
       { type: 'article', title: 'MindTools – Personalization', url: 'https://www.mindtools.com/a123', note: 'خريطة عقلية.' },
@@ -164,7 +162,7 @@ const ERRORS = [
     ],
   },
   {
-    key: 'catastrophizing2',
+    key: 'catastrophizing',
     name: 'التفكير الكارثي (Catastrophizing)',
     desc: 'توقع أسوأ سيناريو ممكن مهما كان احتمال حدوثه ضئيلًا.',
     image: '/1-1591504.webp',
@@ -176,24 +174,24 @@ const ERRORS = [
     ],
   },
   {
-    key: 'catastrophizing1',
+    key: 'provisions',
     name: 'الاحكام (Provisions)',
     desc: 'الحكم على نفسك او على شخص من موقف او من فكره.',
     image: '/42022300218201.jpg',
     treatment: [
-      'اعلم انه لا يمكن ان تحكم على نفسك او على احد الى من خلال التجارب والثقه لا تاتي من تجربه وموقف بل من عمر كامل تحدثنا في قسم التسامح والامتنان ارجع اليه.',
+      'اعلم انه لا يمكن ان تحكم على نفسك او على احد إلا من خلال تجارب كاملة، والثقة تأتي من عمر كامل.',
     ],
     sources: [
       { type: 'video', title: 'How to Stop Catastrophizing', url: 'https://youtu.be/qmhiO_y0AA0', note: 'تمرين تنفس + إعادة تقييم.' },
     ],
   },
   {
-    key: 'catastrophizing',
-    name: 'المثاليه (Catastrophizing)',
-    desc: 'الرغبه في الكمال سواء في اشياء او حتى اشخاص.',
+    key: 'perfectionism',
+    name: 'المثاليه (Perfectionism)',
+    desc: 'الرغبة في الكمال سواء في الأشياء أو حتى الأشخاص.',
     image: '/images.jpeg',
     treatment: [
-      'ما يحعل الانسان انسانا هو الخطا لن تصبح في الحياة تجارب ان لم يكن للانسان فرصه الخطا وان كان كل شئ كاملا فما ينقص هذا الشئ هو الموت المثاليه فخ ياصديقي.',
+      'ما يجعل الإنسان إنساناً هو الخطأ، المثالية فخ ياصديقي ينتهي بجمود التجربة.',
     ],
     sources: [
       { type: 'video', title: 'How to Stop Catastrophizing', url: 'https://youtu.be/qmhiO_y0AA0', note: 'تمرين تنفس + إعادة تقييم.' },
@@ -215,7 +213,6 @@ const ERRORS = [
     key: 'fairness',
     name: 'وهم العدالة (Fairness Fallacy)',
     desc: 'التمسك بمقياس شخصي للعدالة والشعور بالاستياء عندما لا يتحقق.',
-    // image: 'https://i.imgur.com/RqpYQkw.jpg',
     treatment: [
       'استخدم التسامح الذاتي ووسّع تعريفك للعدالة الحياتية.',
     ],
@@ -227,7 +224,6 @@ const ERRORS = [
     key: 'heavensReward',
     name: 'وهم مكافأة السماء (Heaven’s Reward)',
     desc: 'توقع نتيجة إيجابية حتمية مقابل التضحية الطويلة، ثم الشعور بالمرارة.',
-    // image: 'https://i.imgur.com/GvzYENj.jpg',
     treatment: [
       'ضع أهدافًا واقعية ومكافآت داخلية لا تعتمد على الاعتراف الخارجي.',
     ],
@@ -238,7 +234,7 @@ const ERRORS = [
 ];
 
 /* --------------------------------------------------
-   سيناريوهات الاختبار (وسعناه إلى 8)
+   سيناريوهات الاختبار
 -------------------------------------------------- */
 const QUIZ = [
   { q: 'رسبت في اختبار واحد وقلت: "أنا فاشل للأبد."', a: 'allOrNothing' },
@@ -261,6 +257,20 @@ export default function ThinkingErrors() {
   const current = QUIZ[index];
   const correctObj = ERRORS.find((e) => e.key === current.a);
 
+  // توليد الخيارات ديناميكياً لضمان وجود الخيار الصحيح دائماً في الـ Quiz
+  const getQuizOptions = () => {
+    const correctAnswer = ERRORS.find(e => e.key === current.a);
+    const otherAnswers = ERRORS.filter(e => e.key !== current.a).slice(0, 3);
+    return [correctAnswer, ...otherAnswers].sort(() => Math.random() - 0.5);
+  };
+
+  // حفظ الخيارات المستقرة لكل سؤال بناء على الـ index الحالي
+  const [quizOptions, setQuizOptions] = React.useState(() => getQuizOptions());
+
+  React.useEffect(() => {
+    setQuizOptions(getQuizOptions());
+  }, [index]);
+
   const submit = () => {
     if (!choice) return;
     if (choice === current.a) setScore(score + 1);
@@ -274,86 +284,89 @@ export default function ThinkingErrors() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#f9fbfa] space-y-6 px-4 pb-10 font-sans">
+    <div className="flex flex-col min-h-screen themed-bg space-y-6 px-4 pb-10 font-sans">
       {/* Header */}
       <header className="flex justify-between items-center pt-4 pb-2">
-        <button onClick={() => navigate(-1)} className="flex size-10 items-center text-[#0e1b15]">
+        <button onClick={() => navigate(-1)} className="flex size-10 items-center themed-text">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="24" height="24" fill="currentColor">
-            <path d="M224 128a8 8 0 0 1-8 8H59.31l58.35 58.34a8 8 0 0 1-11.32 11.32l-72-72a8 8 0 0 1 0-11.32l72-72a8 8 0 0 1 11.32 11.32L59.31 120H216a8 8 0 0 1 8 8Z"/>
+            <path d="M224 128a8 8 0 0 1-8 8H59.31l58.35 58.34a8 8 0 0 1-11.32 11.32l-72-72a8 8 0 0 1 0-11.32l72-72a8 8 0 0 1 11.32 11.32L59.31 120H216a8 8 0 0 1 8 8Z" />
           </svg>
         </button>
-        <h2 className="flex-1 text-center pr-10 text-lg font-bold text-[#0e1b15]">أخطاء التفكير</h2>
+        <h2 className="flex-1 text-center pr-10 text-lg font-bold themed-text">أخطاء التفكير</h2>
       </header>
-  
-      {/* عرض الأخطاء */}
-      <section className="space-y-4">
-        {ERRORS.map((error, i) => (
-          <Accordion key={i} type="single" collapsible>
-            <AccordionItem value="item-1">
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: i * 0.05 }} className="space-y-2">
-                <div className="flex gap-2 items-center">
-                  <BookAlert className="text-[#4e9778]" />
-                  <h1 className="text-lg font-semibold text-[#0e1b15]">{error.name}  <br />  </h1>
-                </div>
-                <div className="h-[1px] bg-[#4e9778] my-2"></div>
 
-                <p className="text-m text-[#555 font-bold ]">{error.desc}</p>
-                <br />
-                {error.image && <img src={error.image} alt={error.name} className="object-cover w-60 ml-7 max-h-62 rounded-xl" />}
-                <h3 className="font-bold text-[#0e1b15] pt-2">طرق التعامل:</h3>
-                <ul className="list-disc pl-6 text-sm text-[#333]">
-                  {error.treatment.map((step, j) => <li key={j}>{step}</li>)}
-                </ul>
-                {error.sources?.length > 0 && (
-                  <div className="grid gap-2 mt-3">
-                    <h4 className="text-sm font-bold text-[#0e1b15]">مصادر للتعلّم:</h4>
-                    <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
-                      {error.sources.map((src, k) => (
-                        <a
-                          key={k}
-                          href={src.url}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="flex items-center gap-2 p-2 bg-[#e7f3ee] rounded-xl text-sm text-[#0e1b15]"
-                        >
-                          {src.type === 'video'   && <Youtube   size={16} className="text-[#e94826]" />}
-                          {src.type === 'book'    && <BookOpen  size={16} className="text-[#4e9778]" />}
-                          {src.type === 'article' && <BookOpen  size={16} className="text-[#4e9778]" />}
-                          {src.type === 'pod'     && <Headphones size={16} className="text-[#4e9778]" />}
-                          <span className="truncate">{src.title}</span>
-                        </a>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </motion.div>
-            </AccordionItem>
-          </Accordion>
-        ))}
-      </section>
-  
-      {/* اختبار الفهم */}
+      {/* عرض الأخطاء عبر الـ Accordion المصحح */}
       <section className="space-y-4">
-        <h3 className="text-xl font-bold text-[#0e1b15] pt-6">اختبر فهمك</h3>
-        <Card className="bg-white shadow-sm">
+        <Accordion type="single" collapsible className="w-full space-y-2">
+          {ERRORS.map((error, i) => (
+            <AccordionItem key={error.key} value={`item-${i}`} className="border rounded-xl p-2 themed-border">
+              <AccordionTrigger className="hover:no-underline">
+                <div className="flex gap-2 items-center text-right w-full">
+                  <BookAlert className="text-[#4e9778] shrink-0" />
+                  <h1 className="text-base font-semibold themed-text">{error.name}</h1>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent>
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-2 pt-2">
+                  <div className="h-[1px] bg-[#4e9778] my-2"></div>
+                  <p className="text-sm themed-text font-bold">{error.desc}</p>
+
+                  <h3 className="font-bold themed-text pt-2">طرق التعامل:</h3>
+                  <ul className="list-disc pr-5 text-sm themed-text-muted space-y-1">
+                    {error.treatment.map((t, idx) => (
+                      <li key={idx}>{t}</li>
+                    ))}
+                  </ul>
+
+                  {error.sources?.length > 0 && (
+                    <div className="pt-3">
+                      <h4 className="text-sm font-bold themed-text">مصادر للتعلّم:</h4>
+                      <div className="flex flex-col gap-2 mt-2">
+                        {error.sources.map((src, srcIdx) => (
+                          <a
+                            key={srcIdx}
+                            href={src.url} target="_blank" rel="noreferrer"
+                            className="flex items-center gap-2 p-2 themed-bg-subtle rounded-xl text-sm themed-text hover:opacity-80 transition-opacity"
+                          >
+                            {src.type === 'video' && <Youtube size={16} className="text-[#e94826]" />}
+                            {src.type === 'book' && <BookOpen size={16} className="text-[#4e9778]" />}
+                            {src.type === 'article' && <BookOpen size={16} className="text-[#4e9778]" />}
+                            {src.type === 'pod' && <Headphones size={16} className="text-[#4e9778]" />}
+                            <span className="truncate">{src.title} - <span className="text-xs text-gray-400">{src.note}</span></span>
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </motion.div>
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </section>
+
+      {/* Quiz Section */}
+      <section className="px-1">
+        <h3 className="text-xl font-bold themed-text pt-6">اختبر فهمك</h3>
+        <Card className="themed-bg-card shadow-sm border themed-border mt-3">
           <CardContent className="p-4 space-y-4">
-            <p className="text-base font-semibold text-[#0e1b15]">{current.q}</p>
-  
-            <div className="space-y-2">
-              {ERRORS.map((err) => (
+            <p className="text-base font-semibold themed-text">{current.q}</p>
+            <div className="grid grid-cols-1 gap-2">
+              {quizOptions.map((err) => (
                 <Button
                   key={err.key}
                   variant="outline"
-                  onClick={() => setChoice(err.key)}
-                  className={`w-full text-right ${choice === err.key ? 'border-[#4e9778] bg-[#e7f3ee]' : ''}`}
+                  onClick={() => !show && setChoice(err.key)}
+                  className={`w-full text-right justify-start ${choice === err.key ? 'border-[#4e9778] bg-[#e7f3ee] text-[#4e9778]' : ''}`}
+                  disabled={show}
                 >
                   {err.name}
                 </Button>
               ))}
             </div>
-  
-            <div className="flex gap-2 justify-between items-center">
-              <Button onClick={submit} disabled={!choice}>
+
+            <div className="flex gap-2 justify-between items-center pt-2">
+              <Button onClick={submit} disabled={!choice || show}>
                 تأكيد
               </Button>
               {show && (
@@ -362,22 +375,22 @@ export default function ThinkingErrors() {
                 </Button>
               )}
             </div>
-  
-            {show && (
+
+            {show && correctObj && (
               <div className={`rounded-lg p-4 mt-3 ${choice === current.a ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
                 {choice === current.a ? (
                   <div className="flex gap-2 items-center">
-                    <CheckCircle2 size={20} />
-                    إجابة صحيحة! {correctObj.desc}
+                    <CheckCircle2 size={20} className="shrink-0" />
+                    <span>إجابة صحيحة! {correctObj.desc}</span>
                   </div>
                 ) : (
                   <div className="space-y-1">
                     <div className="flex gap-2 items-center">
-                      <AlertTriangle size={20} />
-                  الصحيح هو {correctObj.name}.
+                      <AlertTriangle size={20} className="shrink-0" />
+                      <span>الصحيح هو: {correctObj.name}.</span>
                     </div>
                     <p className="text-sm leading-relaxed">
-                      لماذا؟ {correctObj.desc}
+                      <strong>لماذا؟</strong> {correctObj.desc}
                     </p>
                   </div>
                 )}
@@ -386,7 +399,8 @@ export default function ThinkingErrors() {
           </CardContent>
         </Card>
       </section>
+
       <ScrollToTopButton />
     </div>
   );
-} 
+}

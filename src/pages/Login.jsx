@@ -18,26 +18,22 @@ export default function LoginByName() {
       alert('اكتب اسمك يا نجم ✍️')
       return
     }
-  
-    // حفظ الاسم كسلسلة نصية عادية (بدون JSON)
     localStorage.setItem('username', trimmed)
     navigate('/home')
   }
 
   return (
-
-
-    <div className="flex flex-col items-center justify-center pb-40 bg-gradient-to-br from-[#f8f5ff] to-[#eef2ff] p-4">
-      <div className="w-full max-w-md bg-white rounded-2xl shadow-lg border border-[#e0d6ff] p-4 mt-30">
+    <div className="flex flex-col items-center justify-center pb-40 min-h-screen themed-bg p-4">
+      <div className="w-full max-w-md themed-bg-card rounded-2xl shadow-lg themed-border border p-4 mt-10">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-[#4a2c82] mb-2 font-serif">Hello < HeartPlus/> </h1>
-          <p className="text-[#6b7280]">Pls Login To Continue</p>
+          <h1 className="text-3xl font-bold text-[#7e5bef] mb-2 font-serif">Hello <HeartPlus className="inline" /></h1>
+          <p className="themed-text-muted">Pls Login To Continue</p>
           <div className="w-16 h-1 bg-[#7e5bef] mx-auto rounded-full mt-4"></div>
         </div>
 
         <div className="space-y-6">
           <div>
-            <label htmlFor="username" className="block text-sm font-medium text-[#4a2c82] mb-1">
+            <label htmlFor="username" className="block text-sm font-medium text-[#7e5bef] mb-1">
               Just your name
             </label>
             <input
@@ -45,7 +41,7 @@ export default function LoginByName() {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               placeholder="مثلاً: أحمد"
-              className="w-full px-4 py-3 border border-[#e0d6ff] rounded-xl focus:ring-2 focus:ring-[#7e5bef] focus:border-transparent transition-all"
+              className="w-full px-4 py-3 themed-border border rounded-xl themed-bg-input themed-text focus:ring-2 focus:ring-[#7e5bef] focus:border-transparent transition-all outline-none"
               onKeyPress={(e) => e.key === 'Enter' && handleLogin()}
             />
           </div>

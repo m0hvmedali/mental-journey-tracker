@@ -26,7 +26,6 @@ export default function BottomNav() {
       label: 'Skills',
       svg: <BrainCog />,
     },
-
     {
       to: '/progress',
       label: t('navigation.progress'),
@@ -44,16 +43,16 @@ export default function BottomNav() {
   ];
 
   return (
-    <nav className="border-t border-[#e7f3ee]  bg-[#f8fcfa]  px-4 pb-3 pt-2 flex gap-2 transition-colors">
+    <nav className="border-t themed-nav-border themed-nav-bg px-4 pb-3 pt-2 flex gap-2 transition-colors duration-300">
       {navItems.map(({ to, label, svg }) => (
         <NavLink
           key={to}
           to={to}
           className={({ isActive }) =>
             `flex flex-1 flex-col items-center gap-1 rounded-full text-xs font-medium tracking-[0.015em] transition-all duration-200 ease-in-out ${
-              isActive 
-                ? 'text-[#0e1b15]'
-                : 'text-[#4e9778]'
+              isActive
+                ? 'text-[var(--nav-active)]'
+                : 'text-[var(--nav-inactive)]'
             }`
           }
         >

@@ -1,6 +1,6 @@
 // src/App.jsx
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import GlobalTimer from './components/GlobalTimer.jsx'; // 👈 ضيف الاستيراد فوق
+import GlobalTimer from './components/GlobalTimer.jsx';
 import Home from './pages/Home.jsx';
 import Settings from './pages/Settings.jsx';
 import WheelPage from './pages/Wheel.jsx';
@@ -23,21 +23,21 @@ import CognitiveReappraisal from './pages/CognitiveReappraisal.jsx';
 import Progress from './pages/Progress.jsx';
 import Community from './pages/Community.jsx';
 import BottomNav from './components/BottomNav.jsx';
-import TestTheme from './pages/Test.jsx';
-import { ThemeProvider } from './contexts/ThemeContext.jsx';
 import About from './pages/About.jsx';
 import ReferencesPage from './pages/Refrance.jsx';
 import Login from './pages/Login.jsx';
-export default function App() {
+import { ThemeProvider } from './contexts/ThemeContext.jsx';
 
+export default function App() {
   return (
+    <ThemeProvider>
       <Router>
-        <div className="flex flex-col min-h-screen">
-          <GlobalTimer /> {/* 🕗️ دا التايمر التراكمي */}
+        <div className="flex flex-col min-h-screen themed-bg">
+          <GlobalTimer />
           <Routes>
-          <Route path="/" element={
-          localStorage.getItem('username') ? <Navigate to="/home" /> : <Login/>
-        } />  
+            <Route path="/" element={
+              localStorage.getItem('username') ? <Navigate to="/home" /> : <Login/>
+            } />
             <Route path="/home" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/sources" element={<ReferencesPage />} />
@@ -65,6 +65,6 @@ export default function App() {
           <BottomNav />
         </div>
       </Router>
-      
-    );
+    </ThemeProvider>
+  );
 }

@@ -5,17 +5,17 @@ import { BookOpen, Heart, Handshake } from 'lucide-react';
 
 export default function GratitudeForgivenessPage() {
   return (
-    <div className="bg-white min-h-screen p-8">
-      <header className="flex justify-between items-center  pb-2">
-        <button onClick={() => window.history.back()} className="flex size-12 shrink-0 items-center text-[#0e1b15]">
+    <div className="themed-bg min-h-screen p-8">
+      <header className="flex justify-between items-center pb-2">
+        <button onClick={() => window.history.back()} className="flex size-12 shrink-0 items-center themed-text">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="24" height="24" fill="currentColor"><path d="M224 128a8 8 0 0 1-8 8H59.31l58.35 58.34a8 8 0 0 1-11.32 11.32l-72-72a8 8 0 0 1 0-11.32l72-72a8 8 0 0 1 11.32 11.32L59.31 120H216a8 8 0 0 1 8 8Z"/></svg>
         </button>
-        <h2 className="flex-1 text-center pr-12 text-lg font-bold text-[#0e1b15]">Gratitude & Forgiveness</h2>
+        <h2 className="flex-1 text-center pr-12 text-lg font-bold themed-text">Gratitude & Forgiveness</h2>
       </header>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
         {/* بطاقة الامتنان */}
-        <Card className="bg-gray-50 shadow-md">
+        <Card className="themed-bg-card shadow-md themed-border border">
           <CardHeader className="flex items-center space-x-2">
             <Heart className="w-6 h-6 text-red-500" />
             <h2 className="text-2xl font-semibold">الامتنان</h2>
@@ -64,7 +64,7 @@ export default function GratitudeForgivenessPage() {
         </Card>
 
         {/* بطاقة التسامح */}
-        <Card className="bg-gray-50 shadow-md">
+        <Card className="themed-bg-card shadow-md themed-border border">
           <CardHeader className="flex items-center space-x-2">
             <Handshake className="w-6 h-6 text-green-500" />
             <h2 className="text-2xl font-semibold">التسامح</h2>

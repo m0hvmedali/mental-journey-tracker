@@ -37,10 +37,10 @@ export default function EmotionSelect() {
     <button
       onClick={() => setSelected(e)}
       className={`p-3 rounded-xl shadow-sm text-right hover:shadow-md transition
-        ${isPositive(e) ? 'bg-[#e6f7f0]' : 'bg-[#fff1f1]'}`}
+        ${isPositive(e) ? 'bg-[#e6f7f0] dark:bg-[#0e2a1f]' : 'bg-[#fff1f1] dark:bg-[#2a1111]'}`}
     >
-      <p className="font-bold text-sm text-[#0e1b15] leading-snug">{e.name}</p>
-      <p className="text-xs text-[#5a8c76]">{e.english_name}</p>
+      <p className="font-bold text-sm themed-text leading-snug">{e.name}</p>
+      <p className="text-xs themed-text-muted">{e.english_name}</p>
     </button>
   );
 
@@ -136,13 +136,13 @@ export default function EmotionSelect() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#f9fbfa] px-4 py-6 font-sans">
+    <div className="min-h-screen themed-bg px-4 py-6 font-sans">
       {/* Header */}
       <header className="flex items-center mb-6">
-        <button onClick={() => nav(-1)} className="p-2 mr-2 text-[#0e1b15]">
+        <button onClick={() => nav(-1)} className="p-2 mr-2 themed-text">
           <ArrowLeft size={24} />
         </button>
-        <h1 className="flex-1 text-center pr-8 text-lg font-bold text-[#0e1b15]">
+        <h1 className="flex-1 text-center pr-8 text-lg font-bold themed-text">
           تحديد المشاعر
         </h1>
       </header>
@@ -160,7 +160,7 @@ export default function EmotionSelect() {
        placeholder= "search "
        value={query}
        onChange={(e) => setQuery(e.target.value)}
-       className="w-full mb-6 h-10 rounded-xl bg-white px-4 border border-[#e3e8e6] focus:ring-0 focus:outline-none text-sm"
+       className="w-full mb-6 h-10 rounded-xl themed-bg-card themed-text px-4 border themed-border focus:ring-0 focus:outline-none text-sm"
      /> 
 </div>
       
@@ -188,9 +188,9 @@ function Section({ title, items, Card }) {
   if (!items.length) return null;
   return (
     <div className="mb-10">
-      <h2 className="mb-3 text-lg font-bold text-[#0e1b15]">
+      <h2 className="mb-3 text-lg font-bold themed-text">
         {title}{' '}
-        <span className="text-sm text-[#5a8c76]">({items.length})</span>
+        <span className="text-sm themed-text-muted">({items.length})</span>
       </h2>
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
         {items.map((e) => (
@@ -205,10 +205,10 @@ function Section({ title, items, Card }) {
 function Modal({ children, onClose }) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
-      <div className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto bg-white rounded-xl p-5">
+      <div className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto themed-bg-card rounded-xl p-5">
         <button
           onClick={onClose}
-          className="absolute top-3 left-3 text-[#5a8c76] hover:text-[#101915]"
+          className="absolute top-3 left-3 themed-text-secondary hover:themed-text"
         >
           <X size={20} />
         </button>
@@ -251,16 +251,16 @@ function EmotionDetails({ e }) {
 
   return (
     <>
-      <h2 className="text-xl font-bold text-[#0e1b15] mb-4">{e.name}</h2>
+      <h2 className="text-xl font-bold themed-text mb-4">{e.name}</h2>
       {order.map((k) => {
         if (!(k in e)) return null;
         const v = e[k];
         return (
           <section key={k} className="mb-4">
-            <h3 className="font-semibold text-[#0e1b15] mb-1">{label[k]}</h3>
+            <h3 className="font-semibold themed-text mb-1">{label[k]}</h3>
 
             {Array.isArray(v) ? (
-              <ul className="list-disc list-inside space-y-1 text-sm text-[#374151]">
+              <ul className="list-disc list-inside space-y-1 text-sm themed-text-muted">
                 {v.map((x, i) => (
                   <li key={i}>{x}</li>
                 ))}
@@ -269,24 +269,24 @@ function EmotionDetails({ e }) {
               /* لو الكائن داخله arrays */
               Object.entries(v).map(([subKey, subVal]) => (
                 <div key={subKey} className="mb-2">
-                  <p className="font-medium text-[#5a8c76] text-sm mb-1">
+                  <p className="font-medium themed-text-secondary text-sm mb-1">
                     {subKey.replace(/_/g, ' ')}
                   </p>
                   {Array.isArray(subVal) ? (
-                    <ul className="list-disc list-inside space-y-1 text-sm text-[#374151]">
+                    <ul className="list-disc list-inside space-y-1 text-sm themed-text-muted">
                       {subVal.map((x, i) => (
                         <li key={i}>{x}</li>
                       ))}
                     </ul>
                   ) : (
-                    <p className="text-sm text-[#374151] whitespace-pre-wrap">
+                    <p className="text-sm themed-text-muted whitespace-pre-wrap">
                       {subVal}
                     </p>
                   )}
                 </div>
               ))
             ) : (
-              <p className="text-sm text-[#374151] whitespace-pre-wrap">{v}</p>
+              <p className="text-sm themed-text-muted whitespace-pre-wrap">{v}</p>
             )}
           </section>
         );

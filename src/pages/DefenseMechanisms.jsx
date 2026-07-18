@@ -826,27 +826,27 @@ export default function DefenseMechanisms() {
   
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#f9fbfa] space-y-6 px-5 pb-10 font-sans">
+    <div className="flex flex-col min-h-screen themed-bg space-y-6 px-5 pb-10 font-sans">
       {/* Header */}
       <header className="flex items-center pt-4 pb-2 justify-between">
-        <button onClick={() => navigate(-1)} className="flex size-10 items-center text-[#0e1b15]">
+        <button onClick={() => navigate(-1)} className="flex size-10 items-center themed-text">
           <ArrowLeft size={24} />
         </button>
-        <h2 className="flex-1 text-center pr-10 text-lg font-bold text-[#0e1b15]">آليات الدفاع النفسي</h2>
+        <h2 className="flex-1 text-center pr-10 text-lg font-bold themed-text">آليات الدفاع النفسي</h2>
         
       </header>
 
-      <div className="bg-white rounded-lg p-6 shadow-sm">
+      <div className="themed-bg-card border themed-border rounded-lg p-6 shadow-sm">
         <div className="flex items-center gap-3 mb-0">
           <ShieldCheck className="text-[#4e9778] size-6" />
-          <h3 className="text-lg font-semibold text-[#0e1b15]">آليات الدفاع النفسي</h3>
+          <h3 className="text-lg font-semibold themed-text">آليات الدفاع النفسي</h3>
         </div>
         
-        <p className="text-[#374151] leading-relaxed mb-4">
+        <p className="themed-text-muted leading-relaxed mb-4">
           آليات الدفاع النفسية هي استجابات لاواعية يستخدمها الأفراد لحماية أنفسهم من القلق أو المشاعر السلبية الناتجة عن أفكار أو مواقف غير مقبولة أو تهديدات داخلية أو خارجية. تعمل هذه الآليات كوسائل لحفظ التوازن النفسي وتقليل التوتر.
         </p>
 
-        <p className="text-[#374151] leading-relaxed">
+        <p className="themed-text-muted leading-relaxed">
           ظهرت هذه المفاهيم أولاً في نظرية التحليل النفسي لفرويد، حيث اعتبرها وسائل تلجأ إليها "الأنا" (Ego) لتقليل الصراع بين "الهو" (Id) و"الأنا العليا" (Superego).
         </p>
 
@@ -923,7 +923,7 @@ export default function DefenseMechanisms() {
         {/* المصادر */}
         {item.sources?.length > 0 && (
           <div className="mt-4 space-y-2">
-            <h4 className="text-sm font-bold text-[#0e1b15]">مصادر لفهم أعمق:</h4>
+            <h4 className="text-sm font-bold themed-text">مصادر لفهم أعمق:</h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
               {item.sources.map((src, k) => (
                 <a
@@ -931,7 +931,7 @@ export default function DefenseMechanisms() {
                   href={src.url}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center gap-2 p-3 bg-[#e7f3ee] rounded-xl text-sm text-[#0e1b15]"
+                  className="flex items-center gap-2 p-3 themed-bg-subtle rounded-xl text-sm themed-text hover:opacity-85 transition-opacity"
                 >
                   {src.type === 'video' && <Youtube size={16} className="text-[#e94826]" />}
                   {['book', 'article'].includes(src.type) && <BookOpen size={16} className="text-[#4e9778]" />}
@@ -951,10 +951,10 @@ export default function DefenseMechanisms() {
 
       {/* اختبار الفهم */}
       <section className="space-y-4">
-        <h3 className="text-xl font-bold text-[#0e1b15] pt-6">اختبر فهمك</h3>
-        <Card className="bg-white shadow-sm">
+        <h3 className="text-xl font-bold themed-text pt-6">اختبر فهمك</h3>
+        <Card className="themed-bg-card shadow-sm border themed-border">
           <CardContent className="space-y-4 p-4">
-            <p className="text-base font-semibold text-[#0e1b15]">{current.q}</p>
+            <p className="text-base font-semibold themed-text">{current.q}</p>
             <div className="space-y-2">
               {DEFENSES.map((err) => (
                 <Button

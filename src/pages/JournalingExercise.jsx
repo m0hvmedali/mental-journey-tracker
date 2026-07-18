@@ -1,20 +1,21 @@
-import { useEffect, useState } from 'react';
-import { ArrowLeft, History, BookOpen, Heart, Edit, ChevronRight, Star, X } from 'lucide-react';
+// src/pages/JournalingExercise.jsx
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { updateProgress } from '../utils/progress';
-import { saveTextToDB } from '@/lib/db';
+import { ArrowLeft, X, Heart, Star, BookOpen, Edit, History } from 'lucide-react';
 import { supabase } from '@/supabaseClient';
-export default function EmotionJournal() {
+import { saveTextToDB } from '@/lib/db';
+import { updateProgress } from '../utils/progress';
+
+export default function JournalingExercise() {
   const nav = useNavigate();
+  const [activeTab, setActiveTab] = useState('entry');
   const [feeling, setFeeling] = useState('');
   const [context, setContext] = useState('');
   const [intensity, setIntensity] = useState(5);
-  const [logs, setLogs] = useState([]);
   const [showTips, setShowTips] = useState(true);
-  const [activeTab, setActiveTab] = useState('entry');
+  const [logs, setLogs] = useState([]);
 
   // Load logs on mount
- 
   useEffect(() => {
     const fetchLogs = async () => {
       const username = localStorage.getItem('username');
@@ -68,7 +69,6 @@ export default function EmotionJournal() {
       context,
       intensity,
       date: new Date().toISOString(),
-
     };
   
     try {
@@ -95,35 +95,39 @@ export default function EmotionJournal() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#f5fbf8] px-4 py-6" style={{ fontFamily: 'Lexend, Noto Sans, sans-serif' }}>
+    <div className="min-h-screen themed-bg px-4 py-6 font-sans">
       {/* Header */}
       <header className="flex items-center pb-2 mb-6">
         <button 
           onClick={() => nav(-1)} 
-          className="flex items-center justify-center "
+          className="flex items-center justify-center themed-text"
         >
           <ArrowLeft size={20} />
         </button>
         <div className="flex-1 flex flex-col items-center">
-          <h2 className="text-xl font-bold text-[#0e1b15]">يوميات المشاعر</h2>
-          <p className="text-xs text-[#5a8c76]">سجل مشاعرك وفهمها بشكل أفضل</p>
+          <h2 className="text-xl font-bold themed-text">يوميات المشاعر</h2>
+          <p className="text-xs themed-text-muted">سجل مشاعرك وفهمها بشكل أفضل</p>
         </div>
       </header>
 
       {/* Navigation Tabs */}
-      <div className="flex mb-6 bg-[#e0f0e9] p-1 rounded-xl">
+      <div className="flex mb-6 themed-bg-subtle border themed-border p-1 rounded-xl">
         <button 
           onClick={() => setActiveTab('entry')}
-          className={`flex-1 py-2 rounded-xl text-center ${
-            activeTab === 'entry' ? 'bg-white text-[#0e8a5f] font-medium shadow-sm' : 'text-[#5a8c76]'
+          className={`flex-1 py-2 text-center rounded-lg transition-all ${
+            activeTab === 'entry' 
+              ? 'themed-bg-card text-[#0e8a5f] font-medium shadow-sm' 
+              : 'themed-text-muted hover:bg-white/50 dark:hover:bg-black/20'
           }`}
         >
           تدوين جديد
         </button>
         <button 
           onClick={() => setActiveTab('history')}
-          className={`flex-1 py-2 rounded-xl text-center ${
-            activeTab === 'history' ? 'bg-white text-[#0e8a5f] font-medium shadow-sm' : 'text-[#5a8c76]'
+          className={`flex-1 py-2 text-center rounded-lg transition-all ${
+            activeTab === 'history' 
+              ? 'themed-bg-card text-[#0e8a5f] font-medium shadow-sm' 
+              : 'themed-text-muted hover:bg-white/50 dark:hover:bg-black/20'
           }`}
         >
           السجل
@@ -134,17 +138,17 @@ export default function EmotionJournal() {
         <div className="space-y-6">
           {/* Tips Banner */}
           {showTips && (
-            <div className="bg-[#e7f3ee] rounded-2xl p-4 relative">
+            <div className="themed-bg-card border themed-border rounded-2xl p-4 relative">
               <button 
                 onClick={() => setShowTips(false)}
-                className="absolute top-2 left-2 text-[#5a8c76]"
+                className="absolute top-2 left-2 text-[#5a8c76] dark:text-gray-400"
               >
                 <X size={18} />
               </button>
-              <h3 className="font-bold text-[#0e1b15] mb-2 flex items-center">
+              <h3 className="font-bold themed-text mb-2 flex items-center">
                 <Heart size={18} className="mr-2 text-[#4e9778]" /> لماذا تدوين المشاعر مهم؟
               </h3>
-              <ul className="text-xs text-[#374151] space-y-1 pl-2">
+              <ul className="text-xs themed-text-muted space-y-1 pl-2">
                 <li>• يساعدك على فهم أنماط مشاعرك</li>
                 <li>• يقلل من حدة المشاعر السلبية</li>
                 <li>• يحسن من وعيك الذاتي</li>
@@ -154,12 +158,12 @@ export default function EmotionJournal() {
           )}
 
           {/* Feeling Input */}
-          <div className="bg-white rounded-2xl p-4 shadow-sm">
-            <h3 className="font-medium text-[#0e1b15] mb-3 flex items-center">
+          <div className="themed-bg-card rounded-2xl p-4 shadow-sm themed-border border">
+            <h3 className="font-medium themed-text mb-3 flex items-center">
               <BookOpen size={18} className="mr-2 text-[#4e9778]" /> ما هو الشعور الذي تشعر به الآن؟
             </h3>
             <textarea
-              className="w-full p-3 rounded-lg bg-[#f9fbfa] text-[#101915] resize-none border border-[#e0eae5] focus:outline-none focus:ring-2 focus:ring-[#4e9778]/30"
+              className="w-full p-3 rounded-lg themed-bg-input themed-text resize-none border themed-border focus:outline-none focus:ring-2 focus:ring-[#4e9778]/30"
               placeholder="أشعر الآن بـ..."
               rows="2"
               value={feeling}
@@ -167,13 +171,13 @@ export default function EmotionJournal() {
             />
             
             <div className="mt-3">
-              <p className="text-xs text-[#5a8c76] mb-2">اقتراحات مشاعر:</p>
+              <p className="text-xs themed-text-muted mb-2">اقتراحات مشاعر:</p>
               <div className="flex flex-wrap gap-2">
                 {emotionSuggestions.map((suggestion, i) => (
                   <button
                     key={i}
                     onClick={() => setFeeling(suggestion)}
-                    className="px-3 py-1 text-xs bg-[#e7f3ee] text-[#0e8a5f] rounded-full hover:bg-[#d4e9de]"
+                    className="px-3 py-1 text-xs themed-bg-subtle themed-text rounded-full hover:opacity-85"
                   >
                     {suggestion}
                   </button>
@@ -183,12 +187,12 @@ export default function EmotionJournal() {
           </div>
 
           {/* Context Input */}
-          <div className="bg-white rounded-2xl p-4 shadow-sm">
-            <h3 className="font-medium text-[#0e1b15] mb-3 flex items-center">
+          <div className="themed-bg-card rounded-2xl p-4 shadow-sm themed-border border">
+            <h3 className="font-medium themed-text mb-3 flex items-center">
               <Edit size={18} className="mr-2 text-[#4e9778]" /> ما السياق أو الموقف المرتبط بهذا الشعور؟
             </h3>
             <textarea
-              className="w-full p-3 rounded-lg bg-[#f9fbfa] text-[#101915] resize-none border border-[#e0eae5] focus:outline-none focus:ring-2 focus:ring-[#4e9778]/30"
+              className="w-full p-3 rounded-lg themed-bg-input themed-text resize-none border themed-border focus:outline-none focus:ring-2 focus:ring-[#4e9778]/30"
               placeholder="حدث ذلك عندما..."
               rows="3"
               value={context}
@@ -197,9 +201,9 @@ export default function EmotionJournal() {
           </div>
 
           {/* Intensity Slider */}
-          <div className="bg-white rounded-2xl p-4 shadow-sm">
-            <h3 className="font-medium text-[#0e1b15] mb-4 flex items-center">
-              <Star size={18} className="mr-2 text-[#4e9778]" /> شدة الشعور: <span className="text-[#0e8a5f] font-bold mx-1">{intensity}</span> من 10
+          <div className="themed-bg-card rounded-2xl p-4 shadow-sm themed-border border">
+            <h3 className="font-medium themed-text mb-4 flex items-center">
+              <Star size={18} className="mr-2 text-[#4e9778]" /> شدة الشعور: <span className="text-[#0e8a5f] dark:text-[#5ec68e] font-bold mx-1">{intensity}</span> من 10
             </h3>
             <input
               type="range"
@@ -207,9 +211,9 @@ export default function EmotionJournal() {
               max="10"
               value={intensity}
               onChange={(e) => setIntensity(Number(e.target.value))}
-              className="w-full mb-2 accent-[#0e8a5f]"
+              className="w-full mb-2 accent-[#0e8a5f] dark:accent-[#5ec68e]"
             />
-            <div className="flex justify-between text-xs text-[#5a8c76]">
+            <div className="flex justify-between text-xs themed-text-muted">
               <span>خفيف</span>
               <span>متوسط</span>
               <span>شديد</span>
@@ -219,7 +223,7 @@ export default function EmotionJournal() {
           {/* Save Button */}
           <button
             onClick={handleSave}
-            className="w-full py-4 rounded-2xl bg-[#0e8a5f] text-white font-bold text-lg shadow-lg hover:bg-[#0c7a52] transition-colors"
+            className="w-full py-4 rounded-2xl bg-[#0e8a5f] text-white font-bold text-lg shadow-lg hover:opacity-90 transition-opacity"
           >
             حفظ الشعور
           </button>
@@ -227,19 +231,19 @@ export default function EmotionJournal() {
       ) : (
         <div className="space-y-6">
           <div className="flex justify-between items-center mb-4">
-            <h3 className="font-bold text-lg text-[#0e1b15] flex items-center">
+            <h3 className="font-bold text-lg themed-text flex items-center">
               <History size={20} className="mr-2 text-[#4e9778]" /> سجل المشاعر
             </h3>
-            <span className="text-sm text-[#5a8c76]">{logs.length} تدوينة</span>
+            <span className="text-sm themed-text-muted">{logs.length} تدوينة</span>
           </div>
 
           {logs.length === 0 ? (
-            <div className="bg-white rounded-2xl p-8 text-center shadow-sm">
-              <div className="mx-auto bg-[#e7f3ee] w-16 h-16 rounded-full flex items-center justify-center mb-4">
+            <div className="themed-bg-card rounded-2xl p-8 text-center shadow-sm themed-border border">
+              <div className="mx-auto themed-bg-subtle w-16 h-16 rounded-full flex items-center justify-center mb-4">
                 <BookOpen size={28} className="text-[#4e9778]" />
               </div>
-              <h4 className="font-medium text-[#0e1b15] mb-2">لا توجد تدوينات بعد</h4>
-              <p className="text-sm text-[#5a8c76] mb-4">ابدأ بتدوين مشاعرك الأولى لترى سجلك هنا</p>
+              <h4 className="font-medium themed-text mb-2">لا توجد تدوينات بعد</h4>
+              <p className="text-sm themed-text-muted mb-4">ابدأ بتدوين مشاعرك الأولى لترى سجلك هنا</p>
               <button 
                 onClick={() => setActiveTab('entry')}
                 className="px-4 py-2 bg-[#0e8a5f] text-white rounded-lg font-medium"
@@ -250,45 +254,45 @@ export default function EmotionJournal() {
           ) : (
             <div className="space-y-4">
               {logs.map((log, i) => (
-                <div key={i} className="bg-white rounded-2xl p-5 shadow-sm border border-[#e0eae5]">
+                <div key={i} className="themed-bg-card rounded-2xl p-5 shadow-sm border themed-border">
                   <div className="flex justify-between items-start mb-3">
                     <div className="flex items-center">
-                      <div className="w-8 h-8 rounded-full bg-[#e7f3ee] flex items-center justify-center mr-2">
+                      <div className="w-8 h-8 rounded-full themed-bg-subtle flex items-center justify-center mr-2">
                         <Heart size={16} className="text-[#4e9778]" />
                       </div>
-                      <h4 className="font-bold text-[#0e1b15]">{log.feeling}</h4>
+                      <h4 className="font-bold themed-text">{log.feeling}</h4>
                     </div>
                     <span className="text-xs text-[#9ca3af]">{log.date}</span>
                   </div>
                   
                   {log.context && (
-                    <p className="text-sm text-[#374151] mb-3">
-                      <span className="font-medium text-[#5a8c76]">السياق:</span> {log.context}
+                    <p className="text-sm themed-text mb-3">
+                      <span className="font-medium themed-text-secondary">السياق:</span> {log.context}
                     </p>
                   )}
                   
                   <div className="flex items-center">
-                    <span className="text-sm font-medium text-[#5a8c76]">الشدة:</span>
+                    <span className="text-sm font-medium themed-text-muted">الشدة:</span>
                     <div className="ml-2 flex">
                       {[...Array(10)].map((_, idx) => (
                         <div 
                           key={idx} 
                           className={`w-3 h-3 rounded-full mx-0.5 ${
-                            idx < log.intensity ? 'bg-[#0e8a5f]' : 'bg-[#e0eae5]'
+                            idx < log.intensity ? 'bg-[#0e8a5f]' : 'themed-bg-subtle'
                           }`}
                         />
                       ))}
                     </div>
-                    <span className="text-sm font-bold text-[#0e8a5f] ml-2">{log.intensity}/10</span>
+                    <span className="text-sm font-bold text-[#0e8a5f] dark:text-[#5ec68e] ml-2">{log.intensity}/10</span>
                   </div>
                 </div>
               ))}
             </div>
           )}
 
-          <div className="bg-[#e7f3ee] rounded-2xl p-4">
-            <h4 className="font-bold text-[#0e1b15] mb-2">فوائد متابعة سجل المشاعر:</h4>
-            <ul className="text-xs text-[#374151] space-y-1 pl-2">
+          <div className="themed-bg-card border themed-border rounded-2xl p-4">
+            <h4 className="font-bold themed-text mb-2">فوائد متابعة سجل المشاعر:</h4>
+            <ul className="text-xs themed-text-muted space-y-1 pl-2">
               <li>• تحديد أنماط المشاعر المتكررة</li>
               <li>• فهم أفضل لمحفزات المشاعر السلبية</li>
               <li>• تتبع تقدمك في إدارة مشاعرك</li>

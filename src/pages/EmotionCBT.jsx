@@ -44,12 +44,12 @@ export default function CBTPage() {
   ];
 
   return (
-    <div className="bg-gray-50 min-h-screen p-8">
- <header className="flex justify-between items-center  pb-6">
-        <button onClick={() => window.history.back()} className="flex size-12 shrink-0 items-center text-[#0e1b15]">
+    <div className="themed-bg min-h-screen p-8">
+ <header className="flex justify-between items-center pb-6">
+        <button onClick={() => window.history.back()} className="flex size-12 shrink-0 items-center themed-text">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="24" height="24" fill="currentColor"><path d="M224 128a8 8 0 0 1-8 8H59.31l58.35 58.34a8 8 0 0 1-11.32 11.32l-72-72a8 8 0 0 1 0-11.32l72-72a8 8 0 0 1 11.32 11.32L59.31 120H216a8 8 0 0 1 8 8Z"/></svg>
         </button>
-        <h2 className="flex-1 text-center pr-12 text-lg font-bold text-[#0e1b15]">Cognitive behavioral therapy </h2>
+        <h2 className="flex-1 text-center pr-12 text-lg font-bold themed-text">Cognitive behavioral therapy </h2>
       </header>
  {/* شريط الاختصارات */}
  <div className="flex justify-center mb-6">
@@ -59,7 +59,7 @@ export default function CBTPage() {
              <a
              key={skill.id}
              href={`#${skill.id}`}
-             className="flex-shrink-0 px-3 py-1 bg-white text-black rounded-full text-sm border shadow-lg transition 
+             className="flex-shrink-0 px-3 py-1 themed-bg-card themed-text rounded-full text-sm border themed-border shadow-lg transition 
                        animate-[glow_2s_ease-in-out_infinite]"
            >
                 {skill.label}
@@ -72,7 +72,7 @@ export default function CBTPage() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
  {/* نموذج الفلترة */}
- <Card id="filterModel" className="bg-white shadow-md col-span-full">
+ <Card id="filterModel" className="themed-bg-card shadow-md col-span-full themed-border border">
           <CardHeader className="flex items-center space-x-2">
             <MessageCircle className="w-6 h-6 text-gray-700" />
             <h2 className="text-xl font-semibold">نموذج التصفية والفلترة</h2>
@@ -109,7 +109,7 @@ export default function CBTPage() {
         </Card>
 
  {/* 1. مثلث المعرفة: الأفكار - المشاعر - السلوك */}
- <Card id="triangle" className="bg-white shadow-md col-span-full">
+ <Card id="triangle" className="themed-bg-card shadow-md col-span-full themed-border border">
           <CardHeader className="flex items-center space-x-2">
             <Triangle className="w-6 h-6 text-indigo-500" />
             <h2 className="text-xl font-semibold">مثلث المعرفة: الأفكار - المشاعر - السلوك</h2>
@@ -172,7 +172,7 @@ export default function CBTPage() {
         </Card>
 
   {/* مهارة السندوتش */}
-  <Card id="sandwich"  className="bg-white shadow-md col-span-full">
+  <Card id="sandwich"  className="themed-bg-card shadow-md col-span-full themed-border border">
           <CardHeader className="flex items-center space-x-2">
             <UserCheck className="w-6 h-6 text-pink-500" />
             <h2 className="text-xl font-semibold">مهارة السندوتش (Sandwich Technique)</h2>
@@ -218,7 +218,7 @@ export default function CBTPage() {
           </CardContent>
         </Card>
 
-        <Card id="socratic" className="bg-white shadow-md col-span-full">
+        <Card id="socratic" className="themed-bg-card shadow-md col-span-full themed-border border">
           <CardHeader className="flex items-center space-x-2">
             <MessageCircle className="w-6 h-6 text-blue-700" />
             <h2 className="text-xl font-semibold">نموذج التساؤل السقراطي</h2>
@@ -461,8 +461,7 @@ export default function CBTPage() {
           </CardContent>
         </Card>
 
-        {/* 8. التطبيقات و الاستراتيجيات */}
-        <Card id="applications" className="bg-white shadow-md col-span-full">
+        <Card id="applications" className="themed-bg-card shadow-md col-span-full lg:col-span-1 themed-border border">
           <CardHeader className="flex items-center space-x-2">
             <UserCheck className="w-6 h-6 text-red-500" />
             <h2 className="text-xl font-semibold">8. تطبيقات واستراتيجيات</h2>

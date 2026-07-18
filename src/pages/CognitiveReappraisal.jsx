@@ -72,18 +72,18 @@ import  { saveTextToDB } from '@/lib/db'
   ];
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#f7faf9] font-sans">
+    <div className="flex flex-col min-h-screen themed-bg font-sans">
       {/* Header */}
-      <header className="flex items-center p-4 pb-2  text-black">
-        <button onClick={() => nav(-1)} className="text-black"><ArrowLeft size={24} /></button>
-        <h2 className="flex-1 text-center pr-12 text-lg font-bold">إعادة التقييم المعرفي</h2>
+      <header className="flex items-center p-4 pb-2 themed-text">
+        <button onClick={() => nav(-1)} className="themed-text"><ArrowLeft size={24} /></button>
+        <h2 className="flex-1 text-center pr-12 text-lg font-bold themed-text">إعادة التقييم المعرفي</h2>
       </header>
 
       {/* Navigation Tabs */}
-      <div className="flex bg-[#e0f0e9] px-2 border-b border-[#cce3d9]">
+      <div className="flex bg-[#e0f0e9] dark:bg-[#1a2820] px-2 border-b themed-border">
         <button 
           onClick={() => setActiveSection('intro')}
-          className={`px-4 py-2 text-sm font-medium ${activeSection === 'intro' ? 'border-b-2 border-[#0e8a5f] text-[#0e8a5f]' : 'text-[#5a8c76]'}`}
+          className={`px-4 py-2 text-sm font-medium ${activeSection === 'intro' ? 'border-b-2 border-[#0e8a5f] text-[#0e8a5f]' : 'themed-text-muted'}`}
         >
           <div className="flex items-center gap-1">
             <Info size={16} /> مقدمة
@@ -91,7 +91,7 @@ import  { saveTextToDB } from '@/lib/db'
         </button>
         <button 
           onClick={() => setActiveSection('exercise')}
-          className={`px-4 py-2 text-sm font-medium ${activeSection === 'exercise' ? 'border-b-2 border-[#0e8a5f] text-[#0e8a5f]' : 'text-[#5a8c76]'}`}
+          className={`px-4 py-2 text-sm font-medium ${activeSection === 'exercise' ? 'border-b-2 border-[#0e8a5f] text-[#0e8a5f]' : 'themed-text-muted'}`}
         >
           <div className="flex items-center gap-1">
             <RefreshCcw size={16} /> التمرين
@@ -99,7 +99,7 @@ import  { saveTextToDB } from '@/lib/db'
         </button>
         <button 
           onClick={() => setActiveSection('history')}
-          className={`px-4 py-2 text-sm font-medium ${activeSection === 'history' ? 'border-b-2 border-[#0e8a5f] text-[#0e8a5f]' : 'text-[#5a8c76]'}`}
+          className={`px-4 py-2 text-sm font-medium ${activeSection === 'history' ? 'border-b-2 border-[#0e8a5f] text-[#0e8a5f]' : 'themed-text-muted'}`}
         >
           <div className="flex items-center gap-1">
             <History size={16} /> السجل
@@ -110,7 +110,7 @@ import  { saveTextToDB } from '@/lib/db'
       {/* Introduction Section */}
       {activeSection === 'intro' && (
         <div className="flex-1 overflow-y-auto px-4 py-4 space-y-5">
-          <div className="bg-white rounded-xl border border-[#e0eae5] p-4 space-y-3 shadow-sm">
+          <div className="themed-bg-card rounded-xl border themed-border p-4 space-y-3 shadow-sm">
             <h3 className="text-[#101915] font-bold text-lg flex items-center gap-2">
               <Brain size={20} className="text-[#0e8a5f]" /> ما هي إعادة التقييم المعرفي؟
             </h3>

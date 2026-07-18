@@ -186,9 +186,9 @@ export default function WheelPage() {
   };
 
   return (
-    <div className={`flex flex-col min-h-screen transition-colors duration-500 ${getBgColor()}`}>
+    <div className={`flex flex-col min-h-screen transition-colors duration-500 ${getBgColor()}`} style={{ backgroundColor: 'var(--bg-primary)' }}>
       {/* Header */}
-      <header className="flex items-center p-4 justify-between bg-white/80 backdrop-blur-sm shadow-sm">
+      <header className="flex items-center p-4 justify-between themed-bg-card backdrop-blur-sm shadow-sm" style={{ backgroundColor: 'color-mix(in srgb, var(--bg-card) 85%, transparent)' }}>
         <button 
           onClick={() => navigate(-1)} 
           className="flex items-center justify-center w-10 h-10 rounded-full bg-[#e7f3ee] text-[#4e9778]"
@@ -196,8 +196,8 @@ export default function WheelPage() {
           <ArrowLeft size={20} />
         </button>
         <div className="flex flex-col items-center">
-          <h2 className="text-xl font-bold text-[#0e1b15]">عجلة المشاعر</h2>
-          <p className="text-xs text-[#5a8c76]">استكشف مشاعرك وتفهمها</p>
+          <h2 className="text-xl font-bold themed-text">عجلة المشاعر</h2>
+          <p className="text-xs themed-text-muted">استكشف مشاعرك وتفهمها</p>
         </div>
         <button 
           onClick={resetSelection}
@@ -226,12 +226,12 @@ export default function WheelPage() {
       {/* Instructions */}
       {!selected && (
         <div className="flex flex-col items-center px-4 mb-4">
-          <div className="bg-white rounded-xl p-4 shadow-sm max-w-md w-full">
+          <div className="themed-bg-card rounded-xl p-4 shadow-sm max-w-md w-full">
             <div className="flex items-center mb-2">
-              <Info size={20} className="text-[#4e9778] mr-2" />
-              <h3 className="font-medium text-[#0e1b15]">كيف تستخدم العجلة</h3>
+              <Info size={20} className="themed-text-secondary mr-2" />
+              <h3 className="font-medium themed-text">كيف تستخدم العجلة</h3>
             </div>
-            <ul className="text-sm text-[#374151] list-disc list-inside space-y-1">
+            <ul className="text-sm themed-text list-disc list-inside space-y-1">
               <li>انقر على المشاعر الأساسية (الدوائر الداخلية الملونة)</li>
               <li>اختر المشاعر الفرعية (الطبقات الخارجية)</li>
               <li>حدد شدة الشعور باستخدام الشريط المنزلق</li>
@@ -245,7 +245,7 @@ export default function WheelPage() {
       {/* Details Section */}
       <div className="flex-1 overflow-y-auto px-4 pb-20">
         {selected ? (
-          <div className="bg-white rounded-xl shadow-sm p-4 mb-4 transition-all duration-300">
+          <div className="themed-bg-card rounded-xl shadow-sm p-4 mb-4 transition-all duration-300">
             {/* Emotion Path */}
             <div className="flex items-center justify-center mb-3">
               <div className="flex items-center bg-[#f0f9f4] px-3 py-1 rounded-full">
@@ -278,12 +278,12 @@ export default function WheelPage() {
             </div>
 
             {/* Description */}
-            <p className="text-center text-sm mb-4 text-[#374151]">{selected.desc}</p>
+            <p className="text-center text-sm mb-4 themed-text">{selected.desc}</p>
 
             {/* Intensity Control */}
             <div className="mb-4">
               <div className="flex justify-between items-center mb-1">
-                <label className="text-sm font-medium text-[#0e1b15]">شدة الشعور</label>
+                <label className="text-sm font-medium themed-text">شدة الشعور</label>
                 <div className="flex items-center">
                   <button 
                     onClick={decreaseIntensity}
@@ -327,52 +327,52 @@ export default function WheelPage() {
             {/* Text Areas */}
             <div className="space-y-3 mb-4">
               <div>
-                <label className="block text-sm font-medium mb-1 text-[#0e1b15]">وصف الشعور</label>
-                <textarea 
-                  className="w-full bg-[#f9fbfa] border border-[#e0e8e4] rounded-xl p-3 text-sm text-[#0e1b15] focus:outline-none focus:ring-1 focus:ring-[#4e9778]"
+                <label className="block text-sm font-medium mb-1 themed-text">وصف الشعور</label>
+                <textarea
+                  className="w-full themed-bg-input themed-border border rounded-xl p-3 text-sm themed-text focus:outline-none focus:ring-1 focus:ring-[#4e9778]"
                   placeholder="كيف تشعر بالضبط؟ ماذا يحدث في جسدك؟..."
                   rows="3"
-                  value={details.description} 
-                  onChange={(e) => setDetails({ ...details, description: e.target.value })} 
+                  value={details.description}
+                  onChange={(e) => setDetails({ ...details, description: e.target.value })}
                 />
               </div>
-              
+
               <div>
-                <label className="block text-sm font-medium mb-1 text-[#0e1b15]">الموقف أو الأفكار المرتبطة</label>
-                <textarea 
-                  className="w-full bg-[#f9fbfa] border border-[#e0e8e4] rounded-xl p-3 text-sm text-[#0e1b15] focus:outline-none focus:ring-1 focus:ring-[#4e9778]"
+                <label className="block text-sm font-medium mb-1 themed-text">الموقف أو الأفكار المرتبطة</label>
+                <textarea
+                  className="w-full themed-bg-input themed-border border rounded-xl p-3 text-sm themed-text focus:outline-none focus:ring-1 focus:ring-[#4e9778]"
                   placeholder="ما الذي حدث؟ ما الأفكار التي تدور في ذهنك؟..."
                   rows="3"
-                  value={details.context} 
-                  onChange={(e) => setDetails({ ...details, context: e.target.value })} 
+                  value={details.context}
+                  onChange={(e) => setDetails({ ...details, context: e.target.value })}
                 />
               </div>
             </div>
 
             {/* Coping Strategies */}
-            <div className="border border-[#e0e8e4] rounded-xl overflow-hidden">
-              <button 
-                className="w-full flex justify-between items-center p-3 text-[#0e1b15] font-medium"
+            <div className="themed-border border rounded-xl overflow-hidden">
+              <button
+                className="w-full flex justify-between items-center p-3 themed-text font-medium"
                 onClick={() => setShowCoping(!showCoping)}
               >
                 <div className="flex items-center">
                   <span>استراتيجيات التعامل</span>
-                  <span className="text-xs bg-[#e7f3ee] text-[#4e9778] px-2 py-1 rounded-full ml-2">
+                  <span className="text-xs themed-bg-subtle themed-text-secondary px-2 py-1 rounded-full ml-2">
                     {selected.coping.length}
                   </span>
                 </div>
-                {showCoping ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+                {showCoping ? <ChevronUp size={20} className="themed-text" /> : <ChevronDown size={20} className="themed-text" />}
               </button>
-              
+
               {showCoping && (
-                <div className="p-3 bg-[#f9fbfa] border-t border-[#e0e8e4]">
+                <div className="p-3 themed-bg-input themed-border border-t">
                   <ul className="space-y-2">
                     {selected.coping.map((tip, index) => (
                       <li key={index} className="flex items-start">
-                        <div className="w-5 h-5 rounded-full bg-[#e0f0e9] text-[#0e8a5f] text-xs flex items-center justify-center mt-1 mr-2 flex-shrink-0">
+                        <div className="w-5 h-5 rounded-full themed-bg-subtle themed-text-secondary text-xs flex items-center justify-center mt-1 mr-2 flex-shrink-0">
                           {index + 1}
                         </div>
-                        <span className="text-sm text-[#374151]">{tip}</span>
+                        <span className="text-sm themed-text">{tip}</span>
                       </li>
                     ))}
                   </ul>
@@ -382,14 +382,14 @@ export default function WheelPage() {
           </div>
         ) : (
           <div className="text-center py-8">
-            <div className="bg-white rounded-xl p-6 inline-block shadow-sm">
+            <div className="themed-bg-card rounded-xl p-6 inline-block shadow-sm">
               <div className="flex justify-center mb-3">
-                <div className="w-16 h-16 rounded-full bg-[#e7f3ee] flex items-center justify-center text-[#4e9778]">
+                <div className="w-16 h-16 rounded-full themed-bg-subtle flex items-center justify-center themed-text-secondary">
                   <Smile size={32} />
                 </div>
               </div>
-              <p className="text-[#5a8c76] font-medium">اختر شعورًا من العجلة لبدء التدوين</p>
-              <p className="text-[#5a8c76] text-sm mt-1">اضغط على أي قطاع لاستكشاف مشاعرك</p>
+              <p className="themed-text-muted font-medium">اختر شعورًا من العجلة لبدء التدوين</p>
+              <p className="themed-text-muted text-sm mt-1">اضغط على أي قطاع لاستكشاف مشاعرك</p>
             </div>
           </div>
         )}

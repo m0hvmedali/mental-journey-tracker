@@ -507,24 +507,24 @@ export default function DBTSkills() {
     : SKILLS.filter(skill => skill.category === selectedCategory);
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#f5fbf8]" style={{ fontFamily: 'Lexend, Noto Sans, sans-serif' }}>
+    <div className="flex flex-col min-h-screen themed-bg" style={{ fontFamily: 'Lexend, Noto Sans, sans-serif' }}>
       {/* Header */}
-      <header className="flex items-center p-4 bg-white shadow-sm">
+      <header className="flex items-center p-4 themed-bg-card shadow-sm border themed-border">
         <button 
           onClick={() => nav(-1)} 
-          className="flex items-center justify-center w-10 h-10 rounded-full "
+          className="flex items-center justify-center w-10 h-10 rounded-full themed-text"
         >
           <ArrowLeft size={20} />
         </button>
         <div className="flex-1 flex flex-col items-center">
-          <h2 className="text-xl font-bold text-[#0e1b15]">مركز مهارات DBT</h2>
-          <p className="text-xs text-[#5a8c76]">أدوات عملية لتحسين صحتك النفسية</p>
+          <h2 className="text-xl font-bold themed-text">مركز مهارات DBT</h2>
+          <p className="text-xs themed-text-muted">أدوات عملية لتحسين صحتك النفسية</p>
         </div>
       </header>
 
       {/* Introduction */}
-      <div className="p-4 bg-white">
-        <p className="text-sm text-[#374151] text-center">
+      <div className="p-4 themed-bg-card border themed-border">
+        <p className="text-sm themed-text-muted text-center">
           اختر التصنيف أو المهارة المناسبة لحالتك الحالية. هذه المهارات تساعدك على:
         </p>
         <div className="grid grid-cols-2 gap-2 mt-3">
@@ -556,8 +556,8 @@ export default function DBTSkills() {
       </div>
 
       {/* Category Filter */}
-      <div className="px-4 py-3 bg-[#e0f0e9]">
-        <h3 className="font-medium text-[#0e1b15] mb-2">التصنيفات:</h3>
+      <div className="px-4 py-3 themed-bg-subtle border themed-border">
+        <h3 className="font-medium themed-text mb-2">التصنيفات:</h3>
         <div className="flex overflow-x-auto pb-2 space-x-2">
           {categories.map((cat) => (
             <button
@@ -566,7 +566,7 @@ export default function DBTSkills() {
               className={`flex items-center px-3 py-1.5 rounded-xl whitespace-nowrap text-sm ${
                 selectedCategory === cat.id 
                   ? 'bg-[#4e9778] text-white' 
-                  : 'bg-white text-[#374151] border border-[#e0eae5]'
+                  : 'themed-bg-card themed-text border themed-border'
               }`}
             >
               <span className="mr-1">{cat.icon}</span>
@@ -581,7 +581,7 @@ export default function DBTSkills() {
         {filteredSkills.map((s, i) => (
           <section 
             key={s.key} 
-            className="border border-[#e3e8e6] rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow"
+            className="border themed-border rounded-xl themed-bg-card shadow-sm hover:shadow-md transition-shadow"
           >
             <button
               onClick={() => setOpen(open === i ? null : i)}
@@ -592,8 +592,8 @@ export default function DBTSkills() {
                   {s.icon}
                 </div>
                 <div className="text-left">
-                  <p className="font-semibold text-[#0e1b15]">{s.title}</p>
-                  <p className="text-xs text-[#5a8c76]">{s.group} • {s.desc}</p>
+                  <p className="font-semibold themed-text">{s.title}</p>
+                  <p className="text-xs themed-text-muted">{s.group} • {s.desc}</p>
                 </div>
               </div>
               <svg 

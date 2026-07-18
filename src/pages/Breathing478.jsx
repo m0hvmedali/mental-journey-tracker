@@ -276,20 +276,20 @@ export default function CalmingExercises() {
     .filter(([key, ex]) => selectedCategory === 'all' || ex.category === selectedCategory);
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#f5fbf8] p-4" style={{ fontFamily: 'Lexend, Noto Sans, sans-serif' }}>
+    <div className="flex flex-col min-h-screen themed-bg p-4" style={{ fontFamily: 'Lexend, Noto Sans, sans-serif' }}>
       {/* Header */}
       <header className="flex items-center mb-4 ">
         <button 
           onClick={() => nav(-1)} 
-          className="flex items-center justify-center"
+          className="flex items-center justify-center themed-text"
         >
           <ArrowLeft size={20} />
         </button>
-        <h2 className="flex-1 text-center text-xl font-bold text-[#0e1b15]">تمارين التهدئة وإدارة المشاعر</h2>
+        <h2 className="flex-1 text-center text-xl font-bold themed-text">تمارين التهدئة وإدارة المشاعر</h2>
       </header>
       
       {/* Introduction */}
-      <div className="bg-white rounded-2xl p-5 mb-6 shadow-sm">
+      <div className="themed-bg-card rounded-2xl p-5 mb-6 shadow-sm border themed-border">
         <p className="text-[#374151] text-center mb-3">
           اختر التمرين المناسب لحالتك الحالية. هذه التمارين تساعدك على:
         </p>
@@ -323,7 +323,7 @@ export default function CalmingExercises() {
       
       {/* Categories */}
       <div className="mb-5">
-        <h3 className="font-medium text-[#0e1b15] mb-3">التصنيفات:</h3>
+        <h3 className="font-medium themed-text mb-3">التصنيفات:</h3>
         <div className="flex overflow-x-auto pb-2 space-x-3">
           {categories.map((cat) => (
             <button
@@ -332,7 +332,7 @@ export default function CalmingExercises() {
               className={`flex items-center px-4 py-2 rounded-xl whitespace-nowrap ${
                 selectedCategory === cat.id 
                   ? 'bg-[#4e9778] text-white' 
-                  : 'bg-white text-[#374151] border border-[#e0eae5]'
+                  : 'themed-bg-card themed-text-muted border themed-border'
               }`}
             >
               <span className="mr-1">{cat.icon}</span>
@@ -344,12 +344,12 @@ export default function CalmingExercises() {
       
       {/* Exercises List */}
       <div className="space-y-4">
-        <h3 className="font-medium text-[#0e1b15] mb-2">التمارين المتاحة:</h3>
+        <h3 className="font-medium themed-text mb-2">التمارين المتاحة:</h3>
         
         {filteredExercises.map(([key, ex]) => (
           <div 
             key={key} 
-            className="bg-white rounded-2xl p-4 flex gap-4 items-start shadow-sm hover:shadow-md transition-shadow"
+            className="themed-bg-card rounded-2xl p-4 flex gap-4 items-start shadow-sm border themed-border hover:shadow-md transition-shadow"
             onClick={() => startExercise(key)}
           >
             <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-[#e7f3ee] flex items-center justify-center">
@@ -383,8 +383,8 @@ export default function CalmingExercises() {
       {modalOpen && <Modal />}
       
       {/* Footer Tips */}
-      <div className="mt-6 bg-white rounded-2xl p-4 shadow-sm">
-        <h3 className="font-bold text-[#0e1b15] mb-3">نصائح للاستفادة القصوى:</h3>
+      <div className="mt-6 themed-bg-card rounded-2xl p-4 shadow-sm border themed-border">
+        <h3 className="font-bold themed-text mb-3">نصائح للاستفادة القصوى:</h3>
         <ul className="space-y-2 text-sm text-[#374151]">
           <li className="flex items-start">
             <span className=" w-5 h-5 mr-2 mt-0.5 flex-shrink-0 rounded-full bg-[#e7f3ee] text-[#4e9778] text-xs flex items-center justify-center">✓</span>
