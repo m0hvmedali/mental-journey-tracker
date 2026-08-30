@@ -53,10 +53,13 @@ export default function EmotionSelect() {
 
  /* فلتر البحث */
  const filtered = useMemo(
- () => emotionsList.filter(
- (e) =>
- e.name.includes(query) ||
- e.english_name.toLowerCase().includes(query.toLowerCase())
+ () => (emotionsList || []).filter(
+ (e) => {
+ const q = (query || '').toLowerCase();
+ const nameStr = e?.name || '';
+ const engStr = e?.english_name || '';
+ return nameStr.includes(query || '') || engStr.toLowerCase().includes(q);
+ }
  ),
  [emotionsList, query]
  );

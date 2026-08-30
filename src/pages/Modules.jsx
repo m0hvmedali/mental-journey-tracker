@@ -7,13 +7,14 @@ export default function Modules() {
   const [query, setQuery] = useState('');
   const navigate = useNavigate();
 
-  const filtered = MODULES_DATA.filter((m) =>
-    m.title.toLowerCase().includes(query.toLowerCase()) ||
-    m.tagline.toLowerCase().includes(query.toLowerCase()) ||
-    m.pages.some((p) =>
-      p.title.toLowerCase().includes(query.toLowerCase()) ||
-      p.subtitle.toLowerCase().includes(query.toLowerCase())
-    )
+  const q = (query || '').toLowerCase();
+  const filtered = (MODULES_DATA || []).filter((m) =>
+    (m?.title || '').toLowerCase().includes(q) ||
+    (m?.tagline || '').toLowerCase().includes(q) ||
+    (Array.isArray(m?.pages) && m.pages.some((p) =>
+      (p?.title || '').toLowerCase().includes(q) ||
+      (p?.subtitle || '').toLowerCase().includes(q)
+    ))
   );
 
   return (

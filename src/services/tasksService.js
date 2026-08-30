@@ -20,24 +20,29 @@ export const tasksService = {
   async getTasks() {
     const userId = await this.getUserId();
     if (!userId) {
-      // Fallback for non-logged in or legacy
       const local = localStorage.getItem('user_tasks');
       return local ? JSON.parse(local) : [];
     }
 
-    const { data, error } = await supabase
-      .from('tasks')
-      .select('*')
-      .eq('user_id', userId)
-      .order('created_at', { ascending: false });
+    try {
+      const { data, error } = await supabase
+        .from('tasks')
+        .select('*')
+        .eq('user_id', userId)
+        .order('created_at', { ascending: false });
 
-    if (error) {
-      console.warn('Failed to fetch tasks from Supabase, falling back to local storage', error);
+      if (error) {
+        console.warn('Failed to fetch tasks from Supabase, falling back to local storage', error);
+        const local = localStorage.getItem('user_tasks');
+        return local ? JSON.parse(local) : [];
+      }
+
+      return data || [];
+    } catch (err) {
+      console.warn('Supabase tasks fetch exception, falling back to local storage:', err);
       const local = localStorage.getItem('user_tasks');
       return local ? JSON.parse(local) : [];
     }
-
-    return data || [];
   },
 
   /**
@@ -60,14 +65,30 @@ export const tasksService = {
       return newTask;
     }
 
-    const { data, error } = await supabase
-      .from('tasks')
-      .insert([{ ...newTask, user_id: userId }])
-      .select()
-      .single();
+    try {
+      const { data, error } = await supabase
+        .from('tasks')
+        .insert([{ ...newTask, user_id: userId }])
+        .select()
+        .single();
 
-    if (error) throw error;
-    return data;
+      if (error) {
+        console.warn('Supabase add task error, saving to local storage instead:', error);
+        const local = localStorage.getItem('user_tasks');
+        const tasks = local ? JSON.parse(local) : [];
+        tasks.unshift(newTask);
+        localStorage.setItem('user_tasks', JSON.stringify(tasks));
+        return newTask;
+      }
+      return data;
+    } catch (err) {
+      console.warn('Supabase add task exception, saving to local storage instead:', err);
+      const local = localStorage.getItem('user_tasks');
+      const tasks = local ? JSON.parse(local) : [];
+      tasks.unshift(newTask);
+      localStorage.setItem('user_tasks', JSON.stringify(tasks));
+      return newTask;
+    }
   },
 
   /**
@@ -75,21 +96,28 @@ export const tasksService = {
    */
   async toggleTask(taskId, completed) {
     const userId = await this.getUserId();
+    const local = localStorage.getItem('user_tasks');
+    const tasks = local ? JSON.parse(local) : [];
+    const updatedTasks = tasks.map(t => t.id === taskId ? { ...t, completed } : t);
+    localStorage.setItem('user_tasks', JSON.stringify(updatedTasks));
+
     if (!userId) {
-      const local = localStorage.getItem('user_tasks');
-      const tasks = local ? JSON.parse(local) : [];
-      const updatedTasks = tasks.map(t => t.id === taskId ? { ...t, completed } : t);
-      localStorage.setItem('user_tasks', JSON.stringify(updatedTasks));
       return;
     }
 
-    const { error } = await supabase
-      .from('tasks')
-      .update({ completed })
-      .eq('id', taskId)
-      .eq('user_id', userId);
+    try {
+      const { error } = await supabase
+        .from('tasks')
+        .update({ completed })
+        .eq('id', taskId)
+        .eq('user_id', userId);
 
-    if (error) throw error;
+      if (error) {
+        console.warn('Supabase toggle task error (handled locally):', error);
+      }
+    } catch (err) {
+      console.warn('Supabase toggle task exception (handled locally):', err);
+    }
   },
 
   /**
@@ -97,20 +125,27 @@ export const tasksService = {
    */
   async deleteTask(taskId) {
     const userId = await this.getUserId();
+    const local = localStorage.getItem('user_tasks');
+    const tasks = local ? JSON.parse(local) : [];
+    const updatedTasks = tasks.filter(t => t.id !== taskId);
+    localStorage.setItem('user_tasks', JSON.stringify(updatedTasks));
+
     if (!userId) {
-      const local = localStorage.getItem('user_tasks');
-      const tasks = local ? JSON.parse(local) : [];
-      const updatedTasks = tasks.filter(t => t.id !== taskId);
-      localStorage.setItem('user_tasks', JSON.stringify(updatedTasks));
       return;
     }
 
-    const { error } = await supabase
-      .from('tasks')
-      .delete()
-      .eq('id', taskId)
-      .eq('user_id', userId);
+    try {
+      const { error } = await supabase
+        .from('tasks')
+        .delete()
+        .eq('id', taskId)
+        .eq('user_id', userId);
 
-    if (error) throw error;
+      if (error) {
+        console.warn('Supabase delete task error (handled locally):', error);
+      }
+    } catch (err) {
+      console.warn('Supabase delete task exception (handled locally):', err);
+    }
   }
 };

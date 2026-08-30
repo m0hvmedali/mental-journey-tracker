@@ -840,15 +840,15 @@ VALUES ('55555555-5555-5555-5555-555555555551', 'thinking-errors', 'ar', 'الت
 * **قراءة الأفكار (Mind Reading):** افتراض معرفة ما يفكر فيه الآخرون بسوء ظن.
 * **التنبؤ الكارثي (Fortune Telling):** توقع حدوث أسوأ السيناريوهات والتصرف كأنها حتمية.', '/article-by3DYy7JylaR.webp', '{"reading_time_minutes":7,"framework":"CBT"}'::jsonb, NOW())
 ON CONFLICT (slug, language) DO UPDATE SET title = EXCLUDED.title, description = EXCLUDED.description, markdown_content = EXCLUDED.markdown_content, featured_image = EXCLUDED.featured_image, metadata = EXCLUDED.metadata;
-INSERT INTO public.content_blocks (id, content_id, block_type, position, payload, metadata)
-VALUES ('80000000-0000-0000-0000-000000000001', '55555555-5555-5555-5555-555555555551', 'markdown', 1, '{"content":"### تمرين تفاعلي موجه: سجل الأفكار المعرفية\nاستخدم الأداة أدناه لتطبيق مهارات إعادة الهيكلة المعرفية على فكرة تراودك حالياً:"}'::jsonb, '{}'::jsonb)
-ON CONFLICT (id) DO NOTHING;
-INSERT INTO public.content_blocks (id, content_id, block_type, position, payload, metadata)
-VALUES ('80000000-0000-0000-0000-000000000002', '55555555-5555-5555-5555-555555555551', 'interactive_component', 2, '{"component":"thought-record-wizard","props":{"initialDistortion":"allOrNothing","mode":"guided"}}'::jsonb, '{"title":"معالج رصد وتفنيد الفكرة التلقائية"}'::jsonb)
-ON CONFLICT (id) DO NOTHING;
-INSERT INTO public.content_blocks (id, content_id, block_type, position, payload, metadata)
-VALUES ('80000000-0000-0000-0000-000000000003', '55555555-5555-5555-5555-555555555551', 'interactive_component', 3, '{"component":"distortion-quiz","props":{}}'::jsonb, '{"title":"اختبار تشخيص الأخطاء المعرفية"}'::jsonb)
-ON CONFLICT (id) DO NOTHING;
+INSERT INTO public.content_blocks (content_id, block_type, position, payload, metadata)
+VALUES ((SELECT id FROM public.content WHERE slug = 'thinking-errors' AND language = 'ar'), 'markdown', 1, '{"content":"### تمرين تفاعلي موجه: سجل الأفكار المعرفية\nاستخدم الأداة أدناه لتطبيق مهارات إعادة الهيكلة المعرفية على فكرة تراودك حالياً:"}'::jsonb, '{}'::jsonb)
+ON CONFLICT (content_id, position) DO UPDATE SET block_type = EXCLUDED.block_type, payload = EXCLUDED.payload, metadata = EXCLUDED.metadata;
+INSERT INTO public.content_blocks (content_id, block_type, position, payload, metadata)
+VALUES ((SELECT id FROM public.content WHERE slug = 'thinking-errors' AND language = 'ar'), 'interactive_component', 2, '{"component":"thought-record-wizard","props":{"initialDistortion":"allOrNothing","mode":"guided"}}'::jsonb, '{"title":"معالج رصد وتفنيد الفكرة التلقائية"}'::jsonb)
+ON CONFLICT (content_id, position) DO UPDATE SET block_type = EXCLUDED.block_type, payload = EXCLUDED.payload, metadata = EXCLUDED.metadata;
+INSERT INTO public.content_blocks (content_id, block_type, position, payload, metadata)
+VALUES ((SELECT id FROM public.content WHERE slug = 'thinking-errors' AND language = 'ar'), 'interactive_component', 3, '{"component":"distortion-quiz","props":{}}'::jsonb, '{"title":"اختبار تشخيص الأخطاء المعرفية"}'::jsonb)
+ON CONFLICT (content_id, position) DO UPDATE SET block_type = EXCLUDED.block_type, payload = EXCLUDED.payload, metadata = EXCLUDED.metadata;
 INSERT INTO public.content (id, slug, language, title, description, content_type, status, markdown_content, featured_image, metadata, published_at)
 VALUES ('55555555-5555-5555-5555-555555555552', 'defense-mechanisms', 'ar', 'آليات الدفاع النفسي (Defense Mechanisms)', 'دليل شامل لآليات الدفاع النفسي اللاشعورية من منظور التحليل النفسي وسيكولوجيا الأنا، وكيفية التمييز بين الآليات الناضجة وغير الناضجة.', 'scientific_page', 'published', '# آليات الدفاع النفسي (Ego Defense Mechanisms)
 
@@ -871,9 +871,9 @@ VALUES ('55555555-5555-5555-5555-555555555552', 'defense-mechanisms', 'ar', 'آ�
 * **الإنكار (Denial):** رفض الاعتراف بوجود واقع مؤلم وملموس.
 * **الانشطار (Splitting):** رؤية الأشخاص كأخيار مطلقين أو أشرار مطلقين.', '/DfenssImg/hero.webp', '{"reading_time_minutes":8,"framework":"Psychodynamic"}'::jsonb, NOW())
 ON CONFLICT (slug, language) DO UPDATE SET title = EXCLUDED.title, description = EXCLUDED.description, markdown_content = EXCLUDED.markdown_content, featured_image = EXCLUDED.featured_image, metadata = EXCLUDED.metadata;
-INSERT INTO public.content_blocks (id, content_id, block_type, position, payload, metadata)
-VALUES ('80000000-0000-0000-0000-000000000001', '55555555-5555-5555-5555-555555555552', 'quote', 1, '{"quote":"الأنا ليست سيدة في بيتها الخاص ما لم تدرك ما يدور في أعماق لاوعيها.","author":"سيغموند فرويد"}'::jsonb, '{}'::jsonb)
-ON CONFLICT (id) DO NOTHING;
+INSERT INTO public.content_blocks (content_id, block_type, position, payload, metadata)
+VALUES ((SELECT id FROM public.content WHERE slug = 'defense-mechanisms' AND language = 'ar'), 'quote', 1, '{"quote":"الأنا ليست سيدة في بيتها الخاص ما لم تدرك ما يدور في أعماق لاوعيها.","author":"سيغموند فرويد"}'::jsonb, '{}'::jsonb)
+ON CONFLICT (content_id, position) DO UPDATE SET block_type = EXCLUDED.block_type, payload = EXCLUDED.payload, metadata = EXCLUDED.metadata;
 INSERT INTO public.content (id, slug, language, title, description, content_type, status, markdown_content, featured_image, metadata, published_at)
 VALUES ('55555555-5555-5555-5555-555555555553', 'tolerance-window', 'ar', 'نافذة التحمل العصبي (Window of Tolerance)', 'فهم السعة المثلى للجهاز العصبي لتنظيم المشاعر وكيفية التعامل مع حالات فرط الاستثارة وانخفاض الاستثارة.', 'scientific_page', 'published', '# نافذة التحمل العصبي (Window of Tolerance)
 
@@ -892,9 +892,9 @@ VALUES ('55555555-5555-5555-5555-555555555553', 'tolerance-window', 'ar', 'نا�
 * التبلد، انعدام الطاقة، الخدر العاطفي، والانفصال عن الواقع.
 * **العلاج الأنسب:** التنشيط الحسي اللطيف والحركة البدنية التدريجية.', '/window-of-tolerance.webp', '{"reading_time_minutes":6,"framework":"Somatic / Polyvagal"}'::jsonb, NOW())
 ON CONFLICT (slug, language) DO UPDATE SET title = EXCLUDED.title, description = EXCLUDED.description, markdown_content = EXCLUDED.markdown_content, featured_image = EXCLUDED.featured_image, metadata = EXCLUDED.metadata;
-INSERT INTO public.content_blocks (id, content_id, block_type, position, payload, metadata)
-VALUES ('80000000-0000-0000-0000-000000000001', '55555555-5555-5555-5555-555555555553', 'interactive_component', 1, '{"component":"breathing-circle","props":{"mode":"4-7-8"}}'::jsonb, '{"title":"تمرين التنفس لإعادة الجهاز العصبي إلى النافذة"}'::jsonb)
-ON CONFLICT (id) DO NOTHING;
+INSERT INTO public.content_blocks (content_id, block_type, position, payload, metadata)
+VALUES ((SELECT id FROM public.content WHERE slug = 'tolerance-window' AND language = 'ar'), 'interactive_component', 1, '{"component":"breathing-circle","props":{"mode":"4-7-8"}}'::jsonb, '{"title":"تمرين التنفس لإعادة الجهاز العصبي إلى النافذة"}'::jsonb)
+ON CONFLICT (content_id, position) DO UPDATE SET block_type = EXCLUDED.block_type, payload = EXCLUDED.payload, metadata = EXCLUDED.metadata;
 INSERT INTO public.content (id, slug, language, title, description, content_type, status, markdown_content, featured_image, metadata, published_at)
 VALUES ('55555555-5555-5555-5555-555555555554', 'about', 'ar', 'عن منصة الوعي والتعافي النفسي', 'الرؤية العلمية، الأهداف السريرية، وميثاق الأمان والخصوصية للمنصة.', 'about', 'published', '# عن منصة الوعي والتعافي النفسي
 
@@ -920,27 +920,47 @@ ON CONFLICT (slug) DO UPDATE SET title = EXCLUDED.title, description = EXCLUDED.
 INSERT INTO public.content (id, slug, language, title, description, content_type, status, metadata, published_at)
 VALUES ('50000000-0000-0000-0001-000000000001', 'cognitive-distortions', 'ar', 'الأخطاء المعرفية (Cognitive Distortions)', '', 'lesson', 'published', '{"moduleId":"1","moduleSlug":"what-is-going","category":"العلاج المعرفي السلوكي (CBT)"}'::jsonb, NOW())
 ON CONFLICT (slug, language) DO UPDATE SET title = EXCLUDED.title, description = EXCLUDED.description, metadata = EXCLUDED.metadata;
-INSERT INTO public.module_lessons (id, module_id, content_id, section_name, order_index)
-VALUES ('60000000-0000-0000-0001-000000000001', '40000000-0000-0000-0000-000000000001', '50000000-0000-0000-0001-000000000001', 'العلاج المعرفي السلوكي (CBT)', 1)
-ON CONFLICT (id) DO UPDATE SET section_name = EXCLUDED.section_name, order_index = EXCLUDED.order_index;
+INSERT INTO public.module_lessons (module_id, content_id, section_name, order_index)
+VALUES (
+  (SELECT id FROM public.modules WHERE slug = 'what-is-going'),
+  (SELECT id FROM public.content WHERE slug = 'cognitive-distortions' AND language = 'ar'),
+  'العلاج المعرفي السلوكي (CBT)',
+  1
+)
+ON CONFLICT (module_id, content_id) DO UPDATE SET section_name = EXCLUDED.section_name, order_index = EXCLUDED.order_index;
 INSERT INTO public.content (id, slug, language, title, description, content_type, status, metadata, published_at)
 VALUES ('50000000-0000-0000-0001-000000000002', 'defense-mechanisms', 'ar', 'آليات الدفاع النفسي (Defense Mechanisms)', '', 'lesson', 'published', '{"moduleId":"1","moduleSlug":"what-is-going","category":"التحليل النفسي والدينامي"}'::jsonb, NOW())
 ON CONFLICT (slug, language) DO UPDATE SET title = EXCLUDED.title, description = EXCLUDED.description, metadata = EXCLUDED.metadata;
-INSERT INTO public.module_lessons (id, module_id, content_id, section_name, order_index)
-VALUES ('60000000-0000-0000-0001-000000000002', '40000000-0000-0000-0000-000000000001', '50000000-0000-0000-0001-000000000002', 'التحليل النفسي والدينامي', 2)
-ON CONFLICT (id) DO UPDATE SET section_name = EXCLUDED.section_name, order_index = EXCLUDED.order_index;
+INSERT INTO public.module_lessons (module_id, content_id, section_name, order_index)
+VALUES (
+  (SELECT id FROM public.modules WHERE slug = 'what-is-going'),
+  (SELECT id FROM public.content WHERE slug = 'defense-mechanisms' AND language = 'ar'),
+  'التحليل النفسي والدينامي',
+  2
+)
+ON CONFLICT (module_id, content_id) DO UPDATE SET section_name = EXCLUDED.section_name, order_index = EXCLUDED.order_index;
 INSERT INTO public.content (id, slug, language, title, description, content_type, status, metadata, published_at)
 VALUES ('50000000-0000-0000-0001-000000000003', 'dsm5-disorders', 'ar', 'التصنيف الكامل للاضطرابات النفسية (DSM-5-TR / ICD-11)', 'الفهرس الطبي الأكاديمي لـ 20 فئة تشخيصية رئيسية للاضطرابات النفسية', 'lesson', 'published', '{"moduleId":"1","moduleSlug":"what-is-going","category":"الطب النفسي والتشخيص السريري"}'::jsonb, NOW())
 ON CONFLICT (slug, language) DO UPDATE SET title = EXCLUDED.title, description = EXCLUDED.description, metadata = EXCLUDED.metadata;
-INSERT INTO public.module_lessons (id, module_id, content_id, section_name, order_index)
-VALUES ('60000000-0000-0000-0001-000000000003', '40000000-0000-0000-0000-000000000001', '50000000-0000-0000-0001-000000000003', 'الطب النفسي والتشخيص السريري', 3)
-ON CONFLICT (id) DO UPDATE SET section_name = EXCLUDED.section_name, order_index = EXCLUDED.order_index;
+INSERT INTO public.module_lessons (module_id, content_id, section_name, order_index)
+VALUES (
+  (SELECT id FROM public.modules WHERE slug = 'what-is-going'),
+  (SELECT id FROM public.content WHERE slug = 'dsm5-disorders' AND language = 'ar'),
+  'الطب النفسي والتشخيص السريري',
+  3
+)
+ON CONFLICT (module_id, content_id) DO UPDATE SET section_name = EXCLUDED.section_name, order_index = EXCLUDED.order_index;
 INSERT INTO public.content (id, slug, language, title, description, content_type, status, metadata, published_at)
 VALUES ('50000000-0000-0000-0001-000000000004', 'explanatory-models', 'ar', 'المدارس والنظريات المفسِّرة (ليه بيحصل ده أصلًا؟)', 'العدسات النظرية الكبرى التي تشرح نشأة المعاناة النفسية', 'lesson', 'published', '{"moduleId":"1","moduleSlug":"what-is-going","category":"النظريات النفسية الكبرى"}'::jsonb, NOW())
 ON CONFLICT (slug, language) DO UPDATE SET title = EXCLUDED.title, description = EXCLUDED.description, metadata = EXCLUDED.metadata;
-INSERT INTO public.module_lessons (id, module_id, content_id, section_name, order_index)
-VALUES ('60000000-0000-0000-0001-000000000004', '40000000-0000-0000-0000-000000000001', '50000000-0000-0000-0001-000000000004', 'النظريات النفسية الكبرى', 4)
-ON CONFLICT (id) DO UPDATE SET section_name = EXCLUDED.section_name, order_index = EXCLUDED.order_index;
+INSERT INTO public.module_lessons (module_id, content_id, section_name, order_index)
+VALUES (
+  (SELECT id FROM public.modules WHERE slug = 'what-is-going'),
+  (SELECT id FROM public.content WHERE slug = 'explanatory-models' AND language = 'ar'),
+  'النظريات النفسية الكبرى',
+  4
+)
+ON CONFLICT (module_id, content_id) DO UPDATE SET section_name = EXCLUDED.section_name, order_index = EXCLUDED.order_index;
 INSERT INTO public.modules (id, slug, title, description, order_index, background_image, status, metadata)
 VALUES ('40000000-0000-0000-0000-000000000002', 'where-do-you-stand', 'Where do you stand?', 'Before charting a path forward, you must have an accurate, compassionate map of where you currently stand. 
 This module provides a detailed taxonomy of human emotions, tools to uncover recurring thinking patterns, standardized screening instruments, analysis of behaviors that maintain problems, and deep insight into the psychology of addiction.', 2, '/ModulesBackgrounds/Gemini_Generated_Image_kh50vwkh50vwkh50.jpg', 'published', '{"id":"2","tagline":"Emotion Map, Thinking Patterns, Tests, Behaviors & Addictions"}'::jsonb)
@@ -948,33 +968,58 @@ ON CONFLICT (slug) DO UPDATE SET title = EXCLUDED.title, description = EXCLUDED.
 INSERT INTO public.content (id, slug, language, title, description, content_type, status, metadata, published_at)
 VALUES ('50000000-0000-0000-0002-000000000001', 'emotion-map', 'ar', 'Detailed Emotion Map', 'A detailed exploration and mapping of emotions.', 'lesson', 'published', '{"moduleId":"2","moduleSlug":"where-do-you-stand"}'::jsonb, NOW())
 ON CONFLICT (slug, language) DO UPDATE SET title = EXCLUDED.title, description = EXCLUDED.description, metadata = EXCLUDED.metadata;
-INSERT INTO public.module_lessons (id, module_id, content_id, section_name, order_index)
-VALUES ('60000000-0000-0000-0002-000000000001', '40000000-0000-0000-0000-000000000002', '50000000-0000-0000-0002-000000000001', 'Where do you stand?', 1)
-ON CONFLICT (id) DO UPDATE SET section_name = EXCLUDED.section_name, order_index = EXCLUDED.order_index;
+INSERT INTO public.module_lessons (module_id, content_id, section_name, order_index)
+VALUES (
+  (SELECT id FROM public.modules WHERE slug = 'where-do-you-stand'),
+  (SELECT id FROM public.content WHERE slug = 'emotion-map' AND language = 'ar'),
+  'Where do you stand?',
+  1
+)
+ON CONFLICT (module_id, content_id) DO UPDATE SET section_name = EXCLUDED.section_name, order_index = EXCLUDED.order_index;
 INSERT INTO public.content (id, slug, language, title, description, content_type, status, metadata, published_at)
 VALUES ('50000000-0000-0000-0002-000000000002', 'thought-patterns-schemas', 'ar', 'استكشاف أنماط التفكير والمخططات (Young Schemas & Triad)', 'فحص عميق للمخططات المبكرة غير التكيفية الـ 18 لجيفري يونغ عبر 5 مجالات كبرى، مثلث بيك المعرفي، أنماط التعلق، وموضع الضبط الداخلي والخارجي.', 'lesson', 'published', '{"moduleId":"2","moduleSlug":"where-do-you-stand","category":"علاج السكيما (Schema Therapy)"}'::jsonb, NOW())
 ON CONFLICT (slug, language) DO UPDATE SET title = EXCLUDED.title, description = EXCLUDED.description, metadata = EXCLUDED.metadata;
-INSERT INTO public.module_lessons (id, module_id, content_id, section_name, order_index)
-VALUES ('60000000-0000-0000-0002-000000000002', '40000000-0000-0000-0000-000000000002', '50000000-0000-0000-0002-000000000002', 'علاج السكيما (Schema Therapy)', 2)
-ON CONFLICT (id) DO UPDATE SET section_name = EXCLUDED.section_name, order_index = EXCLUDED.order_index;
+INSERT INTO public.module_lessons (module_id, content_id, section_name, order_index)
+VALUES (
+  (SELECT id FROM public.modules WHERE slug = 'where-do-you-stand'),
+  (SELECT id FROM public.content WHERE slug = 'thought-patterns-schemas' AND language = 'ar'),
+  'علاج السكيما (Schema Therapy)',
+  2
+)
+ON CONFLICT (module_id, content_id) DO UPDATE SET section_name = EXCLUDED.section_name, order_index = EXCLUDED.order_index;
 INSERT INTO public.content (id, slug, language, title, description, content_type, status, metadata, published_at)
 VALUES ('50000000-0000-0000-0002-000000000003', 'psychological-screening-tests', 'ar', 'اقتراحات الاختبارات والمقاييس النفسية (Screening Tools)', 'دليل المقاييس النفسية القياسية المعترف بها عالمياً للفحص الأولي والتوعية الذاتية (الاكتئاب، القلق، الصدمة، الشخصية، والتعلق).', 'lesson', 'published', '{"moduleId":"2","moduleSlug":"where-do-you-stand","category":"القياس والتقييم النفسي"}'::jsonb, NOW())
 ON CONFLICT (slug, language) DO UPDATE SET title = EXCLUDED.title, description = EXCLUDED.description, metadata = EXCLUDED.metadata;
-INSERT INTO public.module_lessons (id, module_id, content_id, section_name, order_index)
-VALUES ('60000000-0000-0000-0002-000000000003', '40000000-0000-0000-0000-000000000002', '50000000-0000-0000-0002-000000000003', 'القياس والتقييم النفسي', 3)
-ON CONFLICT (id) DO UPDATE SET section_name = EXCLUDED.section_name, order_index = EXCLUDED.order_index;
+INSERT INTO public.module_lessons (module_id, content_id, section_name, order_index)
+VALUES (
+  (SELECT id FROM public.modules WHERE slug = 'where-do-you-stand'),
+  (SELECT id FROM public.content WHERE slug = 'psychological-screening-tests' AND language = 'ar'),
+  'القياس والتقييم النفسي',
+  3
+)
+ON CONFLICT (module_id, content_id) DO UPDATE SET section_name = EXCLUDED.section_name, order_index = EXCLUDED.order_index;
 INSERT INTO public.content (id, slug, language, title, description, content_type, status, metadata, published_at)
 VALUES ('50000000-0000-0000-0002-000000000004', 'maintaining-behaviors', 'ar', 'Maintaining Behaviors', 'Exploring behaviors that maintain, reinforce, or feed the problem.', 'lesson', 'published', '{"moduleId":"2","moduleSlug":"where-do-you-stand"}'::jsonb, NOW())
 ON CONFLICT (slug, language) DO UPDATE SET title = EXCLUDED.title, description = EXCLUDED.description, metadata = EXCLUDED.metadata;
-INSERT INTO public.module_lessons (id, module_id, content_id, section_name, order_index)
-VALUES ('60000000-0000-0000-0002-000000000004', '40000000-0000-0000-0000-000000000002', '50000000-0000-0000-0002-000000000004', 'Where do you stand?', 4)
-ON CONFLICT (id) DO UPDATE SET section_name = EXCLUDED.section_name, order_index = EXCLUDED.order_index;
+INSERT INTO public.module_lessons (module_id, content_id, section_name, order_index)
+VALUES (
+  (SELECT id FROM public.modules WHERE slug = 'where-do-you-stand'),
+  (SELECT id FROM public.content WHERE slug = 'maintaining-behaviors' AND language = 'ar'),
+  'Where do you stand?',
+  4
+)
+ON CONFLICT (module_id, content_id) DO UPDATE SET section_name = EXCLUDED.section_name, order_index = EXCLUDED.order_index;
 INSERT INTO public.content (id, slug, language, title, description, content_type, status, metadata, published_at)
 VALUES ('50000000-0000-0000-0002-000000000005', 'addiction-dynamics', 'ar', 'قسم الإدمانات وديناميكيات الإنسان (Addiction Dynamics)', 'فهم شامل لإدمان المواد والعمليات السلوكية، علم أعصاب دائرة المكافأة، مراحل التغيير (Prochaska)، خريطة المحفزات، والتبعية المشتركة.', 'lesson', 'published', '{"moduleId":"2","moduleSlug":"where-do-you-stand","category":"طب الإدمان والتعافي"}'::jsonb, NOW())
 ON CONFLICT (slug, language) DO UPDATE SET title = EXCLUDED.title, description = EXCLUDED.description, metadata = EXCLUDED.metadata;
-INSERT INTO public.module_lessons (id, module_id, content_id, section_name, order_index)
-VALUES ('60000000-0000-0000-0002-000000000005', '40000000-0000-0000-0000-000000000002', '50000000-0000-0000-0002-000000000005', 'طب الإدمان والتعافي', 5)
-ON CONFLICT (id) DO UPDATE SET section_name = EXCLUDED.section_name, order_index = EXCLUDED.order_index;
+INSERT INTO public.module_lessons (module_id, content_id, section_name, order_index)
+VALUES (
+  (SELECT id FROM public.modules WHERE slug = 'where-do-you-stand'),
+  (SELECT id FROM public.content WHERE slug = 'addiction-dynamics' AND language = 'ar'),
+  'طب الإدمان والتعافي',
+  5
+)
+ON CONFLICT (module_id, content_id) DO UPDATE SET section_name = EXCLUDED.section_name, order_index = EXCLUDED.order_index;
 INSERT INTO public.modules (id, slug, title, description, order_index, background_image, status, metadata)
 VALUES ('40000000-0000-0000-0000-000000000003', 'how-will-we-fix-it', 'How will we fix it?', 'Healing is not an accident; it is an active, structured process supported by established psychological science. 
 This module presents the premier therapeutic schools and their mechanisms of change, the transformative power of gratitude and radical acceptance, physiological tools to regulate the autonomic nervous system, and a versatile toolkit of practical therapeutic skills.', 3, '/ModulesBackgrounds/Gemini_Generated_Image_7i4q127i4q127i4q.jpg', 'published', '{"id":"3","tagline":"Therapeutic Schools, Acceptance, Nervous System Regulation & Practical Skills"}'::jsonb)
@@ -982,27 +1027,47 @@ ON CONFLICT (slug) DO UPDATE SET title = EXCLUDED.title, description = EXCLUDED.
 INSERT INTO public.content (id, slug, language, title, description, content_type, status, metadata, published_at)
 VALUES ('50000000-0000-0000-0003-000000000001', 'major-psychotherapies', 'ar', 'المدارس العلاجية الكبرى (Major Psychotherapies)', 'الدليل الشامل لأهم 13 مدرسة علاجية نفسية مثبتة علمياً: CBT, DBT, ACT, التحليلي، الإنساني، السكيما، EMDR، IFS، الجسدي، والدوائي.', 'lesson', 'published', '{"moduleId":"3","moduleSlug":"how-will-we-fix-it","category":"البروتوكولات والعلاجات النفسية"}'::jsonb, NOW())
 ON CONFLICT (slug, language) DO UPDATE SET title = EXCLUDED.title, description = EXCLUDED.description, metadata = EXCLUDED.metadata;
-INSERT INTO public.module_lessons (id, module_id, content_id, section_name, order_index)
-VALUES ('60000000-0000-0000-0003-000000000001', '40000000-0000-0000-0000-000000000003', '50000000-0000-0000-0003-000000000001', 'البروتوكولات والعلاجات النفسية', 1)
-ON CONFLICT (id) DO UPDATE SET section_name = EXCLUDED.section_name, order_index = EXCLUDED.order_index;
+INSERT INTO public.module_lessons (module_id, content_id, section_name, order_index)
+VALUES (
+  (SELECT id FROM public.modules WHERE slug = 'how-will-we-fix-it'),
+  (SELECT id FROM public.content WHERE slug = 'major-psychotherapies' AND language = 'ar'),
+  'البروتوكولات والعلاجات النفسية',
+  1
+)
+ON CONFLICT (module_id, content_id) DO UPDATE SET section_name = EXCLUDED.section_name, order_index = EXCLUDED.order_index;
 INSERT INTO public.content (id, slug, language, title, description, content_type, status, metadata, published_at)
 VALUES ('50000000-0000-0000-0003-000000000002', 'acceptance-and-gratitude', 'ar', 'الامتنان والتقبل الجذري وطرق التقبل (Acceptance & Gratitude)', 'استراتيجيات الشفاء عبر التقبل الجذري (DBT)، الرغبة مقابل العناد، أركان التعاطف مع الذات (Kristin Neff)، والوعي غير الحُكمي وتقبل عدم اليقين.', 'lesson', 'published', '{"moduleId":"3","moduleSlug":"how-will-we-fix-it","category":"العلاج المعرفي القائم على اليقظة والتقبل"}'::jsonb, NOW())
 ON CONFLICT (slug, language) DO UPDATE SET title = EXCLUDED.title, description = EXCLUDED.description, metadata = EXCLUDED.metadata;
-INSERT INTO public.module_lessons (id, module_id, content_id, section_name, order_index)
-VALUES ('60000000-0000-0000-0003-000000000002', '40000000-0000-0000-0000-000000000003', '50000000-0000-0000-0003-000000000002', 'العلاج المعرفي القائم على اليقظة والتقبل', 2)
-ON CONFLICT (id) DO UPDATE SET section_name = EXCLUDED.section_name, order_index = EXCLUDED.order_index;
+INSERT INTO public.module_lessons (module_id, content_id, section_name, order_index)
+VALUES (
+  (SELECT id FROM public.modules WHERE slug = 'how-will-we-fix-it'),
+  (SELECT id FROM public.content WHERE slug = 'acceptance-and-gratitude' AND language = 'ar'),
+  'العلاج المعرفي القائم على اليقظة والتقبل',
+  2
+)
+ON CONFLICT (module_id, content_id) DO UPDATE SET section_name = EXCLUDED.section_name, order_index = EXCLUDED.order_index;
 INSERT INTO public.content (id, slug, language, title, description, content_type, status, metadata, published_at)
 VALUES ('50000000-0000-0000-0003-000000000003', 'nervous-system-regulation', 'ar', 'مهارات الهدوء وتنظيم الجهاز العصبي (Somatic & Nervous System Regulation)', 'بروتوكولات سريرية سريعة لتهدئة الجهاز العصبي واستعادة الأمان الداخلي: تقنية التأريض 5-4-3-2-1، تنفس الصندوق، تنفس 4-7-8، مهارة TIPP، ونافذة التحمل.', 'lesson', 'published', '{"moduleId":"3","moduleSlug":"how-will-we-fix-it","category":"تنظيم الجسد والجهاز العصبي"}'::jsonb, NOW())
 ON CONFLICT (slug, language) DO UPDATE SET title = EXCLUDED.title, description = EXCLUDED.description, metadata = EXCLUDED.metadata;
-INSERT INTO public.module_lessons (id, module_id, content_id, section_name, order_index)
-VALUES ('60000000-0000-0000-0003-000000000003', '40000000-0000-0000-0000-000000000003', '50000000-0000-0000-0003-000000000003', 'تنظيم الجسد والجهاز العصبي', 3)
-ON CONFLICT (id) DO UPDATE SET section_name = EXCLUDED.section_name, order_index = EXCLUDED.order_index;
+INSERT INTO public.module_lessons (module_id, content_id, section_name, order_index)
+VALUES (
+  (SELECT id FROM public.modules WHERE slug = 'how-will-we-fix-it'),
+  (SELECT id FROM public.content WHERE slug = 'nervous-system-regulation' AND language = 'ar'),
+  'تنظيم الجسد والجهاز العصبي',
+  3
+)
+ON CONFLICT (module_id, content_id) DO UPDATE SET section_name = EXCLUDED.section_name, order_index = EXCLUDED.order_index;
 INSERT INTO public.content (id, slug, language, title, description, content_type, status, metadata, published_at)
 VALUES ('50000000-0000-0000-0003-000000000004', 'practical-therapeutic-skills', 'ar', 'المهارات العلاجية التطبيقية (Cognitive & Behavioral Skills)', 'الدليل الشامل لأهم 19 مهارة علاجية وتطبيقية في العلاج المعرفي السلوكي مقترنة بالتمارين العملية.', 'lesson', 'published', '{"moduleId":"3","moduleSlug":"how-will-we-fix-it","category":"المهارات والتمارين العلاجية"}'::jsonb, NOW())
 ON CONFLICT (slug, language) DO UPDATE SET title = EXCLUDED.title, description = EXCLUDED.description, metadata = EXCLUDED.metadata;
-INSERT INTO public.module_lessons (id, module_id, content_id, section_name, order_index)
-VALUES ('60000000-0000-0000-0003-000000000004', '40000000-0000-0000-0000-000000000003', '50000000-0000-0000-0003-000000000004', 'المهارات والتمارين العلاجية', 4)
-ON CONFLICT (id) DO UPDATE SET section_name = EXCLUDED.section_name, order_index = EXCLUDED.order_index;
+INSERT INTO public.module_lessons (module_id, content_id, section_name, order_index)
+VALUES (
+  (SELECT id FROM public.modules WHERE slug = 'how-will-we-fix-it'),
+  (SELECT id FROM public.content WHERE slug = 'practical-therapeutic-skills' AND language = 'ar'),
+  'المهارات والتمارين العلاجية',
+  4
+)
+ON CONFLICT (module_id, content_id) DO UPDATE SET section_name = EXCLUDED.section_name, order_index = EXCLUDED.order_index;
 INSERT INTO public.modules (id, slug, title, description, order_index, background_image, status, metadata)
 VALUES ('40000000-0000-0000-0000-000000000004', 'how-to-stay-stable', 'How to stay stable?', 'Achieving initial symptom relief is an accomplishment, but maintaining long-term stability and resilience is the ultimate goal. 
 This module equips you with curated psychological literature for ongoing self-education, daily non-negotiable mental hygiene routines, a structured relapse prevention plan, and tools for building an authentic support system.', 4, '/ModulesBackgrounds/Gemini_Generated_Image_68rj0q68rj0q68rj.jpg', 'published', '{"id":"4","tagline":"Recommended Books, Daily Coping Skills, Relapse Prevention & Support Systems"}'::jsonb)
@@ -1010,39 +1075,64 @@ ON CONFLICT (slug) DO UPDATE SET title = EXCLUDED.title, description = EXCLUDED.
 INSERT INTO public.content (id, slug, language, title, description, content_type, status, metadata, published_at)
 VALUES ('50000000-0000-0000-0004-000000000001', 'recommended-books', 'ar', 'Recommended Books', 'Carefully selected books related to psychology, therapy, self-understanding, and personal growth.', 'lesson', 'published', '{"moduleId":"4","moduleSlug":"how-to-stay-stable"}'::jsonb, NOW())
 ON CONFLICT (slug, language) DO UPDATE SET title = EXCLUDED.title, description = EXCLUDED.description, metadata = EXCLUDED.metadata;
-INSERT INTO public.module_lessons (id, module_id, content_id, section_name, order_index)
-VALUES ('60000000-0000-0000-0004-000000000001', '40000000-0000-0000-0000-000000000004', '50000000-0000-0000-0004-000000000001', 'How to stay stable?', 1)
-ON CONFLICT (id) DO UPDATE SET section_name = EXCLUDED.section_name, order_index = EXCLUDED.order_index;
+INSERT INTO public.module_lessons (module_id, content_id, section_name, order_index)
+VALUES (
+  (SELECT id FROM public.modules WHERE slug = 'how-to-stay-stable'),
+  (SELECT id FROM public.content WHERE slug = 'recommended-books' AND language = 'ar'),
+  'How to stay stable?',
+  1
+)
+ON CONFLICT (module_id, content_id) DO UPDATE SET section_name = EXCLUDED.section_name, order_index = EXCLUDED.order_index;
 INSERT INTO public.content (id, slug, language, title, description, content_type, status, metadata, published_at)
 VALUES ('50000000-0000-0000-0004-000000000002', 'lifestyle-psychiatry', 'ar', 'الركائز البيولوجية ونمط الحياة النفسي (Lifestyle Psychiatry)', '', 'lesson', 'published', '{"moduleId":"4","moduleSlug":"how-to-stay-stable","category":"الطب النفسي لنمط الحياة وعلم الأعصاب"}'::jsonb, NOW())
 ON CONFLICT (slug, language) DO UPDATE SET title = EXCLUDED.title, description = EXCLUDED.description, metadata = EXCLUDED.metadata;
-INSERT INTO public.module_lessons (id, module_id, content_id, section_name, order_index)
-VALUES ('60000000-0000-0000-0004-000000000002', '40000000-0000-0000-0000-000000000004', '50000000-0000-0000-0004-000000000002', 'الطب النفسي لنمط الحياة وعلم الأعصاب', 2)
-ON CONFLICT (id) DO UPDATE SET section_name = EXCLUDED.section_name, order_index = EXCLUDED.order_index;
+INSERT INTO public.module_lessons (module_id, content_id, section_name, order_index)
+VALUES (
+  (SELECT id FROM public.modules WHERE slug = 'how-to-stay-stable'),
+  (SELECT id FROM public.content WHERE slug = 'lifestyle-psychiatry' AND language = 'ar'),
+  'الطب النفسي لنمط الحياة وعلم الأعصاب',
+  2
+)
+ON CONFLICT (module_id, content_id) DO UPDATE SET section_name = EXCLUDED.section_name, order_index = EXCLUDED.order_index;
 INSERT INTO public.content (id, slug, language, title, description, content_type, status, metadata, published_at)
 VALUES ('50000000-0000-0000-0004-000000000003', 'relapse-prevention', 'ar', 'Relapse Prevention', 'Understanding relapse, recognizing warning signs, preventing relapse, and maintaining progress.', 'lesson', 'published', '{"moduleId":"4","moduleSlug":"how-to-stay-stable"}'::jsonb, NOW())
 ON CONFLICT (slug, language) DO UPDATE SET title = EXCLUDED.title, description = EXCLUDED.description, metadata = EXCLUDED.metadata;
-INSERT INTO public.module_lessons (id, module_id, content_id, section_name, order_index)
-VALUES ('60000000-0000-0000-0004-000000000003', '40000000-0000-0000-0000-000000000004', '50000000-0000-0000-0004-000000000003', 'How to stay stable?', 3)
-ON CONFLICT (id) DO UPDATE SET section_name = EXCLUDED.section_name, order_index = EXCLUDED.order_index;
+INSERT INTO public.module_lessons (module_id, content_id, section_name, order_index)
+VALUES (
+  (SELECT id FROM public.modules WHERE slug = 'how-to-stay-stable'),
+  (SELECT id FROM public.content WHERE slug = 'relapse-prevention' AND language = 'ar'),
+  'How to stay stable?',
+  3
+)
+ON CONFLICT (module_id, content_id) DO UPDATE SET section_name = EXCLUDED.section_name, order_index = EXCLUDED.order_index;
 INSERT INTO public.content (id, slug, language, title, description, content_type, status, metadata, published_at)
 VALUES ('50000000-0000-0000-0004-000000000004', 'healthy-boundaries-relationships', 'ar', 'الحدود النفسية والعلاقات الصحية (Healthy Boundaries & Systems)', 'بناء دروع الأمان العلائقي: أنواع الحدود النفسية والجسدية، تفكيك مثلث كاربمان، وتمييز العلامات الحمراء.', 'lesson', 'published', '{"moduleId":"4","moduleSlug":"how-to-stay-stable","category":"العلاقات والاتصال الإنساني"}'::jsonb, NOW())
 ON CONFLICT (slug, language) DO UPDATE SET title = EXCLUDED.title, description = EXCLUDED.description, metadata = EXCLUDED.metadata;
-INSERT INTO public.module_lessons (id, module_id, content_id, section_name, order_index)
-VALUES ('60000000-0000-0000-0004-000000000004', '40000000-0000-0000-0000-000000000004', '50000000-0000-0000-0004-000000000004', 'العلاقات والاتصال الإنساني', 4)
-ON CONFLICT (id) DO UPDATE SET section_name = EXCLUDED.section_name, order_index = EXCLUDED.order_index;
+INSERT INTO public.module_lessons (module_id, content_id, section_name, order_index)
+VALUES (
+  (SELECT id FROM public.modules WHERE slug = 'how-to-stay-stable'),
+  (SELECT id FROM public.content WHERE slug = 'healthy-boundaries-relationships' AND language = 'ar'),
+  'العلاقات والاتصال الإنساني',
+  4
+)
+ON CONFLICT (module_id, content_id) DO UPDATE SET section_name = EXCLUDED.section_name, order_index = EXCLUDED.order_index;
 INSERT INTO public.content (id, slug, language, title, description, content_type, status, metadata, published_at)
 VALUES ('50000000-0000-0000-0004-000000000005', 'meaning-and-post-traumatic-growth', 'ar', 'المعنى والنمو بعد الصدمة (Post-Traumatic Growth & Meaning)', 'الارتقاء النفسي والوجودي: العلاج بالمعنى (Viktor Frankl)، أبعاد النمو بعد الصدمة الـ 5 (PTG)، فلسفة الإيكيجاي (Ikigai)، والشعور بالتماسك الوجودي.', 'lesson', 'published', '{"moduleId":"4","moduleSlug":"how-to-stay-stable","category":"علم النفس الإيجابي والوجودي"}'::jsonb, NOW())
 ON CONFLICT (slug, language) DO UPDATE SET title = EXCLUDED.title, description = EXCLUDED.description, metadata = EXCLUDED.metadata;
-INSERT INTO public.module_lessons (id, module_id, content_id, section_name, order_index)
-VALUES ('60000000-0000-0000-0004-000000000005', '40000000-0000-0000-0000-000000000004', '50000000-0000-0000-0004-000000000005', 'علم النفس الإيجابي والوجودي', 5)
-ON CONFLICT (id) DO UPDATE SET section_name = EXCLUDED.section_name, order_index = EXCLUDED.order_index;
+INSERT INTO public.module_lessons (module_id, content_id, section_name, order_index)
+VALUES (
+  (SELECT id FROM public.modules WHERE slug = 'how-to-stay-stable'),
+  (SELECT id FROM public.content WHERE slug = 'meaning-and-post-traumatic-growth' AND language = 'ar'),
+  'علم النفس الإيجابي والوجودي',
+  5
+)
+ON CONFLICT (module_id, content_id) DO UPDATE SET section_name = EXCLUDED.section_name, order_index = EXCLUDED.order_index;
 
 -- 7. CONTENT LOCATIONS FOR HOME & DISCOVERY
-INSERT INTO public.content_locations (id, content_id, page_route, slot, order_index, is_visible)
-VALUES 
-  ('70000000-0000-0000-0000-000000000001', '55555555-5555-5555-5555-555555555551', '/home', 'featured', 1, true),
-  ('70000000-0000-0000-0000-000000000002', '55555555-5555-5555-5555-555555555551', '/ThinkingErrors', 'main_body', 1, true),
-  ('70000000-0000-0000-0000-000000000003', '55555555-5555-5555-5555-555555555552', '/DefenseMechanisms', 'main_body', 1, true),
-  ('70000000-0000-0000-0000-000000000004', '55555555-5555-5555-5555-555555555553', '/ToleranceWindow', 'main_body', 1, true)
-ON CONFLICT (id) DO NOTHING;
+INSERT INTO public.content_locations (content_id, page_route, slot, order_index, is_visible)
+VALUES
+  ((SELECT id FROM public.content WHERE slug = 'thinking-errors' AND language = 'ar'), '/home', 'featured', 1, true),
+  ((SELECT id FROM public.content WHERE slug = 'thinking-errors' AND language = 'ar'), '/ThinkingErrors', 'main_body', 1, true),
+  ((SELECT id FROM public.content WHERE slug = 'defense-mechanisms' AND language = 'ar'), '/DefenseMechanisms', 'main_body', 1, true),
+  ((SELECT id FROM public.content WHERE slug = 'tolerance-window' AND language = 'ar'), '/ToleranceWindow', 'main_body', 1, true)
+ON CONFLICT (page_route, slot, content_id) DO UPDATE SET order_index = EXCLUDED.order_index, is_visible = EXCLUDED.is_visible;

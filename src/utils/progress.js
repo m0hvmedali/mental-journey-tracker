@@ -172,7 +172,7 @@ export function trackProgress({ type, title, description, gardenEffect, category
  * Helper to infer garden effect based on title/type
  */
 function inferGardenEffect(title = '', type = '') {
-  const t = title.toLowerCase();
+  const t = typeof title === 'string' ? title.toLowerCase() : String(title || '').toLowerCase();
   if (t.includes('module') || t.includes('مسار') || t.includes('وحدة') || type === 'module') return 'flower';
   if (t.includes('استمرار') || t.includes('streak') || t.includes('أيام') || type === 'streak') return 'tree';
   if (t.includes('مفكرة') || t.includes('journal') || t.includes('تأمل') || type === 'journal') return 'stone';

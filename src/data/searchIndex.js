@@ -80,48 +80,52 @@ export const generateSearchIndex = () => {
   specialRoutes.forEach(sr => {
     index.push({
       id: `special-${sr.path}`,
-      title: sr.title,
-      description: `صفحة أداة تفاعلية: ${sr.title}`,
+      title: sr.title || '',
+      description: `صفحة أداة تفاعلية: ${sr.title || ''}`,
       path: sr.path,
-      keywords: [sr.title.toLowerCase()]
+      keywords: [(sr.title || '').toLowerCase()]
     });
   });
 
   // Extract from MODULES_DATA
-  MODULES_DATA.forEach(module => {
-    // Add module itself
-    index.push({
-      id: `mod-${module.slug}`,
-      title: `الوحدة: ${module.title}`,
-      description: module.tagline,
-      path: `/modules/${module.slug}`,
-      keywords: [module.title, module.subtitle, ...module.learningObjectives.map(obj => obj.substring(0, 30))]
-    });
-    
-    // Add internal pages
-    module.pages.forEach(page => {
+  if (Array.isArray(MODULES_DATA)) {
+    MODULES_DATA.forEach(module => {
+      // Add module itself
       index.push({
-        id: `page-${page.slug}`,
-        title: page.title,
-        description: page.summary,
-        path: `/modules/${module.slug}/${page.slug}`,
-        keywords: [page.title, page.category, page.titleEn || '', page.summary]
+        id: `mod-${module.slug}`,
+        title: `الوحدة: ${module.title || ''}`,
+        description: module.tagline || '',
+        path: `/modules/${module.slug}`,
+        keywords: [module.title || '', module.subtitle || '', ...(module.learningObjectives || []).map(obj => (obj || '').substring(0, 30))]
       });
       
-      // If page has specific sections or tools, add them too
-      if (page.sections) {
-        page.sections.forEach((section, idx) => {
+      // Add internal pages
+      if (Array.isArray(module.pages)) {
+        module.pages.forEach(page => {
           index.push({
-            id: `section-${page.slug}-${idx}`,
-            title: `${page.title} - ${section.title}`,
-            description: section.content ? section.content.substring(0, 50) : '',
-            path: `/modules/${module.slug}/${page.slug}`, // just goes to page
-            keywords: [section.title, section.content || '']
+            id: `page-${page.slug}`,
+            title: page.title || '',
+            description: page.summary || '',
+            path: `/modules/${module.slug}/${page.slug}`,
+            keywords: [page.title || '', page.category || '', page.titleEn || '', page.summary || '']
           });
+          
+          // If page has specific sections or tools, add them too
+          if (page.sections && Array.isArray(page.sections)) {
+            page.sections.forEach((section, idx) => {
+              index.push({
+                id: `section-${page.slug}-${idx}`,
+                title: `${page.title || ''} - ${section.title || ''}`,
+                description: section.content ? section.content.substring(0, 50) : '',
+                path: `/modules/${module.slug}/${page.slug}`, // just goes to page
+                keywords: [section.title || '', section.content || '']
+              });
+            });
+          }
         });
       }
     });
-  });
+  }
 
   return index;
 };

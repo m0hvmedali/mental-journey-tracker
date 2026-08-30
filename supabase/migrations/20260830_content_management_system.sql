@@ -62,6 +62,7 @@ CREATE TABLE IF NOT EXISTS public.content (
   CONSTRAINT uq_content_slug_lang UNIQUE (slug, language)
 );
 
+DROP TRIGGER IF EXISTS trigger_update_content_updated_at ON public.content;
 CREATE TRIGGER trigger_update_content_updated_at
   BEFORE UPDATE ON public.content
   FOR EACH ROW EXECUTE FUNCTION public.update_updated_at_column();
@@ -79,7 +80,7 @@ CREATE TABLE IF NOT EXISTS public.content_blocks (
   created_at TIMESTAMPTZ DEFAULT timezone('utc'::text, now()),
 
   CONSTRAINT chk_block_type CHECK (block_type IN ('markdown', 'image', 'quote', 'code', 'table', 'callout', 'exercise', 'interactive_component', 'audio', 'video')),
-  CONSTRAINT uq_content_block_position UNIQUE (content_id, position) DEFERRABLE INITIALLY DEFERRED
+  CONSTRAINT uq_content_block_position UNIQUE (content_id, position)
 );
 
 -- ============================================================================
@@ -100,6 +101,7 @@ CREATE TABLE IF NOT EXISTS public.modules (
   CONSTRAINT chk_module_status CHECK (status IN ('draft', 'published', 'archived'))
 );
 
+DROP TRIGGER IF EXISTS trigger_update_modules_updated_at ON public.modules;
 CREATE TRIGGER trigger_update_modules_updated_at
   BEFORE UPDATE ON public.modules
   FOR EACH ROW EXECUTE FUNCTION public.update_updated_at_column();
@@ -131,6 +133,7 @@ CREATE TABLE IF NOT EXISTS public.content_locations (
   CONSTRAINT uq_route_slot_content UNIQUE (page_route, slot, content_id)
 );
 
+DROP TRIGGER IF EXISTS trigger_update_locations_updated_at ON public.content_locations;
 CREATE TRIGGER trigger_update_locations_updated_at
   BEFORE UPDATE ON public.content_locations
   FOR EACH ROW EXECUTE FUNCTION public.update_updated_at_column();
@@ -154,6 +157,7 @@ CREATE TABLE IF NOT EXISTS public.content_media (
   CONSTRAINT chk_media_type CHECK (media_type IN ('image', 'video', 'audio', 'file'))
 );
 
+DROP TRIGGER IF EXISTS trigger_update_media_updated_at ON public.content_media;
 CREATE TRIGGER trigger_update_media_updated_at
   BEFORE UPDATE ON public.content_media
   FOR EACH ROW EXECUTE FUNCTION public.update_updated_at_column();
@@ -175,6 +179,7 @@ CREATE TABLE IF NOT EXISTS public.scientific_references (
   updated_at TIMESTAMPTZ DEFAULT timezone('utc'::text, now())
 );
 
+DROP TRIGGER IF EXISTS trigger_update_references_updated_at ON public.scientific_references;
 CREATE TRIGGER trigger_update_references_updated_at
   BEFORE UPDATE ON public.scientific_references
   FOR EACH ROW EXECUTE FUNCTION public.update_updated_at_column();
@@ -256,6 +261,7 @@ CREATE TABLE IF NOT EXISTS public.emotions_encyclopedia (
   updated_at TIMESTAMPTZ DEFAULT timezone('utc'::text, now())
 );
 
+DROP TRIGGER IF EXISTS trigger_update_emotions_updated_at ON public.emotions_encyclopedia;
 CREATE TRIGGER trigger_update_emotions_updated_at
   BEFORE UPDATE ON public.emotions_encyclopedia
   FOR EACH ROW EXECUTE FUNCTION public.update_updated_at_column();
@@ -272,6 +278,7 @@ CREATE TABLE IF NOT EXISTS public.psychology_insights (
   updated_at TIMESTAMPTZ DEFAULT timezone('utc'::text, now())
 );
 
+DROP TRIGGER IF EXISTS trigger_update_insights_updated_at ON public.psychology_insights;
 CREATE TRIGGER trigger_update_insights_updated_at
   BEFORE UPDATE ON public.psychology_insights
   FOR EACH ROW EXECUTE FUNCTION public.update_updated_at_column();

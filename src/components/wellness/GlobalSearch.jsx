@@ -28,18 +28,18 @@ export default function GlobalSearch({ onClose }) {
       return;
     }
 
-    const lowerQuery = query.toLowerCase();
+    const lowerQuery = (query || '').toLowerCase();
     
     // Intelligent search logic
     const matched = searchIndex.filter(item => {
       // 1. Direct title match
-      if (item.title && item.title.toLowerCase().includes(lowerQuery)) return true;
+      if (item?.title && String(item.title).toLowerCase().includes(lowerQuery)) return true;
       // 2. Direct description match
-      if (item.description && item.description.toLowerCase().includes(lowerQuery)) return true;
+      if (item?.description && String(item.description).toLowerCase().includes(lowerQuery)) return true;
       
       // 3. Keyword match
-      if (item.keywords && Array.isArray(item.keywords)) {
-        return item.keywords.some(k => k && k.toLowerCase().includes(lowerQuery));
+      if (item?.keywords && Array.isArray(item.keywords)) {
+        return item.keywords.some(k => k && String(k).toLowerCase().includes(lowerQuery));
       }
       return false;
     });

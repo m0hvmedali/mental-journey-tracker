@@ -43,7 +43,6 @@ import InstagramOnboarding from './components/wellness/InstagramOnboarding.jsx';
 import About from './pages/About.jsx';
 import ReferencesPage from './pages/Refrance.jsx';
 import Login from './pages/Login.jsx';
-import LLMDebug from './pages/LLMDebug.jsx';
 import { useState, useEffect } from 'react';
 import { authService } from './services/authService.js';
 
@@ -106,7 +105,6 @@ function AppContent({ session }) {
         <Route path="/CognitiveReappraisal" element={<ProtectedRoute session={session}><CognitiveReappraisal /></ProtectedRoute>} />
         <Route path="/progress" element={<ProtectedRoute session={session}><Progress /></ProtectedRoute>} />
         <Route path="/community" element={<ProtectedRoute session={session}><Community /></ProtectedRoute>} />
-        <Route path="/llm-debug" element={<ProtectedRoute session={session}><LLMDebug /></ProtectedRoute>} />
         
         {/* Dynamic CMS Content */}
         <Route path="/c/:slug" element={<ProtectedRoute session={session}><DynamicContent /></ProtectedRoute>} />

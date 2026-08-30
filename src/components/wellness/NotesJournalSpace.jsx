@@ -71,9 +71,10 @@ export default function NotesJournalSpace() {
 
   // Filter notes by search query and source
   const filteredNotes = notes.filter(n => {
+    const q = (searchQuery || '').toLowerCase();
     const matchesSearch = 
-      (n.content || '').toLowerCase().includes(searchQuery.toLowerCase()) ||
-      (n.source_title || '').toLowerCase().includes(searchQuery.toLowerCase());
+      (n.content || '').toLowerCase().includes(q) ||
+      (n.source_title || '').toLowerCase().includes(q);
     
     const matchesSource = 
       selectedSourceFilter === 'all' || n.source_title === selectedSourceFilter;

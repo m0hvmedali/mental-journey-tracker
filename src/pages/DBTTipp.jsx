@@ -457,12 +457,12 @@ export default function DBTTipp() {
 
   const filteredSkills = DBT_SKILLS.filter(skill => {
     const matchesModule = selectedModule === 'all' || skill.module === selectedModule;
-    const query = searchQuery.trim().toLowerCase();
+    const query = (searchQuery || '').trim().toLowerCase();
     const matchesSearch = !query ||
-      skill.title.toLowerCase().includes(query) ||
-      skill.titleEn.toLowerCase().includes(query) ||
-      skill.explanation.toLowerCase().includes(query) ||
-      skill.exerciseTitle.toLowerCase().includes(query);
+      (skill?.title || '').toLowerCase().includes(query) ||
+      (skill?.titleEn || '').toLowerCase().includes(query) ||
+      (skill?.explanation || '').toLowerCase().includes(query) ||
+      (skill?.exerciseTitle || '').toLowerCase().includes(query);
     return matchesModule && matchesSearch;
   });
 
