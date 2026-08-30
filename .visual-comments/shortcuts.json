@@ -1,0 +1,337 @@
+{
+  "shortcuts": [
+    {
+      "id": "builtin-important",
+      "trigger": "iii",
+      "name": "IMPORTANT",
+      "label": "IMPORTANT",
+      "type": "inline",
+      "continuation": true,
+      "multiline": true,
+      "exitKey": "Tab",
+      "description": "High-visibility Important annotation",
+      "enabled": true,
+      "triggerMode": "wordBoundary",
+      "languages": [
+        "*"
+      ],
+      "isBuiltin": true,
+      "style": {
+        "color": "#ff4444",
+        "backgroundColor": "#331111",
+        "fontSize": 18,
+        "fontWeight": "bold",
+        "fontStyle": "normal",
+        "textDecoration": "none",
+        "borderRadius": 4,
+        "padding": "1px 5px",
+        "border": "1px solid rgba(255, 68, 68, 0.4)",
+        "overviewRulerColor": "#ff4444",
+        "overviewRulerLane": "right"
+      }
+    },
+    {
+      "id": "builtin-todo",
+      "trigger": "ttt",
+      "name": "TODO",
+      "label": "TODO",
+      "type": "inline",
+      "continuation": true,
+      "multiline": false,
+      "exitKey": "Tab",
+      "description": "Actionable Todo task comment",
+      "enabled": true,
+      "triggerMode": "wordBoundary",
+      "languages": [
+        "*"
+      ],
+      "isBuiltin": true,
+      "style": {
+        "color": "#ffaa00",
+        "backgroundColor": "#332800",
+        "fontSize": 16,
+        "fontWeight": "bold",
+        "fontStyle": "normal",
+        "textDecoration": "none",
+        "borderRadius": 4,
+        "padding": "1px 5px",
+        "border": "1px solid rgba(255, 170, 0, 0.4)",
+        "overviewRulerColor": "#ffaa00",
+        "overviewRulerLane": "right"
+      }
+    },
+    {
+      "id": "builtin-note",
+      "trigger": "nnn",
+      "name": "NOTE",
+      "label": "NOTE",
+      "type": "inline",
+      "continuation": false,
+      "description": "Informational note callout",
+      "enabled": true,
+      "triggerMode": "wordBoundary",
+      "languages": [
+        "*"
+      ],
+      "isBuiltin": true,
+      "style": {
+        "color": "#4da6ff",
+        "backgroundColor": "#101f33",
+        "fontSize": 16,
+        "fontWeight": "normal",
+        "fontStyle": "italic",
+        "textDecoration": "none",
+        "borderRadius": 4,
+        "padding": "1px 5px",
+        "overviewRulerColor": "#4da6ff",
+        "overviewRulerLane": "center"
+      },
+      "multiline": false,
+      "exitKey": "Tab"
+    },
+    {
+      "id": "builtin-fixme",
+      "trigger": "fff",
+      "name": "FIXME",
+      "label": "FIXME",
+      "type": "inline",
+      "continuation": true,
+      "multiline": false,
+      "exitKey": "Tab",
+      "description": "Critical bug or fix required",
+      "enabled": true,
+      "triggerMode": "wordBoundary",
+      "languages": [
+        "*"
+      ],
+      "isBuiltin": true,
+      "style": {
+        "color": "#fa541c",
+        "backgroundColor": "#331508",
+        "fontSize": 16,
+        "fontWeight": "bold",
+        "fontStyle": "normal",
+        "textDecoration": "none",
+        "borderRadius": 4,
+        "padding": "1px 5px",
+        "border": "1px solid rgba(250, 84, 28, 0.4)",
+        "overviewRulerColor": "#fa541c",
+        "overviewRulerLane": "right"
+      }
+    },
+    {
+      "id": "builtin-warning",
+      "trigger": "www",
+      "name": "WARNING",
+      "label": "WARNING",
+      "type": "warning",
+      "description": "Caution or warning block",
+      "enabled": true,
+      "triggerMode": "wordBoundary",
+      "languages": [
+        "*"
+      ],
+      "borderStyle": "heavy",
+      "padding": 1,
+      "isBuiltin": true,
+      "style": {
+        "color": "#faad14",
+        "backgroundColor": "rgba(250, 173, 20, 0.12)",
+        "fontWeight": "bold",
+        "borderRadius": 4,
+        "padding": "1px 5px",
+        "overviewRulerColor": "#faad14",
+        "overviewRulerLane": "right"
+      },
+      "continuation": false,
+      "multiline": false,
+      "exitKey": "Tab"
+    },
+    {
+      "id": "builtin-question",
+      "trigger": "qqq",
+      "name": "QUESTION",
+      "label": "QUESTION",
+      "type": "inline",
+      "continuation": true,
+      "multiline": false,
+      "exitKey": "Tab",
+      "description": "Question or clarification request",
+      "enabled": true,
+      "triggerMode": "wordBoundary",
+      "languages": [
+        "*"
+      ],
+      "isBuiltin": true,
+      "style": {
+        "color": "#b37feb",
+        "backgroundColor": "#220735",
+        "fontSize": 16,
+        "fontWeight": "bold",
+        "fontStyle": "normal",
+        "textDecoration": "none",
+        "borderRadius": 4,
+        "padding": "1px 5px",
+        "border": "1px solid rgba(179, 127, 235, 0.4)",
+        "overviewRulerColor": "#b37feb",
+        "overviewRulerLane": "left"
+      }
+    },
+    {
+      "id": "builtin-debug",
+      "trigger": "ddd",
+      "name": "DEBUG",
+      "label": "DEBUG",
+      "type": "inline",
+      "continuation": true,
+      "multiline": false,
+      "exitKey": "Tab",
+      "description": "Debugging statement or temporary code",
+      "enabled": true,
+      "triggerMode": "wordBoundary",
+      "languages": [
+        "*"
+      ],
+      "isBuiltin": true,
+      "style": {
+        "color": "#ff85c0",
+        "backgroundColor": "#33081e",
+        "fontSize": 16,
+        "fontWeight": "bold",
+        "fontStyle": "normal",
+        "textDecoration": "none",
+        "borderRadius": 4,
+        "padding": "1px 5px",
+        "border": "1px solid rgba(255, 133, 192, 0.4)",
+        "overviewRulerColor": "#ff85c0",
+        "overviewRulerLane": "left"
+      }
+    },
+    {
+      "id": "builtin-refactor",
+      "trigger": "rrr",
+      "name": "REFACTOR",
+      "label": "REFACTOR",
+      "type": "inline",
+      "continuation": true,
+      "multiline": false,
+      "exitKey": "Tab",
+      "description": "Code cleanup or refactoring opportunity",
+      "enabled": true,
+      "triggerMode": "wordBoundary",
+      "languages": [
+        "*"
+      ],
+      "isBuiltin": true,
+      "style": {
+        "color": "#1890ff",
+        "backgroundColor": "#092b47",
+        "fontSize": 16,
+        "fontWeight": "bold",
+        "fontStyle": "normal",
+        "textDecoration": "none",
+        "borderRadius": 4,
+        "padding": "1px 5px",
+        "border": "1px solid rgba(24, 144, 255, 0.4)",
+        "overviewRulerColor": "#1890ff",
+        "overviewRulerLane": "center"
+      }
+    },
+    {
+      "id": "builtin-box",
+      "trigger": "gbox",
+      "name": "BOX",
+      "label": "BOX",
+      "type": "box",
+      "borderStyle": "rounded",
+      "padding": 1,
+      "alignment": "left",
+      "description": "Dynamic auto-sizing comment box with rounded borders",
+      "enabled": true,
+      "triggerMode": "wordBoundary",
+      "languages": [
+        "*"
+      ],
+      "isBuiltin": true,
+      "continuation": false,
+      "multiline": false,
+      "exitKey": "Tab"
+    },
+    {
+      "id": "builtin-banner",
+      "trigger": "gbanner",
+      "name": "BANNER",
+      "label": "BANNER",
+      "type": "banner",
+      "borderStyle": "double",
+      "padding": 2,
+      "alignment": "center",
+      "description": "Prominent header banner with centered title",
+      "enabled": true,
+      "triggerMode": "wordBoundary",
+      "languages": [
+        "*"
+      ],
+      "isBuiltin": true,
+      "continuation": false,
+      "multiline": false,
+      "exitKey": "Tab"
+    },
+    {
+      "id": "builtin-card",
+      "trigger": "gcard",
+      "name": "CARD",
+      "label": "CARD",
+      "type": "card",
+      "borderStyle": "single",
+      "padding": 1,
+      "alignment": "left",
+      "description": "Visual card box with header bar and body text",
+      "enabled": true,
+      "triggerMode": "wordBoundary",
+      "languages": [
+        "*"
+      ],
+      "isBuiltin": true,
+      "continuation": false,
+      "multiline": false,
+      "exitKey": "Tab"
+    },
+    {
+      "id": "builtin-section",
+      "trigger": "gsection",
+      "name": "SECTION",
+      "label": "SECTION",
+      "type": "section",
+      "borderStyle": "double",
+      "description": "Section divider bar with header",
+      "enabled": true,
+      "triggerMode": "wordBoundary",
+      "languages": [
+        "*"
+      ],
+      "isBuiltin": true,
+      "continuation": false,
+      "multiline": false,
+      "exitKey": "Tab"
+    },
+    {
+      "id": "builtin-divider",
+      "trigger": "gdivider",
+      "name": "DIVIDER",
+      "label": "DIVIDER",
+      "type": "divider",
+      "borderStyle": "single",
+      "description": "Horizontal comment divider line",
+      "enabled": true,
+      "triggerMode": "wordBoundary",
+      "languages": [
+        "*"
+      ],
+      "isBuiltin": true,
+      "continuation": false,
+      "multiline": false,
+      "exitKey": "Tab"
+    }
+  ]
+}

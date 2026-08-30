@@ -1,0 +1,166 @@
+
+community 
+(<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Lexend%3Awght%40400%3B500%3B700%3B900&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900"
+    />
+
+    <title>Stitch Design</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  </head>
+  <body>
+    <div
+      class="relative flex size-full min-h-screen flex-col bg-[#f8fcfa] justify-between group/design-root overflow-x-hidden"
+      style='font-family: Lexend, "Noto Sans", sans-serif;'
+    >
+      <div>
+        <div class="flex items-center bg-[#f8fcfa] p-4 pb-2 justify-between">
+          <h2 class="text-[#0c1c17] text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pl-12">Community</h2>
+          <div class="flex w-12 items-center justify-end">
+            <button
+              class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 bg-transparent text-[#0c1c17] gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0"
+            >
+              <div class="text-[#0c1c17]" data-icon="Plus" data-size="24px" data-weight="regular">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                  <path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"></path>
+                </svg>
+              </div>
+            </button>
+          </div>
+        </div>
+        <div class="px-4 py-3">
+          <label class="flex flex-col min-w-40 h-12 w-full">
+            <div class="flex w-full flex-1 items-stretch rounded-xl h-full">
+              <div
+                class="text-[#46a080] flex border-none bg-[#e6f4ef] items-center justify-center pl-4 rounded-l-xl border-r-0"
+                data-icon="MagnifyingGlass"
+                data-size="24px"
+                data-weight="regular"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                  <path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path>
+                </svg>
+              </div>
+              <input
+                placeholder="Search"
+                class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#0c1c17] focus:outline-0 focus:ring-0 border-none bg-[#e6f4ef] focus:border-none h-full placeholder:text-[#46a080] px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal"
+                value=""
+              />
+            </div>
+          </label>
+        </div>
+        <div class="flex gap-3 p-3 overflow-x-hidden">
+          <div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#e6f4ef] pl-4 pr-4">
+            <p class="text-[#0c1c17] text-sm font-medium leading-normal">All</p>
+          </div>
+          <div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#e6f4ef] pl-4 pr-4">
+            <p class="text-[#0c1c17] text-sm font-medium leading-normal">Anxiety</p>
+          </div>
+          <div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#e6f4ef] pl-4 pr-4">
+            <p class="text-[#0c1c17] text-sm font-medium leading-normal">Depression</p>
+          </div>
+          <div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#e6f4ef] pl-4 pr-4">
+            <p class="text-[#0c1c17] text-sm font-medium leading-normal">Self-Care</p>
+          </div>
+        </div>
+        <div class="p-4">
+          <div
+            class="bg-cover bg-center flex flex-col items-stretch justify-end rounded-xl pt-[132px]"
+            style='background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuBIEfQgDBhS6-q1oYGezEg4W5A1h-T_kacyqtTfOfPZb52DJpATVirzzzmdQdv8TH0hppW8FMfFgupRZX5Fex5Id2hhjTtLEBSBciHOt8dJvtNhJQ78cw8NtdcR9JlR-oceTaP7hKmN6UC_j9PmIrj1Mlr7xpPmi4oSx3d_CXXalsgFNYfgo6gyYtXs_cAZaWFwPHVJDowyvHlDxyJD5isEAZINS4R08sRv5KzO5RUmGhsLumgRU4NyOM6xylwv2VkkM7TagGEETNUP");'
+          >
+            <div class="flex w-full items-end justify-between gap-4 p-4">
+              <div class="flex max-w-[440px] flex-1 flex-col gap-1">
+                <p class="text-white tracking-light text-2xl font-bold leading-tight max-w-[440px]">Navigating the Path to Wellness</p>
+                <p class="text-white text-base font-medium leading-normal">Share your journey, insights, and support with others on a similar path.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <h3 class="text-[#0c1c17] text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">Recent Posts</h3>
+        <div class="flex items-center gap-4 bg-[#f8fcfa] px-4 min-h-[72px] py-2">
+          <div
+            class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-14 w-fit"
+            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDRe8kGYSYd9HcCf64VA_53mf-KT-oD-_y4Cir4WBy99qJgqDCeQOnyImg2SpFhSopQyjqf4Hvn0hqBBRKjDIdBvjyLSvKwdyDwsmxVh_Z6EQi-ypm9dnShVmbkseVfqDv1S3Km8udmpeNGRNJxO_5a0KMXHHTgAbTUHkzocex1l_DlbEu_l7CT9oVKQ_9II4De6f1IUMafIQs-YTgQiMrs8xOgHTZKY9ObryupfDEzTSkAK3wyrfTT2N_El95PgFpgXruNcwbVBCj-");'
+          ></div>
+          <div class="flex flex-col justify-center">
+            <p class="text-[#0c1c17] text-base font-medium leading-normal line-clamp-1">Finding Strength in Vulnerability</p>
+            <p class="text-[#46a080] text-sm font-normal leading-normal line-clamp-2">1 hour ago</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 bg-[#f8fcfa] px-4 min-h-[72px] py-2">
+          <div
+            class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-14 w-fit"
+            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBcDn7PDbEzjYQnVC9S7KiWaWYrXUE5k7lch9I3i2oWLlSroBJuhy7VQUDvMYQFtvkpb1o4X0jHuvhCqYlg_QIdaKP5qUETRQOqolrYNPNM5D5CUsqYW4RyXwUtBmr8GeImBNxqyaaklNz2Gga8YG2UcPj5FGcBuPRweSIOlCRY4gAyW2BkBm7n6WMqglE-J7Ft0Vymm3qh1_v8a7wyN6ewz5lITgwQ7qW9zfZ_u9-yMgV7stWNT-uSLfftxe9vxSvXh8fZw9NPrMNC");'
+          ></div>
+          <div class="flex flex-col justify-center">
+            <p class="text-[#0c1c17] text-base font-medium leading-normal line-clamp-1">Coping with Daily Stress</p>
+            <p class="text-[#46a080] text-sm font-normal leading-normal line-clamp-2">2 hours ago</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 bg-[#f8fcfa] px-4 min-h-[72px] py-2">
+          <div
+            class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-14 w-fit"
+            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBvZxZsr7SN0eyh8Amw_xdc79cFV8ZnCD075L7K52F7iplykXKEHZH_g598o_pU9mSStRDW0oO76kW3DCTgeiAdi6zBqyle-ZIlXFcRl19Cte95qSfoH1a3MIUnqqLqIIArCpzOfrNbn8hGV1AozGrHQU5NHqdE_z0zSanNyuS4uqD-XPFnh2LS5Ulzxlpz4yvNk6iGyeiiGitztndok7RgSv3_T69pH8-GXD2Ropr2_12xsDGZg5ZAU8DPwAcCN6wml1tII4l__U4p");'
+          ></div>
+          <div class="flex flex-col justify-center">
+            <p class="text-[#0c1c17] text-base font-medium leading-normal line-clamp-1">Celebrating Small Victories</p>
+            <p class="text-[#46a080] text-sm font-normal leading-normal line-clamp-2">3 hours ago</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="flex gap-2 border-t border-[#e6f4ef] bg-[#f8fcfa] px-4 pb-3 pt-2">
+          <a class="just flex flex-1 flex-col items-center justify-end gap-1 text-[#46a080]" href="#">
+            <div class="text-[#46a080] flex h-8 items-center justify-center" data-icon="House" data-size="24px" data-weight="regular">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                <path
+                  d="M218.83,103.77l-80-75.48a1.14,1.14,0,0,1-.11-.11,16,16,0,0,0-21.53,0l-.11.11L37.17,103.77A16,16,0,0,0,32,115.55V208a16,16,0,0,0,16,16H96a16,16,0,0,0,16-16V160h32v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V115.55A16,16,0,0,0,218.83,103.77ZM208,208H160V160a16,16,0,0,0-16-16H112a16,16,0,0,0-16,16v48H48V115.55l.11-.1L128,40l79.9,75.43.11.1Z"
+                ></path>
+              </svg>
+            </div>
+            <p class="text-[#46a080] text-xs font-medium leading-normal tracking-[0.015em]">Home</p>
+          </a>
+          <a class="just flex flex-1 flex-col items-center justify-end gap-1 text-[#46a080]" href="#">
+            <div class="text-[#46a080] flex h-8 items-center justify-center" data-icon="ListBullets" data-size="24px" data-weight="regular">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                <path
+                  d="M80,64a8,8,0,0,1,8-8H216a8,8,0,0,1,0,16H88A8,8,0,0,1,80,64Zm136,56H88a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Zm0,64H88a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16ZM44,52A12,12,0,1,0,56,64,12,12,0,0,0,44,52Zm0,64a12,12,0,1,0,12,12A12,12,0,0,0,44,116Zm0,64a12,12,0,1,0,12,12A12,12,0,0,0,44,180Z"
+                ></path>
+              </svg>
+            </div>
+            <p class="text-[#46a080] text-xs font-medium leading-normal tracking-[0.015em]">Modules</p>
+          </a>
+          <a class="just flex flex-1 flex-col items-center justify-end gap-1 text-[#46a080]" href="#">
+            <div class="text-[#46a080] flex h-8 items-center justify-center" data-icon="PresentationChart" data-size="24px" data-weight="regular">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                <path
+                  d="M216,40H136V24a8,8,0,0,0-16,0V40H40A16,16,0,0,0,24,56V176a16,16,0,0,0,16,16H79.36L57.75,219a8,8,0,0,0,12.5,10l29.59-37h56.32l29.59,37a8,8,0,1,0,12.5-10l-21.61-27H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,136H40V56H216V176ZM104,120v24a8,8,0,0,1-16,0V120a8,8,0,0,1,16,0Zm32-16v40a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm32-16v56a8,8,0,0,1-16,0V88a8,8,0,0,1,16,0Z"
+                ></path>
+              </svg>
+            </div>
+            <p class="text-[#46a080] text-xs font-medium leading-normal tracking-[0.015em]">Progress</p>
+          </a>
+          <a class="just flex flex-1 flex-col items-center justify-end gap-1 rounded-full text-[#0c1c17]" href="#">
+            <div class="text-[#0c1c17] flex h-8 items-center justify-center" data-icon="Users" data-size="24px" data-weight="fill">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                <path
+                  d="M164.47,195.63a8,8,0,0,1-6.7,12.37H10.23a8,8,0,0,1-6.7-12.37,95.83,95.83,0,0,1,47.22-37.71,60,60,0,1,1,66.5,0A95.83,95.83,0,0,1,164.47,195.63Zm87.91-.15a95.87,95.87,0,0,0-47.13-37.56A60,60,0,0,0,144.7,54.59a4,4,0,0,0-1.33,6A75.83,75.83,0,0,1,147,150.53a4,4,0,0,0,1.07,5.53,112.32,112.32,0,0,1,29.85,30.83,23.92,23.92,0,0,1,3.65,16.47,4,4,0,0,0,3.95,4.64h60.3a8,8,0,0,0,7.73-5.93A8.22,8.22,0,0,0,252.38,195.48Z"
+                ></path>
+              </svg>
+            </div>
+            <p class="text-[#0c1c17] text-xs font-medium leading-normal tracking-[0.015em]">Community</p>
+          </a>
+        </div>
+        <div class="h-5 bg-[#f8fcfa]"></div>
+      </div>
+    </div>
+  </body>
+</html>
+)

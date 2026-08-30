@@ -1,0 +1,1502 @@
+[
+  {
+    "id": "001",
+    "type": "scientist_quote",
+    "text": "على الرغم من أن أسباب المشاكل قد تكون معقدة للغاية، إلا أن حلولها لا يجب بالضرورة أن تكون كذلك.",
+    "author": "ستيف دي شازر",
+    "topic": "solution_focused_brief_therapy",
+    "source": "Solution-focused brief therapy - Wikipedia",
+    "source_location": "General introduction",
+    "verified": true
+  },
+  {
+    "id": "002",
+    "type": "scientist_quote",
+    "text": "التركيز على ما يريده العميل في حاضره ومستقبله هو حجر الزاوية لحل المشكلات بكفاءة.",
+    "author": "إنسو كيم بيرج",
+    "topic": "solution_focused_brief_therapy",
+    "source": "Solution-focused brief therapy - Wikipedia",
+    "source_location": "General introduction",
+    "verified": true
+  },
+  {
+    "id": "003",
+    "type": "scientist_quote",
+    "text": "بناء الحلول هو عملية لغوية تعاونية بين العميل والمعالج لتطوير وصف تفصيلي للمستقبل المفضل.",
+    "author": "إليوت كوني",
+    "topic": "solution_focused_brief_therapy",
+    "source": "Solution-focused brief therapy - Wikipedia",
+    "source_location": "General introduction",
+    "verified": true
+  },
+  {
+    "id": "004",
+    "type": "scientist_quote",
+    "text": "إذا كان هناك شيء يعمل بنجاح، فافعل منه المزيد، وإذا كان لا يعمل، فلا تكرره وافعل شيئاً مختلفاً.",
+    "author": "ستيف دي شازر",
+    "topic": "solution_focused_brief_therapy",
+    "source": "Solution Focused Therapy",
+    "source_location": "Overview, Description, and Rationale, Page 2",
+    "verified": true
+  },
+  {
+    "id": "005",
+    "type": "scientific_insight",
+    "text": "يفترض العلاج المركّز على الحلول أن التغيير الإيجابي أمر مستمر وحتمي في حياة الإنسان، ومهمة العلاج هي توجيهه فقط.",
+    "author": null,
+    "topic": "solution_focused_brief_therapy",
+    "source": "Solution-focused brief therapy - Wikipedia",
+    "source_location": "SFBT practice",
+    "verified": true
+  },
+  {
+    "id": "006",
+    "type": "scientific_insight",
+    "text": "أثبتت دراسات التصوير العصبي الوظيفي fNIRS أن جلسات SFBT تؤدي لزيادة تدفق الأوكسي هيموجلوبين في القشرة الجبهية الظهرية الجانبية DLPFC مما يحسن الوظائف التنفيذية للاكتئاب.",
+    "author": null,
+    "topic": "solution_focused_brief_therapy",
+    "source": "Efficacy and executive function of solution-focused brief therapy on adolescent depression - Frontiers",
+    "source_location": "Conclusions & Abstract",
+    "verified": true
+  },
+  {
+    "id": "007",
+    "type": "scientific_insight",
+    "text": "في فلسفة SFBT، لا توجد مشكلة تحدث طوال الوقت؛ هناك دائماً 'استثناءات' تمثل لحظات غياب المشكلة ويمكن البناء عليها للوصول للحل.",
+    "author": null,
+    "topic": "solution_focused_brief_therapy",
+    "source": "Solution Focused Therapy",
+    "source_location": "Overview, Description, and Rationale, Page 2",
+    "verified": true
+  },
+  {
+    "id": "008",
+    "type": "scientific_insight",
+    "text": "يختلف العلاج المركّز على الحلول عن العلاج التقليدي في كونه يتجاوز مرحلة التقييم والتشخيص المفصل للمشاكل ويركز مباشرة على بناء الحلول ومكامن القوة.",
+    "author": null,
+    "topic": "solution_focused_brief_therapy",
+    "source": "Solution Focused Therapy",
+    "source_location": "How SFBT is Contrasted with Other Treatments, Page 9",
+    "verified": true
+  },
+  {
+    "id": "009",
+    "type": "scientific_insight",
+    "text": "أثبت التحليل الإحصائي التلوي (Meta-analysis) أن العلاج المركّز على الحلول يمتلك فعالية علاجية تماثل العلاج المعرفي السلوكي لكن بعدد جلسات أقل وبمتوسط 6 جلسات فقط.",
+    "author": null,
+    "topic": "solution_focused_brief_therapy",
+    "source": "Solution-focused brief therapy - Wikipedia",
+    "source_location": "Evidence-based status",
+    "verified": true
+  },
+  {
+    "id": "010",
+    "type": "scientific_insight",
+    "text": "أظهرت الأبحاث اللغوية الإكلينيكية أن الأسئلة المركزة على الحلول تزيد من المشاعر الإيجابية والأمل لدى العميل مقارنة بالأسئلة التي تبحث في المشاكل.",
+    "author": null,
+    "topic": "solution_focused_brief_therapy",
+    "source": "Solution Focused Therapy",
+    "source_location": "Evidence Base of SFBT, Page 3",
+    "verified": true
+  },
+  {
+    "id": "011",
+    "type": "scientific_insight",
+    "text": "العميل هو الخبير الحقيقي والوحيد في تفاصيل حياته الخاصة، بينما يقتصر دور المعالج في SFBT على كونه خبيراً في صياغة وإدارة حوار التغيير والحلول.",
+    "author": null,
+    "topic": "solution_focused_brief_therapy",
+    "source": "Solution-focused brief therapy - Wikipedia",
+    "source_location": "SFBT practice",
+    "verified": true
+  },
+  {
+    "id": "012",
+    "type": "scientific_insight",
+    "text": "تغيير الصياغات اللغوية والانتخاب اللفظي الإيجابي يسهم بشكل مباشر في إعادة تشكيل إدراك العميل لقدراته وإمكانية تحسين حياته.",
+    "author": null,
+    "topic": "solution_focused_brief_therapy",
+    "source": "Solution Focused Therapy",
+    "source_location": "Microanalysis of SFBT Therapy Sessions, Page 26",
+    "verified": true
+  },
+  {
+    "id": "013",
+    "type": "scientific_insight",
+    "text": "التغييرات الطفيفة والصغيرة للغاية في روتين العميل اليومي تقود تدريجياً وبشكل تراكمي إلى تغييرات واسعة النطاق في جودة حياته النفسية.",
+    "author": null,
+    "topic": "solution_focused_brief_therapy",
+    "source": "Solution Focused Therapy",
+    "source_location": "Overview, Description, and Rationale, Page 2",
+    "verified": true
+  },
+  {
+    "id": "014",
+    "type": "scientific_insight",
+    "text": "تساعد أسئلة التكيف والتعايش (Coping Questions) العميل على إدراك مرونته وقوته الشخصية في الحفاظ على استقراره رغم وجود أزمات مستعصية.",
+    "author": null,
+    "topic": "solution_focused_brief_therapy",
+    "source": "Solution-focused brief therapy - Wikipedia",
+    "source_location": "SFBT practice",
+    "verified": true
+  },
+  {
+    "id": "015",
+    "type": "scientific_insight",
+    "text": "أثبتت التجارب الميدانية فعالية نموذج SFBT في المدارس والبيئات التعليمية لتقليل السلوكيات العدوانية وتحسين الانضباط الذاتي لدى المراهقين.",
+    "author": null,
+    "topic": "solution_focused_brief_therapy",
+    "source": "SFBT is Effective in Schools · Solution-Focused Therapy Institute",
+    "source_location": "Franklin et al., 2008 Citation",
+    "verified": true
+  },
+  {
+    "id": "016",
+    "type": "scientific_insight",
+    "text": "يرفض العلاج المركّز على الحلول تصنيف العملاء بناءً على الأمراض أو المقاومة، ويعتبر السلوكيات الدفاعية مجرد آليات تكيف حذرة تتطلب تفهماً لا مواجهة.",
+    "author": null,
+    "topic": "solution_focused_brief_therapy",
+    "source": "Solution Focused Therapy",
+    "source_location": "Format and Session Structure, Page 11",
+    "verified": true
+  },
+  {
+    "id": "017",
+    "type": "scientific_insight",
+    "text": "تمنح لغة التقدير والثناء (Compliments) الصادقة للعملاء شعوراً بالأمان وتقدير الذات، وتجعلهم أكثر استعداداً لتجربة سلوكيات جديدة وفعالة.",
+    "author": null,
+    "topic": "solution_focused_brief_therapy",
+    "source": "Solution-focused brief therapy - Wikipedia",
+    "source_location": "SFBT practice",
+    "verified": true
+  },
+  {
+    "id": "018",
+    "type": "scientific_insight",
+    "text": "دراسات التقييم الرقمي الذاتي (Scaling) تساعد العميل على تجسيد مشاعره غير الملموسة كالقلق والثقة في أرقام واضحة، مما يسهل رصد وملاحظة التقدم البسيط.",
+    "author": null,
+    "topic": "solution_focused_brief_therapy",
+    "source": "Solution-focused brief therapy - Wikipedia",
+    "source_location": "SFBT practice",
+    "verified": true
+  },
+  {
+    "id": "019",
+    "type": "scientific_insight",
+    "text": "التدخلات العلاجية المركزة على الحلول تظهر فعالية متميزة وسريعة في علاج نوبات الاكتئاب لدى البالغين وتقليل نسب الانتكاس العاطفي.",
+    "author": null,
+    "topic": "solution_focused_brief_therapy",
+    "source": "Solution Focused Therapy",
+    "source_location": "Evidence Base of SFBT, Page 3",
+    "verified": true
+  },
+  {
+    "id": "020",
+    "type": "scientific_insight",
+    "text": "يعتمد العلاج المركّز على الحلول على الصياغة المشتركة المعتمدة على اختيار الكلمات الدقيقة للعميل وتجنب فرض فرضيات المعالج الخاصة.",
+    "author": null,
+    "topic": "solution_focused_brief_therapy",
+    "source": "Solution Focused Therapy",
+    "source_location": "Grounding and Formulations, Page 39",
+    "verified": true
+  },
+  {
+    "id": "021",
+    "type": "evidence_based_tip",
+    "text": "استخدم 'سؤال المعجزة' لتجاوز الجمود العاطفي: تخيل أنك نمت واستيقظت لتجد مشكلتك قد حلت بمعجزة؛ ما هي أول علامة بسيطة ستلاحظها وتؤكد لك حدوث التغيير؟",
+    "author": null,
+    "topic": "solution_focused_brief_therapy",
+    "source": "Solution-focused brief therapy - Wikipedia",
+    "source_location": "SFBT practice",
+    "verified": true
+  },
+  {
+    "id": "022",
+    "type": "evidence_based_tip",
+    "text": "راقب 'التغيير قبل الجلسة الأولى': اسأل نفسك ما هي التحسينات البسيطة التي بدأت تحدث بالفعل في حياتك منذ اللحظة التي قررت فيها طلب المساعدة وحتى الآن؟",
+    "author": null,
+    "topic": "solution_focused_brief_therapy",
+    "source": "Solution Focused Therapy",
+    "source_location": "Specific Interventions: Pre-session change, Page 12",
+    "verified": true
+  },
+  {
+    "id": "023",
+    "type": "evidence_based_tip",
+    "text": "عند الشعور بالإحباط واليأس، اسأل نفسك: 'كيف تمكنت من منع الأمور من التدهور والوصول لأسوأ من ذلك؟' لتكتشف آليات حمايتك وقوتك الكامنة.",
+    "author": null,
+    "topic": "solution_focused_brief_therapy",
+    "source": "Solution Focused Therapy",
+    "source_location": "Specific Interventions: Pre-session change, Page 12",
+    "verified": true
+  },
+  {
+    "id": "024",
+    "type": "evidence_based_tip",
+    "text": "طبق 'تقييم المدرج الرقمي' يومياً: ضع مستوى طاقتك أو ثقتك اليوم على مقياس من 0 إلى 10، ثم اسأل نفسك ما الخطوة البسيطة اللازمة للانتقال درجة واحدة للأعلى؟",
+    "author": null,
+    "topic": "solution_focused_brief_therapy",
+    "source": "Cognitive Behavioural Therapy or Solution-Focused Brief Therapy? Finding a Modality That Fits",
+    "source_location": "CBT vs SFBT at a Glance",
+    "verified": true
+  },
+  {
+    "id": "025",
+    "type": "evidence_based_tip",
+    "text": "ابدأ يومك بالبحث عن الاستثناءات: تذكر يوماً قريباً واجهت فيه نفس الضغوط الحالية لكنك تمكنت من الحفاظ على هدوئك، وكرر نفس التصرفات التي قمت بها حينها.",
+    "author": null,
+    "topic": "solution_focused_brief_therapy",
+    "source": "Solution Focused Therapy",
+    "source_location": "Format and Session Structure, Page 11",
+    "verified": true
+  },
+  {
+    "id": "026",
+    "type": "evidence_based_tip",
+    "text": "امتدح جهودك اليومية بوعي: صغ لنفسك عبارات ثناء حقيقية ومحددة حول المهام الصغيرة التي أنجزتها بنجاح لترسيخ شعورك بالكفاءة والتمكن الذاتي.",
+    "author": null,
+    "topic": "solution_focused_brief_therapy",
+    "source": "Cognitive Behavioural Therapy or Solution-Focused Brief Therapy? Finding a Modality That Fits",
+    "source_location": "CBT vs SFBT at a Glance",
+    "verified": true
+  },
+  {
+    "id": "027",
+    "type": "evidence_based_tip",
+    "text": "صمم 'تجارب وأبحاث شخصية ملائمة': بدلاً من الواجبات المفروضة، جرب إحداث تغيير بسيط جداً في نمط تفاعلك مع الآخرين غداً ولاحظ ردود أفعالهم.",
+    "author": null,
+    "topic": "solution_focused_brief_therapy",
+    "source": "Efficacy and executive function of solution-focused brief therapy on adolescent depression - Frontiers",
+    "source_location": "SFBT Technique",
+    "verified": true
+  },
+  {
+    "id": "028",
+    "type": "evidence_based_tip",
+    "text": "عند حدوث أزمة مفاجئة، توقف للحظة واسأل نفسك: 'ما هو المستقبل المفضل والحل الذي أريد أن أصل إليه الآن؟' بدلاً من الاستغراق في لوم الذات أو تحليل الأسباب.",
+    "author": null,
+    "topic": "solution_focused_brief_therapy",
+    "source": "Solution-focused brief therapy - Wikipedia",
+    "source_location": "SFBT practice",
+    "verified": true
+  },
+  {
+    "id": "029",
+    "type": "evidence_based_tip",
+    "text": "دون نجاحاتك الصغيرة باستمرار: احتفظ بقائمة صغيرة للمواقف الصعبة التي تجاوزتها بمرونة لتكون مرجعاً ذهنياً وقوة داعمة لك في أوقات الأزمات.",
+    "author": null,
+    "topic": "solution_focused_brief_therapy",
+    "source": "Solution Focused Therapy",
+    "source_location": "Specific Active Ingredients, Page 10",
+    "verified": true
+  },
+  {
+    "id": "030",
+    "type": "evidence_based_tip",
+    "text": "تحدث بلغة المستقبل والحلول دائماً: استبدل التفكير بـ 'لماذا فشلت؟' بالتفكير في 'ما الذي سأفعله بشكل مختلف في المرة القادمة للنجاح؟'.",
+    "author": null,
+    "topic": "solution_focused_brief_therapy",
+    "source": "Solution Focused Therapy",
+    "source_location": "Specific Active Ingredients, Page 10",
+    "verified": true
+  },
+  {
+    "id": "031",
+    "type": "evidence_based_tip",
+    "text": "استخدم أسئلة 'ماذا أيضاً؟' لاستخراج وتوليد خيارات وحلول بديلة إضافية عندما تشعر بأن عقلك قد توقف تماماً عن التفكير الإبداعي.",
+    "author": null,
+    "topic": "solution_focused_brief_therapy",
+    "source": "Solution Focused Therapy",
+    "source_location": "Overview, Description, and Rationale, Page 2",
+    "verified": true
+  },
+  {
+    "id": "032",
+    "type": "evidence_based_tip",
+    "text": "تجنب التفتيش عن الصراعات الخفية؛ وبدلاً من ذلك ركز انتباهك وجهدك بالكامل على الملاحظات والوقائع السلوكية الملموسة لتغيير واقعك بأسرع وقت.",
+    "author": null,
+    "topic": "solution_focused_brief_therapy",
+    "source": "Solution Focused Therapy",
+    "source_location": "How SFBT is Contrasted with Other Treatments, Page 9",
+    "verified": true
+  },
+  {
+    "id": "033",
+    "type": "evidence_based_tip",
+    "text": "عند التعرض لضغوط تواصلية، جرب الحفاظ على موقف 'عدم المعرفة المسبقة' لتستمع للآخرين دون إطلاق أحكام متسرعة أو تصنيف أفعالهم بشكل خاطئ.",
+    "author": null,
+    "topic": "solution_focused_brief_therapy",
+    "source": "Solution Focused Therapy",
+    "source_location": "How SFBT is Contrasted with Other Treatments, Page 9",
+    "verified": true
+  },
+  {
+    "id": "034",
+    "type": "evidence_based_tip",
+    "text": "كرر السلوكيات التي كانت ناجحة في الماضي؛ فالأدلة تشير إلى أن تكرار ما نجح سابقاً هو الطريق الأكثر أماناً وسرعة لبناء حلول مستدامة.",
+    "author": null,
+    "topic": "solution_focused_brief_therapy",
+    "source": "Solution Focused Therapy",
+    "source_location": "Overview, Description, and Rationale, Page 2",
+    "verified": true
+  },
+  {
+    "id": "035",
+    "type": "evidence_based_tip",
+    "text": "تحدث بوضوح وثقة مع المقربين منك حول أهدافك الشخصية، وصغ هذه الأهداف في عبارات إيجابية ملموسة تصف 'ما ستفعله' بدلاً من 'ما ستتوقف عن فعله'.",
+    "author": null,
+    "topic": "solution_focused_brief_therapy",
+    "source": "Cognitive Behavioural Therapy or Solution-Focused Brief Therapy? Finding a Modality That Fits",
+    "source_location": "CBT vs SFBT at a Glance",
+    "verified": true
+  },
+  {
+    "id": "036",
+    "type": "evidence_based_tip",
+    "text": "استعن بآراء الأصدقاء المقربين لتحديد مكامن قوتك ومواهبك التي قد يغفل عنها عقلك بسبب وطأة الضغوط النفسية الحالية.",
+    "author": null,
+    "topic": "solution_focused_brief_therapy",
+    "source": "Solution Focused Therapy",
+    "source_location": "Specific Active Ingredients, Page 10",
+    "verified": true
+  },
+  {
+    "id": "037",
+    "type": "evidence_based_tip",
+    "text": "اجعل أهدافك اليومية صغيرة ويسيرة وقابلة للقياس، فالتغييرات متناهية الصغر تسهل المتابعة وبناء عادة النجاح اليومي وزيادة دافعيتك.",
+    "author": null,
+    "topic": "solution_focused_brief_therapy",
+    "source": "Solution Focused Therapy",
+    "source_location": "Overview, Description, and Rationale, Page 2",
+    "verified": true
+  },
+  {
+    "id": "038",
+    "type": "evidence_based_tip",
+    "text": "عند تقييم تواصلك مع شريك حياتك، حدد بدقة الأوقات التي كان فيها التفاهم بينكما رائعاً، وادرس ظروف ذلك التفاهم لإعادتها للواقع مجدداً.",
+    "author": null,
+    "topic": "solution_focused_brief_therapy",
+    "source": "Solution Focused Therapy",
+    "source_location": "Format and Session Structure, Page 11",
+    "verified": true
+  },
+  {
+    "id": "039",
+    "type": "scientist_quote",
+    "text": "هدف العلاج بالقبول والالتزام ليس التخلص من المشاعر الصعبة، بل التواجد الحقيقي في الحاضر والتحرك نحو عيش قيمنا بصدق وحرية.",
+    "author": "ستيفن هايز",
+    "topic": "acceptance_commitment_therapy",
+    "source": "Acceptance and commitment therapy - Wikipedia",
+    "source_location": "Technique - Aims",
+    "verified": true
+  },
+  {
+    "id": "040",
+    "type": "scientist_quote",
+    "text": "عندما نتشابك مع أفكارنا السلبية اللزجة، فإننا نعتبرها حقائق مطلقة تشوه واقعنا وتعيق قدرتنا على الحركة الفعالة في الحياة.",
+    "author": "ميتشل كوتس",
+    "topic": "acceptance_commitment_therapy",
+    "source": "Acceptance and Commitment Therapy (ACT): Defusion Tools for Sticky Thoughts - Squarespace",
+    "source_location": "Introduction",
+    "verified": true
+  },
+  {
+    "id": "041",
+    "type": "scientist_quote",
+    "text": "يتيح لنا نموذج Hexaflex فك تشابك صراعاتنا النفسية لنستبدل المعاناة بحياة غنية بالمعنى والحيوية المتوافقة مع أعمق قيمنا الذاتية.",
+    "author": "نيش نيكوليك",
+    "topic": "acceptance_commitment_therapy",
+    "source": "The ACT Hexaflex - Nesh Nikolic",
+    "source_location": "The Hexaflex",
+    "verified": true
+  },
+  {
+    "id": "042",
+    "type": "scientist_quote",
+    "text": "بدلاً من استهلاك طاقتك في التحكم بالأفكار والمشاعر، ابدأ بـملاحظتها واحتضانها دون صراع لتبدأ التغيير الحقيقي من اللحظة الحالية.",
+    "author": "روس هاريس",
+    "topic": "acceptance_commitment_therapy",
+    "source": "Acceptance and commitment therapy - Wikipedia",
+    "source_location": "Sources: Harris (2006) Citation",
+    "verified": true
+  },
+  {
+    "id": "043",
+    "type": "scientific_insight",
+    "text": "يقترح نموذج ACT أن المعاناة النفسية البشرية تنشأ بشكل أساسي من استخدام اللغة الداخلية لإنشاء عوالم ذاتية مشحونة بالقلق والتجنب.",
+    "author": null,
+    "topic": "acceptance_commitment_therapy",
+    "source": "Acceptance and commitment therapy - Wikipedia",
+    "source_location": "Origins and development",
+    "verified": true
+  },
+  {
+    "id": "044",
+    "type": "scientific_insight",
+    "text": "التجنب التجريبي (Experiential Avoidance) للألم العاطفي أو القلق الحاد يعزز من قوته على المدى الطويل ويزيد من الجمود النفسي للشخصية.",
+    "author": null,
+    "topic": "acceptance_commitment_therapy",
+    "source": "Acceptance and commitment therapy - Wikipedia",
+    "source_location": "Technique - Questioning healthy normality",
+    "verified": true
+  },
+  {
+    "id": "045",
+    "type": "scientific_insight",
+    "text": "اليقظة العقلية في ACT تهدف للاتصال باللحظة الحالية بفضول وانفتاح، مما يضعف آلياً سيطرة الأفكار السلبية والمقلقة عن المستقبل المجهول.",
+    "author": null,
+    "topic": "acceptance_commitment_therapy",
+    "source": "Acceptance and commitment therapy - Wikipedia",
+    "source_location": "Technique - Cognitive distancing",
+    "verified": true
+  },
+  {
+    "id": "046",
+    "type": "scientific_insight",
+    "text": "الذات كسياق (Self-as-context) أو الذات المراقبة هي بعد متسامٍ في النفس يتيح للشخص مراقبة أفكاره ومشاعره دون الخوف من التماهي معها.",
+    "author": null,
+    "topic": "acceptance_commitment_therapy",
+    "source": "Acceptance and commitment therapy - Wikipedia",
+    "source_location": "Technique - Cognitive distancing",
+    "verified": true
+  },
+  {
+    "id": "047",
+    "type": "scientific_insight",
+    "text": "القيم في فلسفة ACT ليست أهدافاً يتم إنجازها وشطبها من القائمة، وإنما هي بوصلة مستمرة توجه سلوك الإنسان وتمنح حياته اتجاهاً واضحاً ومستداماً.",
+    "author": null,
+    "topic": "acceptance_commitment_therapy",
+    "source": "Acceptance and commitment therapy - Wikipedia",
+    "source_location": "Technique - Developing psychological flexibility",
+    "verified": true
+  },
+  {
+    "id": "048",
+    "type": "scientific_insight",
+    "text": "اليأس الإبداعي (Creative Hopelessness) هو استراتيجية علاجية هامة تجعل الشخص يدرك عدم جدوى محاولاته المستمرة للسيطرة على مشاعره العميقة.",
+    "author": null,
+    "topic": "acceptance_commitment_therapy",
+    "source": "Acceptance and commitment therapy - Wikipedia",
+    "source_location": "Technique - Questioning healthy normality",
+    "verified": true
+  },
+  {
+    "id": "049",
+    "type": "scientific_insight",
+    "text": "تشير الأدلة الإمبيريقية إلى أن عدم المرونة النفسية وتجنب المواقف المخيفة يعدان من أهم المتنبئات المباشرة بتطور الاضطرابات النفسية المختلفة.",
+    "author": null,
+    "topic": "acceptance_commitment_therapy",
+    "source": "Acceptance and commitment therapy - Wikipedia",
+    "source_location": "Technique - ACT-principles",
+    "verified": true
+  },
+  {
+    "id": "050",
+    "type": "scientific_insight",
+    "text": "عيش حياة غنية ومرنة نفسياً يتطلب الالتزام التام والمسؤول باتخاذ إجراءات وسلوكيات واقعية تتماشى مع قيمك الأخلاقية والشخصية العميقة.",
+    "author": null,
+    "topic": "acceptance_commitment_therapy",
+    "source": "Acceptance and commitment therapy - Wikipedia",
+    "source_location": "Technique - Developing psychological flexibility",
+    "verified": true
+  },
+  {
+    "id": "051",
+    "type": "scientific_insight",
+    "text": "الفصل المعرفي يعني إدراك أن الفكرة هي مجرد حدث عقلي وعابر مكون من كلمات وصور، وليست واقعاً مادياً مفروضاً عليك اتباعه والاعتماد عليه.",
+    "author": null,
+    "topic": "acceptance_commitment_therapy",
+    "source": "Acceptance and commitment therapy - Wikipedia",
+    "source_location": "Technique - Developing psychological flexibility",
+    "verified": true
+  },
+  {
+    "id": "052",
+    "type": "scientific_insight",
+    "text": "هناك تشابه كبير بين نموذج ACT ونظام الـ 12 خطوة للتعافي من الإدمان، حيث يعتمد كلاهما على مبدأ قبول الضعف والتخلي عن السيطرة الوهمية.",
+    "author": null,
+    "topic": "acceptance_commitment_therapy",
+    "source": "Acceptance and commitment therapy - Wikipedia",
+    "source_location": "Adaptations and compatibility",
+    "verified": true
+  },
+  {
+    "id": "053",
+    "type": "scientific_insight",
+    "text": "تساعد مفكرات تدوين القيم اليومية لـ ACT العملاء على إدراك مدى توافق أفعالهم اليومية الملموسة مع أهدافهم ومبادئهم الحياتية الكبرى والمهمة.",
+    "author": null,
+    "topic": "acceptance_commitment_therapy",
+    "source": "Using the ACT Values Daily Diary with Your Therapy Clients",
+    "source_location": "ACT Therapy and the ACT Values Daily Diary",
+    "verified": true
+  },
+  {
+    "id": "054",
+    "type": "scientific_insight",
+    "text": "يتيح قبول مشاعر الحزن أو الخوف الطبيعية دون مقاومة عنيفة تقليل التوتر العصبي والجسدي المصاحب لهذه الاستجابات الانفعالية المزعجة.",
+    "author": null,
+    "topic": "acceptance_commitment_therapy",
+    "source": "Acceptance and commitment therapy - Wikipedia",
+    "source_location": "Technique - Developing psychological flexibility",
+    "verified": true
+  },
+  {
+    "id": "055",
+    "type": "scientific_insight",
+    "text": "أثبتت المراجعات الإكلينيكية أن ACT يظهر تفوقاً ونجاحاً كبيراً في تقليل أعراض الاكتئاب وتحسين جودة الحياة للأفراد الذين يعانون من آلام مزمنة.",
+    "author": null,
+    "topic": "acceptance_commitment_therapy",
+    "source": "Acceptance and commitment therapy - Wikipedia",
+    "source_location": "Empirical research - Effectiveness",
+    "verified": true
+  },
+  {
+    "id": "056",
+    "type": "scientific_insight",
+    "text": "القدرة على الاتصال التام والوعي بما يحدث داخل الجسد والعقل دون حكم يمثل ركيزة هامة في بناء المرونة والاستقرار الانفعالي طويل الأجل.",
+    "author": null,
+    "topic": "acceptance_commitment_therapy",
+    "source": "There are six core processes in ACT",
+    "source_location": "Core processes - Present Moment Awareness",
+    "verified": true
+  },
+  {
+    "id": "057",
+    "type": "scientific_insight",
+    "text": "العيش في اللحظة الحالية والاتصال بالواقع يزيد بشكل علمي من معدلات الرضا والسعادة الشخصية ويقلل من القلق الهدام حول أحداث المستقبل.",
+    "author": null,
+    "topic": "acceptance_commitment_therapy",
+    "source": "There are six core processes in ACT",
+    "source_location": "Core processes - Present Moment Awareness",
+    "verified": true
+  },
+  {
+    "id": "058",
+    "type": "scientific_insight",
+    "text": "أثبتت الأبحاث أن التدريب على قبول الألم وتجنب محاربة الأفكار المزعجة يحسن بشكل واضح من الصحة النفسية العامة للأطفال والمراهقين.",
+    "author": null,
+    "topic": "acceptance_commitment_therapy",
+    "source": "Acceptance and commitment therapy - Wikipedia",
+    "source_location": "Empirical research - Effectiveness",
+    "verified": true
+  },
+  {
+    "id": "059",
+    "type": "evidence_based_tip",
+    "text": "طبق تمرين 'تسمية القصة': صنف الفكرة السلبية المكررة كقصة مألوفة يعيد عقلك عرضها دائماً، مثل: 'ها هي قصة أنا لست كافياً تبدأ مجدداً'.",
+    "author": null,
+    "topic": "acceptance_commitment_therapy",
+    "source": "Acceptance and Commitment Therapy (ACT): Defusion Tools for Sticky Thoughts - Squarespace",
+    "source_location": "Cognitive Defusion Exercises",
+    "verified": true
+  },
+  {
+    "id": "060",
+    "type": "evidence_based_tip",
+    "text": "كرر فكرتك المقلقة بصوت سخيف أو كرتوني مضحك، أو قم بغنائها، لثوانٍ معدودة؛ ستجد أن الكلمات فقدت جديتها وسطوتها المخيفة على مشاعرك.",
+    "author": null,
+    "topic": "acceptance_commitment_therapy",
+    "source": "Acceptance and Commitment Therapy (ACT): Defusion Tools for Sticky Thoughts - Squarespace",
+    "source_location": "Cognitive Defusion Exercises",
+    "verified": true
+  },
+  {
+    "id": "061",
+    "type": "evidence_based_tip",
+    "text": "قل لعقلك بلطف: 'شكراً لك يا عقلي على هذه الفكرة، وشكراً لمحاولتك حمايتي'، مما يفصلك عن التماهي والصراع العنيف مع الفكرة المزعجة.",
+    "author": null,
+    "topic": "acceptance_commitment_therapy",
+    "source": "Acceptance and Commitment Therapy (ACT): Defusion Tools for Sticky Thoughts - Squarespace",
+    "source_location": "Cognitive Defusion Exercises",
+    "verified": true
+  },
+  {
+    "id": "062",
+    "type": "evidence_based_tip",
+    "text": "اكتب فكرتك المزعجة على ورقة صغيرة، واحملها معك في جيبك طوال اليوم كطريقة ملموسة للتعايش مع وجودها والتركيز على أفعالك الهامة.",
+    "author": null,
+    "topic": "acceptance_commitment_therapy",
+    "source": "Acceptance and Commitment Therapy (ACT): Defusion Tools for Sticky Thoughts - Squarespace",
+    "source_location": "Cognitive Defusion Exercises",
+    "verified": true
+  },
+  {
+    "id": "063",
+    "type": "evidence_based_tip",
+    "text": "طبق تمرين 'المرساة في العاصفة': عندما تجتاحك مشاعر حادة، اشعر بملامسة قدميك للأرض تماماً، وركز على حواسك الخمس لتعود للواقع الحالي.",
+    "author": null,
+    "topic": "acceptance_commitment_therapy",
+    "source": "There are six core processes in ACT",
+    "source_location": "Core processes - Present Moment Awareness",
+    "verified": true
+  },
+  {
+    "id": "064",
+    "type": "evidence_based_tip",
+    "text": "استخدم استعارة 'الأوراق على المجرى المائي': تخيل أفكارك المقلقة كأوراق شجر تتساقط فوق مجرى ماء جارٍ، وشاهدها وهي تمر وتتلاشى ببطء ولطف.",
+    "author": null,
+    "topic": "acceptance_commitment_therapy",
+    "source": "Acceptance and Commitment Therapy (ACT): Defusion Tools for Sticky Thoughts - Squarespace",
+    "source_location": "Cognitive Defusion Exercises",
+    "verified": true
+  },
+  {
+    "id": "065",
+    "type": "evidence_based_tip",
+    "text": "تخيل أفكارك الغاضبة كغيوم عابرة في سماء زرقاء واسعة؛ أنت لست الغيوم المقلقة، أنت السماء الفسيحة التي تراقب مرورها بسلام وصبر.",
+    "author": null,
+    "topic": "acceptance_commitment_therapy",
+    "source": "Acceptance and Commitment Therapy (ACT): Defusion Tools for Sticky Thoughts - Squarespace",
+    "source_location": "Cognitive Defusion Exercises",
+    "verified": true
+  },
+  {
+    "id": "066",
+    "type": "evidence_based_tip",
+    "text": "طبق تمرين 'الرماية بالبوصلة' لتحديد قيمك الذاتية بدقة في مجالات العلاقات، والعمل، والصحة، والترفيه، وتأكد من السير باتجاهها يومياً.",
+    "author": null,
+    "topic": "acceptance_commitment_therapy",
+    "source": "The ACT Hexaflex - Nesh Nikolic",
+    "source_location": "The Hexaflex",
+    "verified": true
+  },
+  {
+    "id": "067",
+    "type": "evidence_based_tip",
+    "text": "اسأل نفسك دائماً: 'إذا كان التوتر غائباً تماماً، ما السلوك الإيجابي والنبيل الذي كنت سأبدأ في ممارسته فوراً؟' لتكتشف قيمك الحقيقية.",
+    "author": null,
+    "topic": "acceptance_commitment_therapy",
+    "source": "The ACT Hexaflex - Nesh Nikolic",
+    "source_location": "The Hexaflex",
+    "verified": true
+  },
+  {
+    "id": "068",
+    "type": "evidence_based_tip",
+    "text": "افسح مجالاً واسعاً لمشاعرك الصعبة: بدلاً من كبت القلق، تنفس بعمق واشعر به كطاقة جسدية دون محاولة طردها أو مقاومتها بعنف.",
+    "author": null,
+    "topic": "acceptance_commitment_therapy",
+    "source": "Acceptance and commitment therapy - Wikipedia",
+    "source_location": "Technique - Developing psychological flexibility",
+    "verified": true
+  },
+  {
+    "id": "069",
+    "type": "evidence_based_tip",
+    "text": "راقب الأنماط اللفظية التي تصيغ بها أفكارك: تجنب قول 'أنا حزين دائماً' واستبدلها بـ 'أنا ألاحظ أن لدي مشاعر حزن حالياً عابرة'.",
+    "author": null,
+    "topic": "acceptance_commitment_therapy",
+    "source": "Acceptance and commitment therapy - Wikipedia",
+    "source_location": "Technique - Developing psychological flexibility",
+    "verified": true
+  },
+  {
+    "id": "070",
+    "type": "evidence_based_tip",
+    "text": "ضع خطة عمل ملتزمة أسبوعياً: حدد قيمتين أساسيتين تود عيشهما، واكتب فعلين ملموسين وبسيطين ستلتزم بتأديتهما بمسؤولية لدعم قيمك.",
+    "author": null,
+    "topic": "acceptance_commitment_therapy",
+    "source": "Acceptance and commitment therapy - Wikipedia",
+    "source_location": "Technique - Developing psychological flexibility",
+    "verified": true
+  },
+  {
+    "id": "071",
+    "type": "evidence_based_tip",
+    "text": "عند شعورك بالعجز عن اتخاذ القرارات، ارجع لقيمك الحاكمة: تذكر ما يمنح حياتك معنى وقم بتأدية أصغر فعل ممكن يتماشى مع تلك القيم.",
+    "author": null,
+    "topic": "acceptance_commitment_therapy",
+    "source": "Using the ACT Values Daily Diary with Your Therapy Clients",
+    "source_location": "ACT Therapy and the ACT Values Daily Diary",
+    "verified": true
+  },
+  {
+    "id": "072",
+    "type": "evidence_based_tip",
+    "text": "عند تذكر صدمات الماضي، ذكّر نفسك أنك الآن في الحاضر بسلام؛ ركز انتباهك بالكامل على محيطك المادي الحالي عبر الحواس الخمس لحماية اتزانك.",
+    "author": null,
+    "topic": "acceptance_commitment_therapy",
+    "source": "There are six core processes in ACT",
+    "source_location": "Core processes - Present Moment Awareness",
+    "verified": true
+  },
+  {
+    "id": "073",
+    "type": "evidence_based_tip",
+    "text": "ميز بين أفكارك كافتراضات عقلية وبين الحقائق المادية المطلقة؛ فالعقل يحب صياغة التحذيرات الكارثية لكنها نادراً ما تعبر عن الواقع بدقة.",
+    "author": null,
+    "topic": "acceptance_commitment_therapy",
+    "source": "Acceptance and commitment therapy - Wikipedia",
+    "source_location": "Origins and development",
+    "verified": true
+  },
+  {
+    "id": "074",
+    "type": "evidence_based_tip",
+    "text": "تجنب الركض خلف فكرة 'أنا لست جيداً كفاية'؛ وبدلاً من تصديقها، راقبها واعتبرها مجرد رأي قديم وغير مفيد يصيغه عقلك المجهد.",
+    "author": null,
+    "topic": "acceptance_commitment_therapy",
+    "source": "Acceptance and Commitment Therapy (ACT): Defusion Tools for Sticky Thoughts - Squarespace",
+    "source_location": "Introduction",
+    "verified": true
+  },
+  {
+    "id": "075",
+    "type": "evidence_based_tip",
+    "text": "عند التعرض لنوبة توتر حادة، جرب الجلوس لـ 5 دقائق والتركيز بالكامل على ملمس وشكل وحجم غرض مادي بسيط كقلم أو كوب لتهدئة جهازك العصبي.",
+    "author": null,
+    "topic": "acceptance_commitment_therapy",
+    "source": "Acceptance and commitment therapy - Wikipedia",
+    "source_location": "Technique - Developing psychological flexibility",
+    "verified": true
+  },
+  {
+    "id": "076",
+    "type": "evidence_based_tip",
+    "text": "لا تدع مشاعرك تقود أفعالك بالكامل؛ فالتعايش المقبول مع مشاعر الخوف العابرة يتيح لك المبادرة وتأدية أفعال شجاعة ومهمة في حياتك وعلاقاتك.",
+    "author": null,
+    "topic": "acceptance_commitment_therapy",
+    "source": "Acceptance and commitment therapy - Wikipedia",
+    "source_location": "Technique - Developing psychological flexibility",
+    "verified": true
+  },
+  {
+    "id": "077",
+    "type": "scientist_quote",
+    "text": "الجدلية هي القدرة المتوازنة على الجمع بين فكرتين تبدوان متناقضتين تماماً في الظاهر: القبول الكامل للذات، والتغيير المستمر للسلوك.",
+    "author": "مارشا لينهان",
+    "topic": "dialectical_behavior_therapy",
+    "source": "العِلاجاتُ الثلاثة (CBT) و(ACT) و(DBT) ماهيَّتُها والفروقُ بينها - مركز مداد للدراسات",
+    "source_location": "مفهوم الجدلية",
+    "verified": true
+  },
+  {
+    "id": "078",
+    "type": "scientist_quote",
+    "text": "إن اليقظة الذهنية والوعي باللحظة هما الأساس المتين الذي تبنى عليه كافة مهارات التحمل والتأقلم وتنظيم الانفعالات الأخرى.",
+    "author": "لين بيدرسون",
+    "topic": "dialectical_behavior_therapy",
+    "source": "Dialectical behavior therapy - Wikipedia",
+    "source_location": "Mindfulness",
+    "verified": true
+  },
+  {
+    "id": "079",
+    "type": "scientist_quote",
+    "text": "جوهر مهارات DBT ليس إلغاء مشاعرنا أو الهروب من عواطفنا، وإنما تعلم كيفية العيش معها بأمان دون أن تترجم لسلوك مدمر.",
+    "author": "دكتور محمد حجازي",
+    "topic": "dialectical_behavior_therapy",
+    "source": "العلاج الجدلي السلوكي ( DBT) - كايروثيرابي",
+    "source_location": "خاتمة",
+    "verified": true
+  },
+  {
+    "id": "080",
+    "type": "scientist_quote",
+    "text": "التركيز على ممارسات اليقظة والاتصال بالحاضر يفتح أبواب الحكمة والاتزان النفسي ويساعد على خفض أعراض الاكتئاب والتوتر.",
+    "author": "مروة مصلحي",
+    "topic": "dialectical_behavior_therapy",
+    "source": "اليقظة الذهنية في علم النفس (مهارات العلاج السلوكي الجدلي 1)",
+    "source_location": "مقدمة التسجيل المرئي",
+    "verified": true
+  },
+  {
+    "id": "081",
+    "type": "scientific_insight",
+    "text": "توضح النظرية البيولوجية الاجتماعية أن الأفراد المعرضين لاضطراب الشخصية الحدية يمتلكون حساسية فسيولوجية عالية واستجابة عاطفية شديدة للألم.",
+    "author": null,
+    "topic": "dialectical_behavior_therapy",
+    "source": "Dialectical behavior therapy - Wikipedia",
+    "source_location": "Overview - Biosocial theory",
+    "verified": true
+  },
+  {
+    "id": "082",
+    "type": "scientific_insight",
+    "text": "البيئة غير الصالحة عاطفياً (Invalidating Environment) التي تتجاهل مشاعر الطفل أو تسخر منها تعد ركيزة لتطوير صعوبات مزمنة في تنظيم الانفعال عند البلوغ.",
+    "author": null,
+    "topic": "dialectical_behavior_therapy",
+    "source": "Dialectical behavior therapy - Wikipedia",
+    "source_location": "Overview - Biosocial theory",
+    "verified": true
+  },
+  {
+    "id": "083",
+    "type": "scientific_insight",
+    "text": "العقل الحكيم (Wise Mind) هو التركيب والدمج المتوازن بين العقل المنطقي البارد والعقل العاطفي المشحون بالانفعالات للوصول لقرارات حكيمة.",
+    "author": null,
+    "topic": "dialectical_behavior_therapy",
+    "source": "Dialectical behavior therapy - Wikipedia",
+    "source_location": "Mindfulness",
+    "verified": true
+  },
+  {
+    "id": "084",
+    "type": "scientific_insight",
+    "text": "أثبتت التجارب الإكلينيكية المضبوطة أن التدريب الجماعي على مهارات DBT كتدخل مستقل يقلل بشكل ملموس من السلوكيات المؤذية للذات ونسب دخول المستشفى.",
+    "author": null,
+    "topic": "dialectical_behavior_therapy",
+    "source": "Dialectical behavior therapy - Wikipedia",
+    "source_location": "Citations - Chapman (2006) Study",
+    "verified": true
+  },
+  {
+    "id": "085",
+    "type": "scientific_insight",
+    "text": "أظهرت دراسات المتابعة طويلة المدى أن تطبيق مهارات DBT يعزز الاستقرار في العلاقات الشخصية ويقلل الاندفاعية المدمرة وسرعة الغضب.",
+    "author": null,
+    "topic": "dialectical_behavior_therapy",
+    "source": "Dialectical behavior therapy - Wikipedia",
+    "source_location": "Overview - Efficacy",
+    "verified": true
+  },
+  {
+    "id": "086",
+    "type": "scientific_insight",
+    "text": "تساعد مهارة إيقاف السلوك المندفع (STOP) على إيجاد مسافة فاصلة ومستقرة بين التحفيز العاطفي الحاد وبين الاستجابة السلوكية الكارثية.",
+    "author": null,
+    "topic": "dialectical_behavior_therapy",
+    "source": "العلاج الجدلي السلوكي ( DBT) - كايروثيرابي",
+    "source_location": "مهارات تحمل الضيق",
+    "verified": true
+  },
+  {
+    "id": "087",
+    "type": "scientific_insight",
+    "text": "تهدف تقنية TIPP لإحداث تغيير بيولوجي وفيسيولوجي فوري سريع لتهدئة الجهاز العصبي المستثار بشكل حاد خلال دقائق معدودة وبطرق ملموسة.",
+    "author": null,
+    "topic": "dialectical_behavior_therapy",
+    "source": "ما هو العلاج الجدلي السلوكي DBT وما أهميته؟ - مستشفى إيوان للطب النفسي وعلاج الإدمان",
+    "source_location": "مهارات تجاوز المحن",
+    "verified": true
+  },
+  {
+    "id": "088",
+    "type": "scientific_insight",
+    "text": "تقليل التعرض للضعف الجسدي عبر تنظيم النوم والغذاء والنشاط البدني المتوازن يمثل حائط صد بيولوجي منيع لتقليل الهشاشة والحساسية العاطفية.",
+    "author": null,
+    "topic": "dialectical_behavior_therapy",
+    "source": "ما هو العلاج الجدلي السلوكي DBT وما أهميته؟ - مستشفى إيوان للطب النفسي وعلاج الإدمان",
+    "source_location": "تنظيم الانفعالات",
+    "verified": true
+  },
+  {
+    "id": "089",
+    "type": "scientific_insight",
+    "text": "مهارة الفعل المعاكس (Opposite Action) تفترض أن التصرف بعكس الدافع العاطفي المدمر يسهم مباشرة في إخماد المشاعر السلبية الحادة.",
+    "author": null,
+    "topic": "dialectical_behavior_therapy",
+    "source": "Dialectical behavior therapy - Wikipedia",
+    "source_location": "Emotion regulation",
+    "verified": true
+  },
+  {
+    "id": "090",
+    "type": "scientific_insight",
+    "text": "مراقبة المشاعر ووصفها بلغة الواقع الخالية من الأحكام المسبقة يقلل بشكل مادي من حدتها وسيطرتها على قرارات الشخص وتفاعلاته الحالية.",
+    "author": null,
+    "topic": "dialectical_behavior_therapy",
+    "source": "Dialectical behavior therapy - Wikipedia",
+    "source_location": "Mindfulness",
+    "verified": true
+  },
+  {
+    "id": "091",
+    "type": "scientific_insight",
+    "text": "موازنة الإيجابيات والسلبيات قبل الإقدام على سلوك مندفع يدرب العقل على اتخاذ قرارات متزنة ويقلل من وطأة الاندفاع اللحظي المدمر.",
+    "author": null,
+    "topic": "dialectical_behavior_therapy",
+    "source": "Dialectical behavior therapy - Wikipedia",
+    "source_location": "Distress tolerance",
+    "verified": true
+  },
+  {
+    "id": "092",
+    "type": "scientific_insight",
+    "text": "الحفاظ على العلاقات يتطلب الموازنة الفعالة والنبيلة بين تلبية احتياجات الطرف الآخر وبين حماية الحدود الشخصية واحترام الذات بوعي.",
+    "author": null,
+    "topic": "dialectical_behavior_therapy",
+    "source": "فعالية التعامل مع الآخرين | موارد مايند كلينك",
+    "source_location": "العلاقة",
+    "verified": true
+  },
+  {
+    "id": "093",
+    "type": "scientific_insight",
+    "text": "يسهم استخدام بطاقات المراقبة اليومية (Diary Cards) في مساعدة العميل ومعالجه على رصد التطورات وتحديد أولويات خطة العلاج الأسبوعية بدقة.",
+    "author": null,
+    "topic": "dialectical_behavior_therapy",
+    "source": "Dialectical behavior therapy - Wikipedia",
+    "source_location": "Tools - Diary cards",
+    "verified": true
+  },
+  {
+    "id": "094",
+    "type": "scientific_insight",
+    "text": "التدريب على مهارات الفعالية الشخصية يمنح الأفراد أدوات تواصلية متميزة للتعبير عن آرائهم وطلب احتياجاتهم ورفض طلبات الآخرين بلطف وثقة.",
+    "author": null,
+    "topic": "dialectical_behavior_therapy",
+    "source": "فعالية التعامل مع الآخرين | موارد مايند كلينك",
+    "source_location": "فعالية التعامل مع الآخرين",
+    "verified": true
+  },
+  {
+    "id": "095",
+    "type": "evidence_based_tip",
+    "text": "عند اشتداد رغبة إيذاء الذات، جرب مهارة TIPP الجسدية فوراً: اغمر وجهك بماء مثلج لـ 30 ثانية لتنشيط استجابة التهدئة الفسيولوجية للجسم.",
+    "author": null,
+    "topic": "dialectical_behavior_therapy",
+    "source": "ما هو العلاج الجدلي السلوكي DBT وما أهميته؟ - مستشفى إيوان للطب النفسي وعلاج الإدمان",
+    "source_location": "مهارات تجاوز المحن ومواجهة الضغوط",
+    "verified": true
+  },
+  {
+    "id": "096",
+    "type": "evidence_based_tip",
+    "text": "طبق مهارة STOP السلوكية في المواقف المشحونة: توقف تماماً، خذ خطوة للخلف للتنفس بعمق، لاحظ بوعي، ثم تصرف بحكمة واتزان.",
+    "author": null,
+    "topic": "dialectical_behavior_therapy",
+    "source": "العلاج الجدلي السلوكي ( DBT) - كايروثيرابي",
+    "source_location": "مهارات تحمل الضيق",
+    "verified": true
+  },
+  {
+    "id": "097",
+    "type": "evidence_based_tip",
+    "text": "استخدم تقنية ACCEPTS لتشتيت ذهنك عن الألم العاطفي مؤقتاً: انشغل بأنشطة مادية، أو قدم مساعدة لغيرك، لتمر العاصفة بسلام.",
+    "author": null,
+    "topic": "dialectical_behavior_therapy",
+    "source": "العلاج الجدلي السلوكي ( DBT) - كايروثيرابي",
+    "source_location": "مهارات تحمل الضيق",
+    "verified": true
+  },
+  {
+    "id": "098",
+    "type": "evidence_based_tip",
+    "text": "لتقليل حدة الغضب والاندفاع، تدرب على مهارات الملاحظة والوصف: انتبه لما يدور بداخلك كفيلم سينمائي ودونه بلغة واقعية خالية من الأحكام.",
+    "author": null,
+    "topic": "dialectical_behavior_therapy",
+    "source": "اليقظة الذهنية في علم النفس (مهارات العلاج السلوكي الجدلي 1)",
+    "source_location": "مهارات الملاحظة والوصف",
+    "verified": true
+  },
+  {
+    "id": "099",
+    "type": "evidence_based_tip",
+    "text": "عند الخوف والانسحاب غير المبرر، طبق مهارة الفعل المعاكس: واجه الموقف واقترب منه بلطف بدلاً من الهروب لتنهي سطوة الخوف والتوتر عاطفياً.",
+    "author": null,
+    "topic": "dialectical_behavior_therapy",
+    "source": "Dialectical behavior therapy - Wikipedia",
+    "source_location": "Emotion regulation",
+    "verified": true
+  },
+  {
+    "id": "100",
+    "type": "evidence_based_tip",
+    "text": "طبق مهارة PLEASE يومياً لتقليل هشاشتك النفسية: حافظ على نمط نوم مستقر، وتناول غذاءً متزناً، وعالج آلامك الجسدية فوراً ودون تأجيل.",
+    "author": null,
+    "topic": "dialectical_behavior_therapy",
+    "source": "ما هو العلاج الجدلي السلوكي DBT وما أهميته؟ - مستشفى إيوان للطب النفسي وعلاج الإدمان",
+    "source_location": "مهارات تنظيم الانفعالات ومواجهة الضغوط",
+    "verified": true
+  },
+  {
+    "id": "101",
+    "type": "evidence_based_tip",
+    "text": "لطلب شيء من الآخرين بفعالية، استخدم أسلوب DEAR MAN: صف الموقف بموضوعية، عبر عن مشاعرك بوضوح، تمسك بطلبك بجرأة وتفاوض بمرونة.",
+    "author": null,
+    "topic": "dialectical_behavior_therapy",
+    "source": "فعالية التعامل مع الآخرين | موارد مايند كلينك",
+    "source_location": "اكتساب الهدف",
+    "verified": true
+  },
+  {
+    "id": "102",
+    "type": "evidence_based_tip",
+    "text": "للحفاظ على علاقاتك الودية والمستقرة، طبق أسلوب GIVE: تواصل بلطف، أظهر اهتماماً صادقاً بالآخر، تحقق من مشاعره بوعي، وتحدث بمرونة ودعابة.",
+    "author": null,
+    "topic": "dialectical_behavior_therapy",
+    "source": "فعالية التعامل مع الآخرين | موارد مايند كلينك",
+    "source_location": "الحفاظ على العلاقة",
+    "verified": true
+  },
+  {
+    "id": "103",
+    "type": "evidence_based_tip",
+    "text": "لحماية احترامك لذاتك، التزم بقواعد FAST: كن عادلاً مع نفسك، تجنب الاعتذار بلا سبب حقيقي، تمسك بقيمك، وكن صادقاً وواضحاً في حديثك.",
+    "author": null,
+    "topic": "dialectical_behavior_therapy",
+    "source": "ما هو العلاج الجدلي السلوكي DBT وما أهميته؟ - مستشفى إيوان للطب النفسي وعلاج الإدمان",
+    "source_location": "مهارات بناء علاقات فعالة ووضع الحدود",
+    "verified": true
+  },
+  {
+    "id": "104",
+    "type": "evidence_based_tip",
+    "text": "ارسخ في واقعك الحالي عبر تمرين الملاحظة والوصف: ركز بالكامل على تفاصيل غرض مادي أمامك لمدة 5 دقائق دون إصدار أحكام لتهدئة ذهنك المشتت.",
+    "author": null,
+    "topic": "dialectical_behavior_therapy",
+    "source": "اليقظة الذهنية في علم النفس (مهارات العلاج السلوكي الجدلي 1)",
+    "source_location": "تمرين الملاحظة",
+    "verified": true
+  },
+  {
+    "id": "105",
+    "type": "evidence_based_tip",
+    "text": "خطط مسبقاً لمواجهة الأزمات العاطفية: صمم قائمة واضحة ومكتوبة بالمهارات والأنشطة التي ستلجأ إليها مباشرة عند التعرض لضغوط حادة لتجنب الاندفاع.",
+    "author": null,
+    "topic": "dialectical_behavior_therapy",
+    "source": "Dialectical behavior therapy - Wikipedia",
+    "source_location": "Emotion regulation",
+    "verified": true
+  },
+  {
+    "id": "106",
+    "type": "evidence_based_tip",
+    "text": "ميز بوضوح بين رغباتك اللحظية واحتياجاتك الحقيقية طويلة الأجل لتصل للتوازن الكفيل بحماية استقرارك النفسي وعلاقاتك بالآخرين.",
+    "author": null,
+    "topic": "dialectical_behavior_therapy",
+    "source": "فعالية التعامل مع الآخرين | موارد مايند كلينك",
+    "source_location": "فعالية التعامل مع الآخرين",
+    "verified": true
+  },
+  {
+    "id": "107",
+    "type": "evidence_based_tip",
+    "text": "أقبل الواقع كما هو تماماً دون مقاومة عبثية؛ فمقاومة ما حدث بالفعل تزيد من حجم معاناتك النفسية، بينما قبول الواقع يتيح لك بدء التغيير الفعال.",
+    "author": null,
+    "topic": "dialectical_behavior_therapy",
+    "source": "Dialectical behavior therapy - Wikipedia",
+    "source_location": "Mindfulness",
+    "verified": true
+  },
+  {
+    "id": "108",
+    "type": "evidence_based_tip",
+    "text": "احرص على ملء بطاقة المراقبة اليومية بانتظام لتتبع مشاعرك وسلوكياتك بوعي ووضوح، مما يمنع تراكم الضغوط النفسية غير الملاحظة.",
+    "author": null,
+    "topic": "dialectical_behavior_therapy",
+    "source": "Dialectical behavior therapy - Wikipedia",
+    "source_location": "Tools - Diary cards",
+    "verified": true
+  },
+  {
+    "id": "109",
+    "type": "evidence_based_tip",
+    "text": "تجنب التحدث بنبرة عدوانية أو تهديد عندما تضع حدوداً مع الآخرين؛ فالتواصل اللطيف والحازم في آن واحد يحمي حدودك وعلاقاتك بفعالية.",
+    "author": null,
+    "topic": "dialectical_behavior_therapy",
+    "source": "فعالية التعامل مع الآخرين | موارد مايند كلينك",
+    "source_location": "الحفاظ على العلاقة - GIVE",
+    "verified": true
+  },
+  {
+    "id": "110",
+    "type": "evidence_based_tip",
+    "text": "عند شعورك بالغرق في زحام الأفكار، خذ خطوة للوراء وتنفس بعمق، ودع أفكارك تعبر بسلام دون صراع أو تصديق أعمى لمحتواها الكارثي.",
+    "author": null,
+    "topic": "dialectical_behavior_therapy",
+    "source": "اليقظة الذهنية في علم النفس (مهارات العلاج السلوكي الجدلي 1)",
+    "source_location": "تمرين الملاحظة",
+    "verified": true
+  },
+  {
+    "id": "111",
+    "type": "evidence_based_tip",
+    "text": "طبق الحديث الذاتي الإيجابي بانتظام لإعادة بناء ثقتك في انفعالاتك وسلوكياتك، والحد من وطأة رسائل اللوم العنيفة التي يوجهها عقلك المجهد.",
+    "author": null,
+    "topic": "dialectical_behavior_therapy",
+    "source": "العلاج الجدلي السلوكي، التجربة المصرية - مجانين",
+    "source_location": "التدريب على المهارات",
+    "verified": true
+  },
+  {
+    "id": "112",
+    "type": "evidence_based_tip",
+    "text": "عند مواجهة المشاعر الحادة، ميز بوضوح بين العواطف الجسدية العابرة وبين الواقع المادي الحقيقي لتمنع تحول الانفعالات إلى أزمات مدمرة.",
+    "author": null,
+    "topic": "dialectical_behavior_therapy",
+    "source": "العلاج الجدلي السلوكي ( DBT) - كايروثيرابي",
+    "source_location": "خاتمة",
+    "verified": true
+  },
+  {
+    "id": "113",
+    "type": "evidence_based_tip",
+    "text": "شارك بكامل وجودك وانتباهك في نشاطك الحالي: سواء كنت تتناول وجبة أو تغسل يديك، ركز تماماً على تفاصيل اللحظة لتعزز وعيك واستقرارك.",
+    "author": null,
+    "topic": "dialectical_behavior_therapy",
+    "source": "Dialectical behavior therapy - Wikipedia",
+    "source_location": "Mindfulness",
+    "verified": true
+  },
+  {
+    "id": "114",
+    "type": "evidence_based_tip",
+    "text": "تجنب إصدار أحكام مطلقة مثل 'هذا سيء للغاية'، واستبدلها بوصف وقائعي موضوعي بسيط: 'أنا أواجه حالياً صعوبة تتطلب مني التركيز وحل المشكلة بفعالية'.",
+    "author": null,
+    "topic": "dialectical_behavior_therapy",
+    "source": "Dialectical behavior therapy - Wikipedia",
+    "source_location": "Mindfulness",
+    "verified": true
+  },
+  {
+    "id": "115",
+    "type": "scientist_quote",
+    "text": "العلاج هو مساحة تتيح رفع الكبت، وكشف الدوافع والدفاعات اللاشعورية، والتعبير الحر عن الانفعالات العميقة للتغيير الذاتي.",
+    "author": "سيغموند فرويد",
+    "topic": "psychodynamic_therapy",
+    "source": "Navigating Transference and Countertransference - Quantum Units Education",
+    "source_location": "Section 2: Transference, Page 17",
+    "verified": true
+  },
+  {
+    "id": "116",
+    "type": "scientist_quote",
+    "text": "المنظور الديناميكي الحديث هو من أكثر المدارس شمولاً واتساعاً، كونه يمس الشخصية، التطور الإنساني، والاضطرابات معاً بمرونة وعمق.",
+    "author": "راسل فولمر",
+    "topic": "psychodynamic_therapy",
+    "source": "The Evolution of the Psychodynamic Approach and System - Canadian Center of Science and Education",
+    "source_location": "Abstract",
+    "verified": true
+  },
+  {
+    "id": "117",
+    "type": "scientist_quote",
+    "text": "إن إدراكنا لآليات الدفاع النفسي اللاشعورية وتطوير الاستبصار الذاتي هما المفتاحان لتجاوز صراعات الماضي والتحرر في الحاضر.",
+    "author": "نانسي ماكويليامز",
+    "topic": "psychodynamic_therapy",
+    "source": "The Evolution of the Psychodynamic Approach and System - Canadian Center of Science and Education",
+    "source_location": "References / McWilliams Diagnosis Citation",
+    "verified": true
+  },
+  {
+    "id": "118",
+    "type": "scientist_quote",
+    "text": "العمليات اللاشعورية تتدخل في صياغة سلوكياتنا اليومية وقراراتنا الشخصية بشكل دائم وبأكثر مما يظن عقلنا الواعي بكثير.",
+    "author": "روبرت بورنشتاين",
+    "topic": "psychodynamic_therapy",
+    "source": "The Psychodynamic Perspective - Noba Project",
+    "source_location": "Unconscious processes",
+    "verified": true
+  },
+  {
+    "id": "119",
+    "type": "scientific_insight",
+    "text": "يفترض العلاج النفسي الديناميكي الحديث أن السلوكيات الصعبة والأعراض النفسية الحالية تنبع دائماً من صراعات لا شعورية وتجارب مبكرة غير محلولة.",
+    "author": null,
+    "topic": "psychodynamic_therapy",
+    "source": "Psychodynamics - Wikipedia",
+    "source_location": "Overview",
+    "verified": true
+  },
+  {
+    "id": "120",
+    "type": "scientific_insight",
+    "text": "التجارب والعلاقات المبكرة مع الوالدين في مرحلة الطفولة تشكل 'مخططات' داخلية لا شعورية توجه توقعات الفرد وطريقة تواصله في علاقاته اللاحقة.",
+    "author": null,
+    "topic": "psychodynamic_therapy",
+    "source": "The Psychodynamic Perspective - Noba Project",
+    "source_location": "Empirical Research on Psychodynamic Theories - Hypothesis 3",
+    "verified": true
+  },
+  {
+    "id": "121",
+    "type": "scientific_insight",
+    "text": "مبدأ الحتمية النفسية (Psychic Causality) يفترض أن كل فكرة أو شعور أو حلم لا يحدث بمحض الصدفة، بل له دلالة وأسباب لا شعورية عميقة.",
+    "author": null,
+    "topic": "psychodynamic_therapy",
+    "source": "The Psychodynamic Perspective - Noba Project",
+    "source_location": "Assumption 3: Psychic Causality",
+    "verified": true
+  },
+  {
+    "id": "122",
+    "type": "scientific_insight",
+    "text": "آليات الدفاع النفسي هي استراتيجيات لا شعورية يلجأ إليها العقل لحماية الذات من القلق والتوتر الحاد المصاحب للصراعات النفسية.",
+    "author": null,
+    "topic": "psychodynamic_therapy",
+    "source": "The Psychodynamic Perspective - Noba Project",
+    "source_location": "The Ego and Its Defenses",
+    "verified": true
+  },
+  {
+    "id": "123",
+    "type": "scientific_insight",
+    "text": "هناك تدرج في نضج آليات الدفاع؛ فالكبت والإنكار آليات غير ناضجة قد تضر بالصحة، بينما التسامي والعقلنة يمثلان آليات ناضجة وفعالة وصحية.",
+    "author": null,
+    "topic": "psychodynamic_therapy",
+    "source": "The Psychodynamic Perspective - Noba Project",
+    "source_location": "Empirical Research on Psychodynamic Theories",
+    "verified": true
+  },
+  {
+    "id": "124",
+    "type": "scientific_insight",
+    "text": "التحويل (Transference) هو إعادة تمثيل لا شعورية لأنماط العلاقات القديمة وإسقاط مشاعر الماضي على المعالج أو الآخرين في الحاضر بغير وعي.",
+    "author": null,
+    "topic": "psychodynamic_therapy",
+    "source": "Navigating Transference and Countertransference - Quantum Units Education",
+    "source_location": "Section 2: Transference",
+    "verified": true
+  },
+  {
+    "id": "125",
+    "type": "scientific_insight",
+    "text": "التحويل المقابل (Countertransference) يمثل مشاعر وردود أفعال المعالج اللاشعورية والخاصة تجاه العميل، ويتطلب تفكيكاً دقيقاً لحماية إيجابية العلاج.",
+    "author": null,
+    "topic": "psychodynamic_therapy",
+    "source": "Navigating Transference and Countertransference - Quantum Units Education",
+    "source_location": "Section 3: Countertransference",
+    "verified": true
+  },
+  {
+    "id": "126",
+    "type": "scientific_insight",
+    "text": "الاستبصار العاطفي يمثل جوهر الشفاء في المنظور الديناميكي؛ وهو لا يعني الفهم المعرفي البارد للمشكلة، بل معايشة وفهم انفعالاتها العميقة.",
+    "author": null,
+    "topic": "psychodynamic_therapy",
+    "source": "The Evolution of the Psychodynamic Approach and System - Canadian Center of Science and Education",
+    "source_location": "Objectives",
+    "verified": true
+  },
+  {
+    "id": "127",
+    "type": "scientific_insight",
+    "text": "تطور علم الأعصاب والاتصال بمرونة الخلايا أكد صحة فرضيات التحليل النفسي بأن التجارب الإنسانية تعيد مادياً تشكيل الخلايا والمسارات العصبية في الدماغ.",
+    "author": null,
+    "topic": "psychodynamic_therapy",
+    "source": "The Evolution of the Psychodynamic Approach and System - Canadian Center of Science and Education",
+    "source_location": "The Evolution of the System",
+    "verified": true
+  },
+  {
+    "id": "128",
+    "type": "scientific_insight",
+    "text": "الصراع المركزي للأنا (Ego) يكمن في سعيها المستمر والدؤوب للموازنة بين رغبات الهو الاندفاعية ومبادئ الأنا الأعلى الصارمة ومتطلبات الواقع المادي.",
+    "author": null,
+    "topic": "psychodynamic_therapy",
+    "source": "Psychodynamics - Wikipedia",
+    "source_location": "Overview",
+    "verified": true
+  },
+  {
+    "id": "129",
+    "type": "scientific_insight",
+    "text": "تمثيل العلاقات الموضوعية (Object Relations) يمثل صوراً ذهنية داخلية ومستقرة للأشخاص المهمين في حياتنا، وتعمل كـ 'برنامج لا شعوري' لتوجيه سلوكنا الاجتماعي.",
+    "author": null,
+    "topic": "psychodynamic_therapy",
+    "source": "The Psychodynamic Perspective - Noba Project",
+    "source_location": "Object relations theory",
+    "verified": true
+  },
+  {
+    "id": "130",
+    "type": "scientific_insight",
+    "text": "الكبت المستمر للمشاعر المؤلمة والصدمات المبكرة دون التعبير عنها يؤدي إلى تحولها لأعراض جسدية مزمنة غير معروفة السبب العضوي بوضوح.",
+    "author": null,
+    "topic": "psychodynamic_therapy",
+    "source": "The Evolution of the Psychodynamic Approach and System - Canadian Center of Science and Education",
+    "source_location": "Introduction",
+    "verified": true
+  },
+  {
+    "id": "131",
+    "type": "evidence_based_tip",
+    "text": "راقب أنماط علاقاتك الحالية: عندما يتكرر معك نفس نوع الصراعات مع أشخاص مختلفين، اسأل نفسك: 'ما هو النمط القديم من الطفولة الذي أعيد تمثيله هنا؟'.",
+    "author": null,
+    "topic": "psychodynamic_therapy",
+    "source": "The Psychodynamic Perspective - Noba Project",
+    "source_location": "Empirical Research on Psychodynamic Theories - Hypothesis 3",
+    "verified": true
+  },
+  {
+    "id": "132",
+    "type": "evidence_based_tip",
+    "text": "حدد أسلوبك الدفاعي السائد عند التوتر: هل تلجأ للإنكار المضر أم للكبت؟ وحاول استبدال ذلك بآليات ناضجة كالعقلنة الهادئة والتسامي الفعال.",
+    "author": null,
+    "topic": "psychodynamic_therapy",
+    "source": "The Psychodynamic Perspective - Noba Project",
+    "source_location": "Ego Defenses and Adjustment",
+    "verified": true
+  },
+  {
+    "id": "133",
+    "type": "evidence_based_tip",
+    "text": "طبق تمرين 'الكتابة بالتداعي الحر': اجلس لـ 10 دقائق يومياً واكتب كل ما يدور في عقلك من أفكار ومشاعر دون تصفية أو رقابة للاتصال بلاشعورك.",
+    "author": null,
+    "topic": "psychodynamic_therapy",
+    "source": "The Evolution of the Psychodynamic Approach and System - Canadian Center of Science and Education",
+    "source_location": "Psychoanalysis methods",
+    "verified": true
+  },
+  {
+    "id": "134",
+    "type": "evidence_based_tip",
+    "text": "عندما تجتاحك مشاعر غضب عارمة تجاه شخص في الحاضر، اسأل نفسك: 'من هو الشخص في ماضيّ الذي يذكرني به هذا الموقف الحاد؟' لتمنع الإسقاط والتحويل.",
+    "author": null,
+    "topic": "psychodynamic_therapy",
+    "source": "Navigating Transference and Countertransference - Quantum Units Education",
+    "source_location": "Section 2: Transference",
+    "verified": true
+  },
+  {
+    "id": "135",
+    "type": "evidence_based_tip",
+    "text": "انتبه للاستجابات العاطفية المبالغ فيها تجاه الآخرين؛ فغالباً ما تمثل هذه الاستجابات الحادة إشارات واضحة على وجود صراعات نفسية قديمة تتطلب حلاً.",
+    "author": null,
+    "topic": "psychodynamic_therapy",
+    "source": "Psychodynamics - Wikipedia",
+    "source_location": "Overview",
+    "verified": true
+  },
+  {
+    "id": "136",
+    "type": "evidence_based_tip",
+    "text": "تصالح مع طفولتك وتاريخك الشخصي: إدراك تأثير تجارب الماضي المبكرة يساعدك على بناء سرد شخصي جديد ومتزن يحرر سلوكياتك الحالية.",
+    "author": null,
+    "topic": "psychodynamic_therapy",
+    "source": "Psychodynamics - Wikipedia",
+    "source_location": "Overview",
+    "verified": true
+  },
+  {
+    "id": "137",
+    "type": "evidence_based_tip",
+    "text": "ميز بين رغباتك الاندفاعية العميقة وبين القواعد والمبادئ الأخلاقية الصارمة لتصل للموازنة والاتزان الكفيل بحماية سلامك النفسي اليومي.",
+    "author": null,
+    "topic": "psychodynamic_therapy",
+    "source": "Psychodynamics - Wikipedia",
+    "source_location": "Overview",
+    "verified": true
+  },
+  {
+    "id": "138",
+    "type": "evidence_based_tip",
+    "text": "عند تذكر أحلامك المزعجة، دونها بوعي وحاول البحث عن الرموز والرغبات الدفينة التي قد يحاول لا شعورك التعبير عنها لتهدئة صراعاتك الداخلية.",
+    "author": null,
+    "topic": "psychodynamic_therapy",
+    "source": "The Evolution of the Psychodynamic Approach and System - Canadian Center of Science and Education",
+    "source_location": "Psychoanalysis methods",
+    "verified": true
+  },
+  {
+    "id": "139",
+    "type": "evidence_based_tip",
+    "text": "تحدث بصدق مع معالجك أو شخص تثق به حول مخاوفك ومشاعرك الدفينة؛ فالتفريغ العاطفي المنظم (Catharsis) يسهم في تحرير طاقتك النفسية الكبيسة.",
+    "author": null,
+    "topic": "psychodynamic_therapy",
+    "source": "Psychodynamics - Wikipedia",
+    "source_location": "Overview",
+    "verified": true
+  },
+  {
+    "id": "140",
+    "type": "evidence_based_tip",
+    "text": "راقب ردود أفعالك الدفاعية التجنبية: هل تحاول الهروب من مواجهة المشاعر عبر الاستغراق في العمل المفرط؟ وحاول استعادة توازنك النفسي بلطف.",
+    "author": null,
+    "topic": "psychodynamic_therapy",
+    "source": "The Evolution of the Psychodynamic Approach and System - Canadian Center of Science and Education",
+    "source_location": "Ego Defenses",
+    "verified": true
+  },
+  {
+    "id": "141",
+    "type": "evidence_based_tip",
+    "text": "عند حدوث خلافات تواصلية حادة، تجنب الإنكار والهروب من الأزمة، وواجه الصعوبات بوعي واستبصار عاطفي هادئ للوصول لتسوية تواصلية صحية.",
+    "author": null,
+    "topic": "psychodynamic_therapy",
+    "source": "The Psychodynamic Perspective - Noba Project",
+    "source_location": "Ego Defenses and Adjustment",
+    "verified": true
+  },
+  {
+    "id": "142",
+    "type": "evidence_based_tip",
+    "text": "ادرس تاريخ علاقة والديك ببعضهما البعض؛ فكثيراً ما نميل لا شعورياً لإعادة تكرار واختيار نفس أنماط تواصلهما في علاقاتنا العاطفية الخاصة.",
+    "author": null,
+    "topic": "psychodynamic_therapy",
+    "source": "The Psychodynamic Perspective - Noba Project",
+    "source_location": "Empirical Research on Psychodynamic Theories - Hypothesis 3",
+    "verified": true
+  },
+  {
+    "id": "143",
+    "type": "evidence_based_tip",
+    "text": "عند شعورك بالغرق في لوم ذاتك وتأنيب الضمير العنيف، تنبه لسطوة الأنا الأعلى الصارمة بداخلك وحاول تخفيف حدة الأحكام السلبية بحكمة ورفق.",
+    "author": null,
+    "topic": "psychodynamic_therapy",
+    "source": "Psychodynamics - Wikipedia",
+    "source_location": "Overview",
+    "verified": true
+  },
+  {
+    "id": "144",
+    "type": "evidence_based_tip",
+    "text": "اجعل حديثك مع المقربين منك متسعاً ومفتوحاً دون رقابة أو مرشحات قاسية؛ فالتعبير التلقائي والحر يظهر جوانب لا شعورية هامة لشفائك العاطفي.",
+    "author": null,
+    "topic": "psychodynamic_therapy",
+    "source": "Navigating Transference and Countertransference - Quantum Units Education",
+    "source_location": "Section 2: Transference, Page 17",
+    "verified": true
+  },
+  {
+    "id": "145",
+    "type": "evidence_based_tip",
+    "text": "عند التعرض لضغوط تواصلية، ميز بين الصور الذهنية القديمة للشخص وبين واقعه الحالي وتصرفاته الحقيقية لتمنع تشويه علاقاتك الراهنة.",
+    "author": null,
+    "topic": "psychodynamic_therapy",
+    "source": "The Psychodynamic Perspective - Noba Project",
+    "source_location": "Object relations theory",
+    "verified": true
+  },
+  {
+    "id": "146",
+    "type": "evidence_based_tip",
+    "text": "انتبه لمقاومتك للتغيير: عندما تلاحظ تكرار تأجيلك لتطبيق سلوكيات صحية وناجحة، ادرس دوافعك وصراعاتك الداخلية اللاشعورية التي تعيق تقدمك بوعي.",
+    "author": null,
+    "topic": "psychodynamic_therapy",
+    "source": "The Evolution of the Psychodynamic Approach and System - Canadian Center of Science and Education",
+    "source_location": "Objectives",
+    "verified": true
+  },
+  {
+    "id": "147",
+    "type": "evidence_based_tip",
+    "text": "دون انفعالاتك الجسدية المصاحبة لتذكر أحداث الماضي الصعبة؛ ففهم تلك الانفعالات يمثل خطوة هامة في اتجاه بناء استبصار عاطفي سليم ومتكامل.",
+    "author": null,
+    "topic": "psychodynamic_therapy",
+    "source": "The Evolution of the Psychodynamic Approach and System - Canadian Center of Science and Education",
+    "source_location": "Objectives",
+    "verified": true
+  },
+  {
+    "id": "148",
+    "type": "evidence_based_tip",
+    "text": "اجعل قراراتك تواصلية وواعية بدلاً من الاعتماد على الدوافع والميول الاندفاعية العميقة لحماية اتزانك واستقرار علاقاتك مع الآخرين.",
+    "author": null,
+    "topic": "psychodynamic_therapy",
+    "source": "Psychodynamics - Wikipedia",
+    "source_location": "Overview",
+    "verified": true
+  },
+  {
+    "id": "149",
+    "type": "evidence_based_tip",
+    "text": "اعترف بلطف وبصدق بصراعاتك النفسية الداخلية دون كبت أو محاولة إنكارها؛ فالاعتراف بالصراع هو البداية الحقيقية للاستقرار النفسي والشفاء.",
+    "author": null,
+    "topic": "psychodynamic_therapy",
+    "source": "The Evolution of the Psychodynamic Approach and System - Canadian Center of Science and Education",
+    "source_location": "Objectives",
+    "verified": true
+  },
+  {
+    "id": "150",
+    "type": "evidence_based_tip",
+    "text": "عند التعرض لتوتر شديد، استعن بآليات دفاعية ناضجة كالتسامي وتحويل طاقة التوتر والضغط إلى أنشطة إبداعية وفنية ورياضية مفيدة ومثمرة.",
+    "author": null,
+    "topic": "psychodynamic_therapy",
+    "source": "The Psychodynamic Perspective - Noba Project",
+    "source_location": "Ego Defenses and Adjustment",
+    "verified": true
+  }
+]

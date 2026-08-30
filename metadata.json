@@ -1,0 +1,6 @@
+{
+  "name": "Mental Journey Tracker",
+  "description": "Hybrid Chatbot Engine with Arabic NLP, multi-strategy deterministic search, context & pronoun resolution, anti-hallucination confidence scoring, and LLM synthesis layer.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

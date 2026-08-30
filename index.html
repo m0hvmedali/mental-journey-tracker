@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/ChatGPT_Image_Jul_19_2025_06_34_59_PM.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mental Journey Tracker</title>
+    <meta name="description" content="Hybrid Chatbot Engine with Arabic NLP, multi-strategy deterministic search, context & pronoun resolution, anti-hallucination confidence scoring, and LLM synthesis layer." />
+    <meta property="og:title" content="Mental Journey Tracker" />
+    <meta property="og:description" content="Hybrid Chatbot Engine with Arabic NLP, multi-strategy deterministic search, context & pronoun resolution, anti-hallucination confidence scoring, and LLM synthesis layer." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700;800;900&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,700;1,6..72,400&family=Space+Mono:wght@400;700&family=Noto+Sans+Arabic:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <script>
+      (function() {
+        try {
+          var savedTheme = localStorage.getItem('theme') || 'light';
+          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (savedTheme === 'dark' || (savedTheme === 'system' && prefersDark)) {
+            document.documentElement.classList.add('dark');
+            document.body && document.body.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+            document.body && document.body.classList.remove('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <script>
+      (function() {
+        try {
+          var hostname = window.location.hostname;
+          var isAllowedHost = hostname === 'mental-journey-tracker.vercel.app';
+          if (isAllowedHost) {
+            var script = document.createElement('script');
+            script.src = 'https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js';
+            script.defer = true;
+            document.head.appendChild(script);
+
+            window.OneSignalDeferred = window.OneSignalDeferred || [];
+            OneSignalDeferred.push(async function(OneSignal) {
+              try {
+                await OneSignal.init({
+                  appId: "f5626541-3f3c-49e0-b23a-894078b7987f",
+                  safari_web_id: "web.onesignal.auto.4fdd94b0-fa82-44cd-8fe9-7a26a1b4ad72",
+                  notifyButton: {
+                    enable: true,
+                  }
+                });
+              } catch (err) {
+                console.warn('OneSignal initialization skipped:', err);
+              }
+            });
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body class="bg-bg-app text-text-primary antialiased transition-colors duration-200">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

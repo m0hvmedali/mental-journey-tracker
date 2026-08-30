@@ -1,0 +1,161 @@
+@import "tailwindcss/utilities.css";
+@import "tailwindcss/preflight.css";
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@import "tw-animate-css";
+
+@theme {
+  --color-bg-app: var(--bg-app);
+  --color-bg-surface: var(--bg-surface);
+  --color-bg-surface-elevated: var(--bg-surface-elevated);
+  --color-bg-surface-hover: var(--bg-surface-hover);
+  --color-bg-overlay: var(--bg-overlay);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-border-subtle: var(--border-subtle);
+  --color-border-medium: var(--border-medium);
+  
+  --color-accent-primary: var(--accent-primary);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-palm: var(--accent-palm);
+  --color-accent-dawn: var(--accent-dawn);
+  --color-accent-clay: var(--accent-clay);
+  
+  --font-sans: "IBM Plex Sans Arabic", "Noto Sans Arabic", sans-serif;
+  --font-display: "Alexandria", sans-serif;
+  --font-mono: "Space Mono", monospace;
+  --font-serif: "Newsreader", serif;
+}
+
+/* Design Tokens for Light & Dark Mode */
+:root {
+  /* Backgrounds: Papyrus-inspired */
+  --bg-overlay: rgba(250, 247, 242, 0.85);
+  --bg-app: #FAF7F2;
+  --bg-surface: #FFFFFF;
+  --bg-surface-elevated: #F4EFE6;
+  --bg-surface-hover: #EFE9DE;
+  
+  /* Text: Ink-inspired */
+  --text-primary: #171513;
+  --text-secondary: #3B3632;
+  --text-muted: #665F58;
+  
+  /* Borders: Sandstone-inspired */
+  --border-subtle: #DBCBB6;
+  --border-medium: #C7B59D;
+  
+  /* Accents */
+  --accent-primary: #1C445C; /* Nile Blue (Primary CTA) */
+  --accent-hover: #133042;
+  --accent-palm: #2C4C3B; /* Deep Palm (CBT/Logic) */
+  --accent-dawn: #E8A856; /* Dawn Light (Progress/Wins) */
+  --accent-clay: #B45330; /* Nile Clay (Rare sparse accents only) */
+  
+  /* Legacy mapped to new */
+  --accent-emerald: var(--accent-primary);
+  --accent-emerald-dark: var(--accent-hover);
+  --accent-soft: rgba(28, 68, 92, 0.15);
+}
+
+html.dark {
+  /* Backgrounds */
+  --bg-overlay: rgba(18, 18, 18, 0.85);
+  --bg-app: #121212;
+  --bg-surface: #1C1C1C;
+  --bg-surface-elevated: #262626;
+  --bg-surface-hover: #333333;
+  
+  /* Text: Off-white ink */
+  --text-primary: #E4E0D9;
+  --text-secondary: #A09C96;
+  --text-muted: #6B6864;
+  
+  /* Borders */
+  --border-subtle: #333333;
+  --border-medium: #4D4D4D;
+  
+  /* Accents */
+  --accent-primary: #4A8AB3; /* Nile Blue Light */
+  --accent-hover: #387094;
+  --accent-palm: #407559; /* Lighter Palm */
+  --accent-dawn: #EFC081;
+  --accent-clay: #C76D49;
+  
+  /* Legacy mapped to new */
+  --accent-emerald: var(--accent-primary);
+  --accent-emerald-dark: var(--accent-hover);
+  --accent-soft: rgba(74, 138, 179, 0.2);
+}
+
+/* Base Body Styles */
+html, body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Lucide Icon Global Override */
+svg.lucide {
+  stroke-width: 1.5px !important;
+}
+
+.font-serif-display {
+  font-family: var(--font-serif);
+}
+
+.font-space-mono {
+  font-family: var(--font-mono);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* Visually hide scrollbars globally while preserving mousewheel, trackpad, touch, and keyboard scrolling */
+html, body, #root, * {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Global Form Elements Adaptation for Dark Mode */
+.dark input[type="text"],
+.dark input[type="search"],
+.dark input[type="email"],
+.dark input[type="password"],
+.dark input[type="number"],
+.dark textarea,
+.dark select {
+  background-color: #15241f !important;
+  color: #e6f4ef !important;
+  border-color: #264037 !important;
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #618c7e !important;
+}
+
+.dark select option {
+  background-color: #121e1a !important;
+  color: #e6f4ef !important;
+}
+
+/* Smooth Focus Ring in Dark Mode */
+.dark input:focus,
+.dark textarea:focus,
+.dark select:focus {
+  border-color: #34d399 !important;
+  outline: none !important;
+  box-shadow: 0 0 0 2px rgba(52, 211, 153, 0.2) !important;
+}
