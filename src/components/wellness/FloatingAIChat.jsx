@@ -33,6 +33,7 @@ export default function FloatingAIChat({ onClose }) {
   const location = useLocation();
   const [currentPageInfo, setCurrentPageInfo] = useState(null);
   const [showSummarizeBtn, setShowSummarizeBtn] = useState(false);
+  const [isSummarizing, setIsSummarizing] = useState(false);
 
   const { theme, setTheme, resolvedTheme } = useTheme();
   const isDark = resolvedTheme === 'dark';
@@ -280,38 +281,109 @@ export default function FloatingAIChat({ onClose }) {
     }
   };
 
-  const handleSummarizePageDirectly = async (pageTitle) => {
-    if (loading || typing) return;
+  /**
+   * Extract readable textual content from the active DOM page element
+   */
+  const extractPageDOMText = () => {
+    try {
+      const mainEl = document.querySelector('main') || document.querySelector('#root');
+      if (!mainEl) return '';
 
-    let convId = currentConversation?.id;
-    if (!convId) {
-      const fresh = await conversationService.createConversation(`تلخيص ${pageTitle}`);
-      setCurrentConversation(fresh);
-      setConversations(prev => [fresh, ...prev]);
-      convId = fresh.id;
+      const clone = mainEl.cloneNode(true);
+      const selectorsToRemove = [
+        'nav',
+        'header',
+        'footer',
+        'script',
+        'style',
+        'iframe',
+        'svg',
+        'button',
+        'input',
+        'textarea',
+        '[aria-hidden="true"]',
+        '.floating-ai-chat',
+        '#floating-ai-chat-root',
+        '.fixed'
+      ];
+      selectorsToRemove.forEach(sel => {
+        clone.querySelectorAll(sel).forEach(el => el.remove());
+      });
+
+      let text = clone.innerText || clone.textContent || '';
+      text = text.replace(/\n\s*\n/g, '\n').trim();
+      return text.slice(0, 3500);
+    } catch (err) {
+      return '';
     }
+  };
 
-    const text = `لخص لي صفحة: ${pageTitle}`;
-
-    const tempUserMsg = {
-      id: `user_${Date.now()}`,
-      conversationId: convId,
-      role: 'user',
-      content: text,
-      timestamp: Date.now()
-    };
-
-    setMessages(prev => [...prev, tempUserMsg]);
-    conversationService.saveMessage(convId, tempUserMsg).catch(() => {});
-    setTyping(true);
+  const handleSummarizePageDirectly = async (pageTitle) => {
+    if (loading || typing || isSummarizing) return;
+    setIsSummarizing(true);
     setError(null);
 
     try {
+      let convId = currentConversation?.id;
+      if (!convId) {
+        const fresh = await conversationService.createConversation(`تلخيص ${pageTitle}`);
+        setCurrentConversation(fresh);
+        setConversations(prev => [fresh, ...prev]);
+        convId = fresh.id;
+      }
+
+      // Collect data source knowledge + DOM rendered text
+      const pageData = getPageSummaryByPath(location.pathname);
+      const domText = extractPageDOMText();
+
+      const userDisplayContent = `يرجى إعطائي تلخيصاً شاملاً لصفحة "${pageTitle}"`;
+
+      let pageContentSection = '';
+      if (pageData?.summary || pageData?.description) {
+        pageContentSection += `الوصف والمعلومات الأساسية للصفحة:\n${pageData.summary || pageData.description}\n\n`;
+      }
+      if (domText) {
+        pageContentSection += `النص والمحتوى المستخرج من شاشة المستخدم:\n${domText}`;
+      }
+
+      if (!pageContentSection.trim()) {
+        pageContentSection = `عنوان الصفحة: ${pageTitle}\nمسار الصفحة: ${location.pathname}`;
+      }
+
+      const structuredPrompt = `لخص المحتوى التالي للمستخدم باللغة العربية بشكل واضح ومركز ومبسط. لا تقل إنك لا تعرف الصفحة، لأن محتوى الصفحة موجود ومرفق بالكامل في النص التالي.
+
+عنوان الصفحة: ${pageTitle}
+مسار الصفحة: ${location.pathname}
+
+محتوى الصفحة:
+---
+${pageContentSection}
+---
+
+قدم:
+* الفكرة الأساسية
+* أهم النقاط والمفاهيم المهمة
+* خلاصة قصيرة في النهاية
+
+لا تضف معلومات غير موجودة في المحتوى المرفق أعلاه.`;
+
+      const tempUserMsg = {
+        id: `user_${Date.now()}`,
+        conversationId: convId,
+        role: 'user',
+        content: userDisplayContent,
+        timestamp: Date.now()
+      };
+
+      setMessages(prev => [...prev, tempUserMsg]);
+      conversationService.saveMessage(convId, tempUserMsg).catch(() => {});
+      setTyping(true);
+
       let assistantMsgId = `ai_${Date.now()}`;
       let hasChunk = false;
 
       const result = await aiService.sendMessage({
-        message: text,
+        message: structuredPrompt,
         conversationId: convId,
         history: messages.slice(-10),
         userId: username,
@@ -367,6 +439,7 @@ export default function FloatingAIChat({ onClose }) {
       console.error('Summarize error:', err);
     } finally {
       setTyping(false);
+      setIsSummarizing(false);
     }
   };
 
@@ -625,12 +698,12 @@ export default function FloatingAIChat({ onClose }) {
                   <button
                     type="button"
                     onClick={() => handleSummarizePageDirectly(currentPageInfo.title)}
-                    disabled={loading || typing}
-                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--chat-surface)] hover:bg-[var(--chat-border)] text-[var(--chat-accent)] border border-[var(--chat-border)] transition-colors text-[11px] font-semibold cursor-pointer disabled:opacity-40"
-                    title={`عرض ملخص مسبق لصفحة ${currentPageInfo.title}`}
+                    disabled={loading || typing || isSummarizing}
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--chat-surface)] hover:bg-[var(--chat-border)] text-[var(--chat-accent)] border border-[var(--chat-border)] transition-colors text-[11px] font-semibold cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
+                    title={`تلخيص صفحة ${currentPageInfo.title}`}
                   >
-                    <Sparkles size={11} className="text-[var(--chat-accent)] shrink-0" />
-                    <span>لخص لي هذه الصفحة: {currentPageInfo.title}</span>
+                    <Sparkles size={11} className={`text-[var(--chat-accent)] shrink-0 ${isSummarizing ? 'animate-spin' : ''}`} />
+                    <span>{isSummarizing ? 'جاري التلخيص...' : `لخص لي هذه الصفحة: ${currentPageInfo.title}`}</span>
                   </button>
                   <span className="text-[9px] text-[var(--chat-muted)] font-medium">ملخص ذكي متوفر</span>
                 </div>

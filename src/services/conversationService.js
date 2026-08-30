@@ -71,7 +71,7 @@ export const conversationService = {
           .eq('user_id', userId)
           .order('created_at', { ascending: false });
 
-        if (!error && Array.isArray(data) && data.length > 0) {
+        if (!error && Array.isArray(data)) {
           return data;
         }
       } catch (err) {
@@ -106,14 +106,23 @@ export const conversationService = {
 
     if (isSupabaseConfigured) {
       try {
+        const dbPayload = {
+          id: conversationId,
+          user_id: userId,
+          title: title || 'محادثة جديدة',
+          state: {}
+        };
         const { data, error } = await supabase
           .from('conversations')
-          .insert([newConv])
+          .insert([dbPayload])
           .select()
           .maybeSingle();
 
         if (!error && data) {
-          return data;
+          return {
+            ...newConv,
+            ...data
+          };
         }
       } catch (err) {
         console.warn('Supabase create conversation error:', err);
@@ -144,9 +153,14 @@ export const conversationService = {
             .eq('conversation_id', conversationId)
             .order('created_at', { ascending: true });
 
+          const formattedMessages = (Array.isArray(messages) ? messages : []).map(m => ({
+            ...m,
+            timestamp: m.timestamp || (m.created_at ? new Date(m.created_at).getTime() : Date.now())
+          }));
+
           return {
             conversation,
-            messages: Array.isArray(messages) ? messages : []
+            messages: formattedMessages
           };
         }
       } catch (err) {
@@ -193,15 +207,25 @@ export const conversationService = {
 
     if (isSupabaseConfigured) {
       try {
+        const createdAt = message.timestamp
+          ? (typeof message.timestamp === 'number' ? new Date(message.timestamp).toISOString() : message.timestamp)
+          : new Date().toISOString();
+
         await supabase.from('messages').insert([{
           id: message.id,
           conversation_id: conversationId,
+          user_id: userId,
           role: message.role,
           content: message.content,
-          timestamp: message.timestamp || Date.now()
+          created_at: createdAt
         }]);
-      } catch {
-        // ignore
+
+        await supabase
+          .from('conversations')
+          .update({ updated_at: createdAt })
+          .eq('id', conversationId);
+      } catch (err) {
+        console.warn('Supabase save message error:', err);
       }
     }
   },
