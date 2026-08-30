@@ -18,6 +18,7 @@ import { useTheme } from '../../contexts/ThemeContext';
 import { conversationService } from '../../services/conversationService';
 import { aiService } from '../../services/aiService';
 import { getPageSummaryByPath } from '../../data/pagesKnowledge';
+import { summaryCacheService, computeContentHash } from '../../services/summaryCacheService';
 
 export default function FloatingAIChat({ onClose }) {
   const [view, setView] = useState('chat'); // 'chat' | 'history' | 'settings'
@@ -324,19 +325,9 @@ export default function FloatingAIChat({ onClose }) {
     setError(null);
 
     try {
-      let convId = currentConversation?.id;
-      if (!convId) {
-        const fresh = await conversationService.createConversation(`تلخيص ${pageTitle}`);
-        setCurrentConversation(fresh);
-        setConversations(prev => [fresh, ...prev]);
-        convId = fresh.id;
-      }
-
-      // Collect data source knowledge + DOM rendered text
+      // 1. Collect data source knowledge + DOM rendered text
       const pageData = getPageSummaryByPath(location.pathname);
       const domText = extractPageDOMText();
-
-      const userDisplayContent = `يرجى إعطائي تلخيصاً شاملاً لصفحة "${pageTitle}"`;
 
       let pageContentSection = '';
       if (pageData?.summary || pageData?.description) {
@@ -349,6 +340,63 @@ export default function FloatingAIChat({ onClose }) {
       if (!pageContentSection.trim()) {
         pageContentSection = `عنوان الصفحة: ${pageTitle}\nمسار الصفحة: ${location.pathname}`;
       }
+
+      const contentId = location.pathname;
+      const language = 'ar';
+      const contentHash = await computeContentHash(pageContentSection);
+
+      // 2. CHECK PERSISTENT SUMMARY CACHE FIRST
+      const cachedResult = await summaryCacheService.getCachedSummary({
+        contentId,
+        contentHash,
+        language
+      });
+
+      let convId = currentConversation?.id;
+      if (!convId) {
+        const fresh = await conversationService.createConversation(`تلخيص ${pageTitle}`);
+        setCurrentConversation(fresh);
+        setConversations(prev => [fresh, ...prev]);
+        convId = fresh.id;
+      }
+
+      const userDisplayContent = `يرجى إعطائي تلخيصاً شاملاً لصفحة "${pageTitle}"`;
+      const tempUserMsg = {
+        id: `user_${Date.now()}`,
+        conversationId: convId,
+        role: 'user',
+        content: userDisplayContent,
+        timestamp: Date.now()
+      };
+
+      setMessages(prev => [...prev, tempUserMsg]);
+      conversationService.saveMessage(convId, tempUserMsg).catch(() => {});
+
+      // 3. CACHE HIT: Return cached summary immediately WITHOUT calling AI
+      if (cachedResult && cachedResult.found && cachedResult.summary) {
+        const assistantMsg = {
+          id: `ai_cached_${Date.now()}`,
+          conversationId: convId,
+          role: 'assistant',
+          content: cachedResult.summary,
+          timestamp: Date.now()
+        };
+
+        setMessages(prev => [...prev, assistantMsg]);
+        conversationService.saveMessage(convId, assistantMsg).catch(() => {});
+
+        if (!currentConversation?.title || currentConversation?.title === 'محادثة جديدة') {
+          const updatedTitle = `تلخيص ${pageTitle}`;
+          setCurrentConversation(prev => prev ? { ...prev, title: updatedTitle } : null);
+          setConversations(prev => prev.map(c => c.id === convId ? { ...c, title: updatedTitle } : c));
+        }
+
+        setIsSummarizing(false);
+        return;
+      }
+
+      // 4. CACHE MISS: Call AI service with structured prompt
+      setTyping(true);
 
       const structuredPrompt = `لخص المحتوى التالي للمستخدم باللغة العربية بشكل واضح ومركز ومبسط. لا تقل إنك لا تعرف الصفحة، لأن محتوى الصفحة موجود ومرفق بالكامل في النص التالي.
 
@@ -366,18 +414,6 @@ ${pageContentSection}
 * خلاصة قصيرة في النهاية
 
 لا تضف معلومات غير موجودة في المحتوى المرفق أعلاه.`;
-
-      const tempUserMsg = {
-        id: `user_${Date.now()}`,
-        conversationId: convId,
-        role: 'user',
-        content: userDisplayContent,
-        timestamp: Date.now()
-      };
-
-      setMessages(prev => [...prev, tempUserMsg]);
-      conversationService.saveMessage(convId, tempUserMsg).catch(() => {});
-      setTyping(true);
 
       let assistantMsgId = `ai_${Date.now()}`;
       let hasChunk = false;
@@ -431,6 +467,17 @@ ${pageContentSection}
           setCurrentConversation(prev => prev ? { ...prev, title: updatedTitle } : null);
           setConversations(prev => prev.map(c => c.id === convId ? { ...c, title: updatedTitle } : c));
         }
+
+        // Save generated summary to persistent cache
+        summaryCacheService.saveSummary({
+          contentId,
+          contentHash,
+          summary: replyText,
+          language,
+          model: 'gemini-2.5-flash'
+        }).catch(err => {
+          console.warn('Failed to persist summary in cache:', err);
+        });
       } else {
         setError(result?.error || 'عذرًا، حدث خطأ أثناء تلخيص الصفحة.');
       }
