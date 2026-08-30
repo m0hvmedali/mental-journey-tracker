@@ -217,7 +217,134 @@ const LOCAL_FALLBACK_CONTENT = {
   }
 };
 
+function getFallbackShortcuts() {
+  return [
+    {
+      id: 'sc-default-1',
+      title: 'مقالات وأدلة تخصصية موصى بها',
+      description: 'أهم الأدوات والتقنيات العلاجية لبدء رحلة التوازن المعرفي السلوكي',
+      icon: 'BookOpen',
+      sort_order: 1,
+      is_visible: true,
+      items: [
+        {
+          id: 'sci-default-1',
+          shortcut_id: 'sc-default-1',
+          content_id: '55555555-5555-5555-5555-555555555551',
+          sort_order: 1,
+          content: {
+            id: '55555555-5555-5555-5555-555555555551',
+            slug: 'thinking-errors',
+            title: 'التشوهات المعرفية (Thinking Errors)',
+            description: 'دليل إكلينيكي مفصل للتعرف على أنماط التفكير التلقائية المشوهة وكيفية تفنيدها وتعديلها.',
+            content_type: 'scientific_page',
+            status: 'published'
+          }
+        },
+        {
+          id: 'sci-default-2',
+          shortcut_id: 'sc-default-1',
+          content_id: '55555555-5555-5555-5555-555555555552',
+          sort_order: 2,
+          content: {
+            id: '55555555-5555-5555-5555-555555555552',
+            slug: 'defense-mechanisms',
+            title: 'الحيل الدفاعية النفسية (Defense Mechanisms)',
+            description: 'الآليات اللاواعية التي يستخدمها العقل لحماية نفسه من القلق والصراع النفسي.',
+            content_type: 'scientific_page',
+            status: 'published'
+          }
+        },
+        {
+          id: 'sci-default-3',
+          shortcut_id: 'sc-default-1',
+          content_id: '55555555-5555-5555-5555-555555555553',
+          sort_order: 3,
+          content: {
+            id: '55555555-5555-5555-5555-555555555553',
+            slug: 'emotional-regulation',
+            title: 'تنظيم المشاعر والتحكم في الانفعالات',
+            description: 'دليل مهارات DBT المتقدم لخفض حدة الاستثارة واليقظة الذهنية للمشاعر.',
+            content_type: 'scientific_page',
+            status: 'published'
+          }
+        }
+      ]
+    }
+  ];
+}
+
 export const contentService = {
+  clearShortcutsCache() { cache.delete('homepage_shortcuts'); },
+  clearModuleCache(moduleSlugOrId) {
+    if (moduleSlugOrId) {
+      cache.delete(`module_${moduleSlugOrId}`);
+      cache.delete(`module_cms_content_${moduleSlugOrId}`);
+    }
+    for (const key of cache.keys()) {
+      if (key.startsWith('module_') || key === 'all_modules') {
+        cache.delete(key);
+      }
+    }
+  },
+  clearAllModulesCache() {
+    for (const key of cache.keys()) {
+      if (key.startsWith('module_') || key === 'all_modules') {
+        cache.delete(key);
+      }
+    }
+  },
+
+
+  // ============================================================================
+  // HOMEPAGE SHORTCUTS
+  // ============================================================================
+  async getHomepageShortcuts() {
+    const cacheKey = 'homepage_shortcuts';
+    const cached = getCached(cacheKey);
+    if (cached) return cached;
+
+    if (isSupabaseConfigured) {
+      try {
+        const { data, error } = await supabase
+          .from('homepage_shortcuts')
+          .select('*, items:homepage_shortcut_items(*, content(*))')
+          .eq('is_visible', true)
+          .order('sort_order', { ascending: true })
+          .order('sort_order', { referencedTable: 'homepage_shortcut_items', ascending: true });
+        
+        if (error) {
+          // If the table doesn't exist in Supabase schema cache yet (e.g. PGRST205 or relation missing)
+          if (error.code === 'PGRST205' || error.message?.includes('schema cache') || error.message?.includes('does not exist')) {
+            console.warn('homepage_shortcuts table not found in Supabase schema cache. Using fallback shortcuts.');
+            const fallbackData = getFallbackShortcuts();
+            setCache(cacheKey, fallbackData);
+            return fallbackData;
+          }
+          throw error;
+        }
+        
+        // Filter out items where content is not published
+        const filteredData = (data || []).map(shortcut => {
+          return {
+            ...shortcut,
+            items: (shortcut.items || []).filter(item => item.content && item.content.status === 'published')
+          };
+        }).filter(shortcut => shortcut.items.length > 0);
+
+        setCache(cacheKey, filteredData);
+        return filteredData;
+      } catch (err) {
+        console.warn('getHomepageShortcuts fallback applied:', err?.message || err);
+        const fallbackData = getFallbackShortcuts();
+        setCache(cacheKey, fallbackData);
+        return fallbackData;
+      }
+    }
+    const fallbackData = getFallbackShortcuts();
+    return fallbackData;
+  },
+
   /**
    * 1. Get published content by unique slug and language
    */
@@ -439,9 +566,9 @@ export const contentService = {
           .select(`
             *,
             module_lessons (
-              id, section_name, order_index,
+              id, section_name, order_index, created_at,
               content:content_id (
-                id, slug, title, description, content_type, featured_image, metadata
+                id, slug, title, description, content_type, featured_image, metadata, status, reading_time_minutes
               )
             )
           `)
@@ -449,8 +576,27 @@ export const contentService = {
           .order('order_index', { ascending: true });
 
         if (!error && data && data.length > 0) {
-          setCache(cacheKey, data);
-          return data;
+          const processed = data.map(mod => {
+            const sortedLessons = (mod.module_lessons || [])
+              .filter(l => l.content && l.content.status === 'published')
+              .sort((a, b) => {
+                if ((a.order_index ?? 0) !== (b.order_index ?? 0)) return (a.order_index ?? 0) - (b.order_index ?? 0);
+                const dateDiff = new Date(a.created_at || 0) - new Date(b.created_at || 0);
+                if (dateDiff !== 0) return dateDiff;
+                return String(a.id || '').localeCompare(String(b.id || ''));
+              });
+
+            return {
+              ...mod,
+              lessons: sortedLessons,
+              module_content: sortedLessons.map(l => ({
+                ...l,
+                sort_order: l.order_index
+              }))
+            };
+          });
+          setCache(cacheKey, processed);
+          return processed;
         }
       } catch (err) {
         console.warn('contentService.getAllModules fetch fallback:', err);
@@ -462,7 +608,7 @@ export const contentService = {
   },
 
   /**
-   * 8. Get module by slug with full metadata
+   * 8. Get module by slug with full metadata and attached CMS content
    */
   async getModule(moduleSlug) {
     const cacheKey = `module_${moduleSlug}`;
@@ -471,25 +617,54 @@ export const contentService = {
 
     if (isSupabaseConfigured) {
       try {
-        const { data, error } = await supabase
+        const isUUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(moduleSlug);
+        let query = supabase
           .from('modules')
           .select(`
             *,
             module_lessons (
-              id, section_name, order_index,
+              id, section_name, order_index, created_at,
               content:content_id (
-                id, slug, title, description, content_type, featured_image, metadata
+                id, slug, title, description, content_type, featured_image, metadata, status, reading_time_minutes
               )
             )
           `)
-          .eq('slug', moduleSlug)
-          .eq('status', 'published')
-          .order('order_index', { foreignTable: 'module_lessons', ascending: true })
-          .maybeSingle();
+          .eq('status', 'published');
+
+        if (isUUID) {
+          query = query.eq('id', moduleSlug);
+        } else {
+          query = query.eq('slug', moduleSlug);
+        }
+
+        const { data, error } = await query.maybeSingle();
 
         if (!error && data) {
-          setCache(cacheKey, data);
-          return data;
+          const sortedLessons = (data.module_lessons || [])
+            .filter(l => l.content && l.content.status === 'published')
+            .sort((a, b) => {
+              if ((a.order_index ?? 0) !== (b.order_index ?? 0)) return (a.order_index ?? 0) - (b.order_index ?? 0);
+              const dateDiff = new Date(a.created_at || 0) - new Date(b.created_at || 0);
+              if (dateDiff !== 0) return dateDiff;
+              return String(a.id || '').localeCompare(String(b.id || ''));
+            });
+
+          const mappedCmsContent = sortedLessons.map(l => ({
+            ...l,
+            sort_order: l.order_index
+          }));
+
+          const localMod = MODULES_DATA.find(m => m.slug === moduleSlug || m.id === moduleSlug);
+          const result = {
+            ...localMod,
+            ...data,
+            pages: localMod?.pages || data.pages || [],
+            lessons: sortedLessons,
+            module_content: mappedCmsContent
+          };
+
+          setCache(cacheKey, result);
+          return result;
         }
       } catch (err) {
         console.warn('contentService.getModule fetch fallback:', err);
@@ -505,20 +680,82 @@ export const contentService = {
   },
 
   /**
+   * 8.1 Get attached published CMS Content for a module
+   */
+  async getModuleCMSContent(moduleSlugOrId) {
+    const cacheKey = `module_cms_content_${moduleSlugOrId}`;
+    const cached = getCached(cacheKey);
+    if (cached) return cached;
+
+    if (isSupabaseConfigured) {
+      try {
+        let moduleId = moduleSlugOrId;
+        const isUUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(moduleSlugOrId);
+        if (!isUUID) {
+          const { data: mod } = await supabase.from('modules').select('id').eq('slug', moduleSlugOrId).maybeSingle();
+          if (mod?.id) moduleId = mod.id;
+        }
+
+        const { data, error } = await supabase
+          .from('module_lessons')
+          .select(`
+            id, module_id, content_id, section_name, order_index, created_at,
+            content:content_id (
+              id, slug, language, title, description, content_type, featured_image, status, metadata, published_at, reading_time_minutes
+            )
+          `)
+          .eq('module_id', moduleId)
+          .order('order_index', { ascending: true })
+          .order('created_at', { ascending: true });
+
+        if (!error && data) {
+          const publishedOnly = data
+            .filter(item => item.content && item.content.status === 'published')
+            .map(item => ({
+              ...item,
+              sort_order: item.order_index
+            }))
+            .sort((a, b) => {
+              if ((a.order_index ?? 0) !== (b.order_index ?? 0)) return (a.order_index ?? 0) - (b.order_index ?? 0);
+              const dateDiff = new Date(a.created_at || 0) - new Date(b.created_at || 0);
+              if (dateDiff !== 0) return dateDiff;
+              return String(a.id || '').localeCompare(String(b.id || ''));
+            });
+
+          setCache(cacheKey, publishedOnly);
+          return publishedOnly;
+        }
+      } catch (err) {
+        console.warn('getModuleCMSContent fallback:', err);
+      }
+    }
+
+    setCache(cacheKey, []);
+    return [];
+  },
+
+  /**
    * 9. Get all lessons for a specific module ID
    */
   async getModuleLessons(moduleId) {
     if (isSupabaseConfigured) {
       try {
+        let validModuleId = moduleId;
+        const isUUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(moduleId);
+        if (!isUUID) {
+          const { data: mod } = await supabase.from('modules').select('id').eq('slug', moduleId).maybeSingle();
+          if (mod?.id) validModuleId = mod.id;
+        }
+
         const { data, error } = await supabase
           .from('module_lessons')
           .select(`
-            id, section_name, order_index,
+            id, module_id, content_id, section_name, order_index, created_at,
             content:content_id (
-              id, slug, title, description, content_type, featured_image, metadata
+              id, slug, title, description, content_type, featured_image, metadata, status, reading_time_minutes
             )
           `)
-          .eq('module_id', moduleId)
+          .eq('module_id', validModuleId)
           .order('order_index', { ascending: true });
 
         if (!error && data) return data;

@@ -1,3 +1,4 @@
+import { contentService } from './contentService';
 // src/services/adminContentService.js
 /**
  * ============================================================================
@@ -216,54 +217,65 @@ let localStore = {
   ],
   modules: [
     {
-      id: 'mod-1',
-      slug: 'thinking-errors',
-      title: 'مسار تصحيح التشوهات المعرفية',
-      description: 'برنامج تعليمي عملي لاكتشاف وتعديل أنماط التفكير غير العقلانية واستبدالها برؤية موضوعية متزنة.',
+      id: '40000000-0000-0000-0000-000000000001',
+      slug: 'what-is-going',
+      title: 'What is going?',
+      description: 'Understanding psychological distress, cognitive distortions, defense mechanisms & clinical frameworks',
       order_index: 1,
-      background_image: '/article-by3DYy7JylaR.webp',
+      background_image: '/ModulesBackgrounds/Gemini_Generated_Image_8pd1608pd1608pd1.jpg',
       status: 'published',
       created_at: '2026-08-30T00:00:00.000Z',
       lessons: [
         {
           id: 'ml-1',
           content_id: '55555555-5555-5555-5555-555555555551',
-          section_name: 'الأساس المعرفي',
+          section_name: 'العلاج المعرفي السلوكي (CBT)',
           order_index: 1,
           content: {
             id: '55555555-5555-5555-5555-555555555551',
             title: 'التشوهات المعرفية (Thinking Errors)',
             slug: 'thinking-errors',
-            content_type: 'scientific_page'
+            content_type: 'scientific_page',
+            status: 'published'
           }
         }
       ]
     },
     {
-      id: 'mod-2',
-      slug: 'emotional-regulation',
-      title: 'مسار تنظيم المشاعر وإدارة الأزمات',
-      description: 'مهارات العلاج السلوكي الجدلي (DBT) وتدريبات التهدئة الفسيولوجية.',
+      id: '40000000-0000-0000-0000-000000000002',
+      slug: 'where-do-you-stand',
+      title: 'Where do you stand?',
+      description: 'Before charting a path forward, you must have an accurate, compassionate map of where you currently stand.',
       order_index: 2,
-      background_image: '/article-by3DYy7JylaR.webp',
+      background_image: '/ModulesBackgrounds/Gemini_Generated_Image_kh50vwkh50vwkh50.jpg',
       status: 'published',
       created_at: '2026-08-30T00:00:00.000Z',
-      lessons: [
-        {
-          id: 'ml-2',
-          content_id: '55555555-5555-5555-5555-555555555552',
-          section_name: 'مهارات الطوارئ',
-          order_index: 1,
-          content: {
-            id: '55555555-5555-5555-5555-555555555552',
-            title: 'تنظيم المشاعر وتقنيات TIPP',
-            slug: 'emotional-regulation',
-            content_type: 'lesson'
-          }
-        }
-      ]
+      lessons: []
+    },
+    {
+      id: '40000000-0000-0000-0000-000000000003',
+      slug: 'how-will-we-fix-it',
+      title: 'How will we fix it?',
+      description: 'Equip yourself with evidence-based therapeutic toolkits from CBT, DBT, ACT, SFBT and Self-Compassion.',
+      order_index: 3,
+      background_image: '/ModulesBackgrounds/Gemini_Generated_Image_z4z7oqz4z7oqz4z7.jpg',
+      status: 'published',
+      created_at: '2026-08-30T00:00:00.000Z',
+      lessons: []
+    },
+    {
+      id: '40000000-0000-0000-0000-000000000004',
+      slug: 'how-to-stay-stable',
+      title: 'How to stay stable?',
+      description: 'Long-term maintenance, habit architecture, relapse prevention and building psychological resilience.',
+      order_index: 4,
+      background_image: '/ModulesBackgrounds/Gemini_Generated_Image_8pd1608pd1608pd1.jpg',
+      status: 'published',
+      created_at: '2026-08-30T00:00:00.000Z',
+      lessons: []
     }
   ],
+  module_content: [],
   media: [
     {
       id: 'med-1',
@@ -329,10 +341,274 @@ let localStore = {
       evidence_level: 'empirical',
       is_featured: true
     }
+  ],
+  shortcuts: [
+    {
+      id: 'sc-default-1',
+      title: 'مقالات وأدلة تخصصية موصى بها',
+      description: 'أهم الأدوات والتقنيات العلاجية لبدء رحلة التوازن المعرفي السلوكي',
+      icon: 'BookOpen',
+      sort_order: 1,
+      is_visible: true,
+      items: [
+        {
+          id: 'sci-default-1',
+          shortcut_id: 'sc-default-1',
+          content_id: '55555555-5555-5555-5555-555555555551',
+          sort_order: 1,
+          content: {
+            id: '55555555-5555-5555-5555-555555555551',
+            slug: 'thinking-errors',
+            title: 'التشوهات المعرفية (Thinking Errors)',
+            description: 'دليل إكلينيكي مفصل للتعرف على أنماط التفكير التلقائية المشوهة وكيفية تفنيدها وتعديلها.',
+            content_type: 'scientific_page',
+            status: 'published'
+          }
+        },
+        {
+          id: 'sci-default-2',
+          shortcut_id: 'sc-default-1',
+          content_id: '55555555-5555-5555-5555-555555555552',
+          sort_order: 2,
+          content: {
+            id: '55555555-5555-5555-5555-555555555552',
+            slug: 'defense-mechanisms',
+            title: 'الحيل الدفاعية النفسية (Defense Mechanisms)',
+            description: 'الآليات اللاواعية التي يستخدمها العقل لحماية نفسه من القلق والصراع النفسي.',
+            content_type: 'scientific_page',
+            status: 'published'
+          }
+        },
+        {
+          id: 'sci-default-3',
+          shortcut_id: 'sc-default-1',
+          content_id: '55555555-5555-5555-5555-555555555553',
+          sort_order: 3,
+          content: {
+            id: '55555555-5555-5555-5555-555555555553',
+            slug: 'emotional-regulation',
+            title: 'تنظيم المشاعر والتحكم في الانفعالات',
+            description: 'دليل مهارات DBT المتقدم لخفض حدة الاستثارة واليقظة الذهنية للمشاعر.',
+            content_type: 'scientific_page',
+            status: 'published'
+          }
+        }
+      ]
+    }
   ]
 };
 
 export const adminContentService = {
+
+  // ============================================================================
+  // HOMEPAGE SHORTCUTS MANAGEMENT
+  // ============================================================================
+  async getShortcuts() {
+    if (isSupabaseConfigured) {
+      try {
+        const { data, error } = await supabase
+          .from('homepage_shortcuts')
+          .select('*, items:homepage_shortcut_items(*, content(*))')
+          .order('sort_order', { ascending: true })
+          .order('sort_order', { referencedTable: 'homepage_shortcut_items', ascending: true });
+        
+        if (error) {
+          if (error.code === 'PGRST205' || error.message?.includes('schema cache') || error.message?.includes('does not exist')) {
+            console.warn('adminContentService: homepage_shortcuts table not found in Supabase schema cache. Using localStore shortcuts.');
+            return localStore.shortcuts || [];
+          }
+          throw error;
+        }
+        return data || [];
+      } catch (err) {
+        console.warn('adminContentService.getShortcuts fallback applied:', err?.message || err);
+        return localStore.shortcuts || [];
+      }
+    }
+    return localStore.shortcuts || [];
+  },
+
+  async createShortcut(shortcutData) {
+    if (isSupabaseConfigured) {
+      try {
+        const { data, error } = await supabase
+          .from('homepage_shortcuts')
+          .insert([shortcutData])
+          .select()
+          .single();
+        if (error) {
+          if (error.code === 'PGRST205' || error.message?.includes('schema cache')) {
+            console.warn('adminContentService: homepage_shortcuts table not found in Supabase. Creating in localStore.');
+            const newSc = { ...shortcutData, id: crypto.randomUUID(), created_at: new Date().toISOString() };
+            if (!localStore.shortcuts) localStore.shortcuts = [];
+            localStore.shortcuts.push(newSc);
+            contentService.clearShortcutsCache();
+            return newSc;
+          }
+          throw error;
+        }
+        contentService.clearShortcutsCache();
+        return data;
+      } catch (err) {
+        console.warn('createShortcut fallback applied:', err?.message || err);
+        const newSc = { ...shortcutData, id: crypto.randomUUID(), created_at: new Date().toISOString() };
+        if (!localStore.shortcuts) localStore.shortcuts = [];
+        localStore.shortcuts.push(newSc);
+        contentService.clearShortcutsCache();
+        return newSc;
+      }
+    }
+    const newSc = { ...shortcutData, id: crypto.randomUUID(), created_at: new Date().toISOString() };
+    if(!localStore.shortcuts) localStore.shortcuts = [];
+    localStore.shortcuts.push(newSc);
+    contentService.clearShortcutsCache();
+    return newSc;
+  },
+
+  async updateShortcut(id, shortcutData) {
+    if (isSupabaseConfigured) {
+      try {
+        const { data, error } = await supabase
+          .from('homepage_shortcuts')
+          .update(shortcutData)
+          .eq('id', id)
+          .select()
+          .single();
+        if (error) {
+          if (error.code === 'PGRST205' || error.message?.includes('schema cache')) {
+            const idx = (localStore.shortcuts || []).findIndex(s => s.id === id);
+            if (idx > -1) {
+              localStore.shortcuts[idx] = { ...localStore.shortcuts[idx], ...shortcutData };
+              contentService.clearShortcutsCache();
+              return localStore.shortcuts[idx];
+            }
+          }
+          throw error;
+        }
+        contentService.clearShortcutsCache();
+        return data;
+      } catch (err) {
+        console.warn('updateShortcut fallback applied:', err?.message || err);
+        const idx = (localStore.shortcuts || []).findIndex(s => s.id === id);
+        if (idx > -1) {
+          localStore.shortcuts[idx] = { ...localStore.shortcuts[idx], ...shortcutData };
+          contentService.clearShortcutsCache();
+          return localStore.shortcuts[idx];
+        }
+        throw err;
+      }
+    }
+    const idx = (localStore.shortcuts || []).findIndex(s => s.id === id);
+    if(idx > -1) {
+      localStore.shortcuts[idx] = { ...localStore.shortcuts[idx], ...shortcutData };
+      contentService.clearShortcutsCache();
+      return localStore.shortcuts[idx];
+    }
+    throw new Error('Shortcut not found locally');
+  },
+
+  async deleteShortcut(id) {
+    if (isSupabaseConfigured) {
+      try {
+        const { error } = await supabase
+          .from('homepage_shortcuts')
+          .delete()
+          .eq('id', id);
+        if (error) {
+          if (error.code === 'PGRST205' || error.message?.includes('schema cache')) {
+            if (localStore.shortcuts) {
+              localStore.shortcuts = localStore.shortcuts.filter(s => s.id !== id);
+            }
+            contentService.clearShortcutsCache();
+            return true;
+          }
+          throw error;
+        }
+        contentService.clearShortcutsCache();
+        return true;
+      } catch (err) {
+        console.warn('deleteShortcut fallback applied:', err?.message || err);
+        if(localStore.shortcuts) {
+          localStore.shortcuts = localStore.shortcuts.filter(s => s.id !== id);
+        }
+        contentService.clearShortcutsCache();
+        return true;
+      }
+    }
+    if(localStore.shortcuts) {
+      localStore.shortcuts = localStore.shortcuts.filter(s => s.id !== id);
+    }
+    contentService.clearShortcutsCache();
+    return true;
+  },
+
+  async saveShortcutItems(shortcutId, items) {
+    if (isSupabaseConfigured) {
+      try {
+        const { error: delError } = await supabase
+          .from('homepage_shortcut_items')
+          .delete()
+          .eq('shortcut_id', shortcutId);
+        
+        if (delError && (delError.code === 'PGRST205' || delError.message?.includes('schema cache'))) {
+          // Fallback to localStore
+          const sc = (localStore.shortcuts || []).find(s => s.id === shortcutId);
+          if (sc) {
+            sc.items = (items || []).map((item, index) => ({
+              id: crypto.randomUUID(),
+              shortcut_id: shortcutId,
+              content_id: item.content_id,
+              sort_order: item.sort_order ?? index,
+              content: (localStore.content || []).find(c => c.id === item.content_id)
+            }));
+          }
+          contentService.clearShortcutsCache();
+          return true;
+        }
+          
+        if (items && items.length > 0) {
+          const insertData = items.map((item, index) => ({
+            shortcut_id: shortcutId,
+            content_id: item.content_id,
+            sort_order: item.sort_order ?? index
+          }));
+          const { error } = await supabase
+            .from('homepage_shortcut_items')
+            .insert(insertData);
+          if (error) throw error;
+        }
+        contentService.clearShortcutsCache();
+        return true;
+      } catch (err) {
+        console.warn('saveShortcutItems fallback applied:', err?.message || err);
+        const sc = (localStore.shortcuts || []).find(s => s.id === shortcutId);
+        if (sc) {
+          sc.items = (items || []).map((item, index) => ({
+            id: crypto.randomUUID(),
+            shortcut_id: shortcutId,
+            content_id: item.content_id,
+            sort_order: item.sort_order ?? index,
+            content: (localStore.content || []).find(c => c.id === item.content_id)
+          }));
+        }
+        contentService.clearShortcutsCache();
+        return true;
+      }
+    }
+    const sc = (localStore.shortcuts || []).find(s => s.id === shortcutId);
+    if (sc) {
+      sc.items = (items || []).map((item, index) => ({
+        id: crypto.randomUUID(),
+        shortcut_id: shortcutId,
+        content_id: item.content_id,
+        sort_order: item.sort_order ?? index,
+        content: (localStore.content || []).find(c => c.id === item.content_id)
+      }));
+    }
+    contentService.clearShortcutsCache();
+    return true;
+  },
+
   /**
    * 1. Check if current user is an authenticated Admin
    */
@@ -867,6 +1143,8 @@ export const adminContentService = {
           .single();
 
         if (error) throw error;
+        contentService.clearAllModulesCache();
+        contentService.clearShortcutsCache();
         return data;
       } catch (err) {
         console.error('adminContentService.updateContentStatus error:', err);
@@ -880,6 +1158,8 @@ export const adminContentService = {
         item.published_at = now;
       }
       item.updated_at = now;
+      contentService.clearAllModulesCache();
+      contentService.clearShortcutsCache();
       return item;
     }
     return null;
@@ -897,6 +1177,8 @@ export const adminContentService = {
           .eq('id', id);
 
         if (error) throw error;
+        contentService.clearAllModulesCache();
+        contentService.clearShortcutsCache();
         return true;
       } catch (err) {
         console.error('adminContentService.deleteContent error:', err);
@@ -905,6 +1187,11 @@ export const adminContentService = {
     }
 
     localStore.content = localStore.content.filter(c => c.id !== id);
+    if (localStore.module_content) {
+      localStore.module_content = localStore.module_content.filter(mc => mc.content_id !== id);
+    }
+    contentService.clearAllModulesCache();
+    contentService.clearShortcutsCache();
     return true;
   },
 
@@ -1285,45 +1572,87 @@ export const adminContentService = {
           .select(`
             *,
             module_lessons (
-              id, section_name, order_index,
-              content (id, title, slug, content_type, status)
+              id, section_name, order_index, created_at,
+              content (id, title, slug, content_type, status, description, metadata)
             )
           `)
           .order('order_index', { ascending: true });
 
         if (!error && data) {
-          return data.map(mod => ({
-            ...mod,
-            lessons: (mod.module_lessons || []).sort((a, b) => (a.order_index || 0) - (b.order_index || 0))
-          }));
+          return data.map(mod => {
+            const sortedLessons = (mod.module_lessons || []).sort((a, b) => {
+              if ((a.order_index ?? 0) !== (b.order_index ?? 0)) return (a.order_index ?? 0) - (b.order_index ?? 0);
+              const dateDiff = new Date(a.created_at || 0) - new Date(b.created_at || 0);
+              if (dateDiff !== 0) return dateDiff;
+              return String(a.id || '').localeCompare(String(b.id || ''));
+            });
+
+            return {
+              ...mod,
+              lessons: sortedLessons,
+              module_content: sortedLessons.map(l => ({
+                ...l,
+                sort_order: l.order_index
+              }))
+            };
+          });
         }
       } catch (err) {
         console.warn('getModulesList Supabase fallback:', err);
       }
     }
 
-    return localStore.modules;
+    return localStore.modules.map(mod => {
+      const lessons = (mod.lessons || []).sort((a, b) => (a.order_index || 0) - (b.order_index || 0));
+      return {
+        ...mod,
+        lessons,
+        module_content: lessons.map(l => ({
+          ...l,
+          sort_order: l.order_index
+        }))
+      };
+    });
   },
 
   async getModuleDetails(idOrSlug) {
     if (isSupabaseConfigured) {
       try {
-        const { data, error } = await supabase
+        // Resolve ID if slug is passed
+        let query = supabase
           .from('modules')
           .select(`
             *,
             module_lessons (
-              id, section_name, order_index,
-              content (id, title, slug, content_type, status, description)
+              id, section_name, order_index, created_at,
+              content (id, title, slug, content_type, status, description, metadata)
             )
-          `)
-          .or(`id.eq.${idOrSlug},slug.eq.${idOrSlug}`)
-          .single();
+          `);
+
+        const isUUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(idOrSlug);
+        if (isUUID) {
+          query = query.eq('id', idOrSlug);
+        } else {
+          query = query.eq('slug', idOrSlug);
+        }
+
+        const { data, error } = await query.single();
 
         if (!error && data) {
+          const sortedLessons = (data.module_lessons || []).sort((a, b) => {
+            if ((a.order_index ?? 0) !== (b.order_index ?? 0)) return (a.order_index ?? 0) - (b.order_index ?? 0);
+            const dateDiff = new Date(a.created_at || 0) - new Date(b.created_at || 0);
+            if (dateDiff !== 0) return dateDiff;
+            return String(a.id || '').localeCompare(String(b.id || ''));
+          });
+
           return {
             ...data,
-            lessons: (data.module_lessons || []).sort((a, b) => (a.order_index || 0) - (b.order_index || 0))
+            lessons: sortedLessons,
+            module_content: sortedLessons.map(l => ({
+              ...l,
+              sort_order: l.order_index
+            }))
           };
         }
       } catch (err) {
@@ -1331,7 +1660,19 @@ export const adminContentService = {
       }
     }
 
-    return localStore.modules.find(m => m.id === idOrSlug || m.slug === idOrSlug) || null;
+    const found = localStore.modules.find(m => m.id === idOrSlug || m.slug === idOrSlug);
+    if (found) {
+      const lessons = (found.lessons || []).sort((a, b) => (a.order_index || 0) - (b.order_index || 0));
+      return {
+        ...found,
+        lessons,
+        module_content: lessons.map(l => ({
+          ...l,
+          sort_order: l.order_index
+        }))
+      };
+    }
+    return null;
   },
 
   async createModule(moduleData) {
@@ -1347,6 +1688,7 @@ export const adminContentService = {
           .single();
 
         if (error) throw error;
+        contentService.clearAllModulesCache();
         return data;
       } catch (err) {
         console.error('createModule error:', err);
@@ -1362,6 +1704,7 @@ export const adminContentService = {
       lessons: []
     };
     localStore.modules.push(newModule);
+    contentService.clearAllModulesCache();
     return newModule;
   },
 
@@ -1376,6 +1719,9 @@ export const adminContentService = {
           .single();
 
         if (error) throw error;
+        contentService.clearModuleCache(id);
+        if (data.slug) contentService.clearModuleCache(data.slug);
+        contentService.clearAllModulesCache();
         return data;
       } catch (err) {
         console.error('updateModule error:', err);
@@ -1386,6 +1732,8 @@ export const adminContentService = {
     const idx = localStore.modules.findIndex(m => m.id === id);
     if (idx !== -1) {
       localStore.modules[idx] = { ...localStore.modules[idx], ...moduleData, updated_at: new Date().toISOString() };
+      contentService.clearModuleCache(id);
+      contentService.clearAllModulesCache();
       return localStore.modules[idx];
     }
     return null;
@@ -1396,6 +1744,8 @@ export const adminContentService = {
       try {
         const { error } = await supabase.from('modules').delete().eq('id', id);
         if (error) throw error;
+        contentService.clearModuleCache(id);
+        contentService.clearAllModulesCache();
         return true;
       } catch (err) {
         console.error('deleteModule error:', err);
@@ -1404,6 +1754,11 @@ export const adminContentService = {
     }
 
     localStore.modules = localStore.modules.filter(m => m.id !== id);
+    if (localStore.module_content) {
+      localStore.module_content = localStore.module_content.filter(mc => mc.module_id !== id);
+    }
+    contentService.clearModuleCache(id);
+    contentService.clearAllModulesCache();
     return true;
   },
 
@@ -1423,6 +1778,8 @@ export const adminContentService = {
           const { error } = await supabase.from('module_lessons').insert(lessonsToInsert);
           if (error) throw error;
         }
+        contentService.clearModuleCache(moduleId);
+        contentService.clearAllModulesCache();
         return true;
       } catch (err) {
         console.error('updateModuleLessons error:', err);
@@ -1440,9 +1797,261 @@ export const adminContentService = {
         order_index: idx + 1,
         content: localStore.content.find(c => c.id === l.content_id)
       }));
+      contentService.clearModuleCache(moduleId);
+      contentService.clearAllModulesCache();
       return true;
     }
     return false;
+  },
+
+  /**
+   * 13.1 Module Content & Lessons Linking (using public.module_lessons)
+   */
+  async getModuleContent(moduleId) {
+    if (isSupabaseConfigured) {
+      try {
+        let validModuleId = moduleId;
+        const isUUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(moduleId);
+        if (!isUUID) {
+          const { data: mod } = await supabase.from('modules').select('id').eq('slug', moduleId).maybeSingle();
+          if (mod?.id) validModuleId = mod.id;
+        }
+
+        const { data, error } = await supabase
+          .from('module_lessons')
+          .select(`
+            id, module_id, content_id, section_name, order_index, created_at,
+            content:content_id (
+              id, slug, language, title, description, content_type, status, featured_image, metadata, updated_at
+            )
+          `)
+          .eq('module_id', validModuleId)
+          .order('order_index', { ascending: true })
+          .order('created_at', { ascending: true });
+
+        if (!error && data) {
+          return data.map(item => ({
+            ...item,
+            sort_order: item.order_index
+          })).sort((a, b) => {
+            if ((a.order_index ?? 0) !== (b.order_index ?? 0)) return (a.order_index ?? 0) - (b.order_index ?? 0);
+            const dateDiff = new Date(a.created_at || 0) - new Date(b.created_at || 0);
+            if (dateDiff !== 0) return dateDiff;
+            return String(a.id || '').localeCompare(String(b.id || ''));
+          });
+        }
+      } catch (err) {
+        console.warn('getModuleContent Supabase error:', err);
+      }
+    }
+
+    const mod = localStore.modules.find(m => m.id === moduleId || m.slug === moduleId);
+    const lessons = mod?.lessons || [];
+    return lessons.map(l => ({
+      ...l,
+      sort_order: l.order_index
+    })).sort((a, b) => (a.order_index || 0) - (b.order_index || 0));
+  },
+
+  async addContentToModule(moduleId, contentId, sortOrder = null) {
+    if (!moduleId || !contentId) throw new Error('moduleId and contentId are required');
+
+    if (isSupabaseConfigured) {
+      try {
+        // Validate and resolve module ID
+        let validModuleId = moduleId;
+        const isUUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(moduleId);
+        if (!isUUID) {
+          const { data: mod } = await supabase.from('modules').select('id').eq('slug', moduleId).maybeSingle();
+          if (mod?.id) {
+            validModuleId = mod.id;
+          } else {
+            throw new Error(`Module with slug or ID "${moduleId}" does not exist`);
+          }
+        } else {
+          const { data: modExists } = await supabase.from('modules').select('id').eq('id', validModuleId).maybeSingle();
+          if (!modExists?.id) {
+            throw new Error(`Module with ID "${validModuleId}" does not exist`);
+          }
+        }
+
+        // Validate content exists
+        const { data: contentExists } = await supabase.from('content').select('id').eq('id', contentId).maybeSingle();
+        if (!contentExists?.id) {
+          throw new Error(`Content with ID "${contentId}" does not exist`);
+        }
+
+        // Check if already linked
+        const { data: existingLesson } = await supabase
+          .from('module_lessons')
+          .select(`
+            id, module_id, content_id, section_name, order_index, created_at,
+            content:content_id (
+              id, slug, language, title, description, content_type, status, featured_image, metadata
+            )
+          `)
+          .eq('module_id', validModuleId)
+          .eq('content_id', contentId)
+          .maybeSingle();
+
+        if (existingLesson) {
+          return {
+            ...existingLesson,
+            sort_order: existingLesson.order_index
+          };
+        }
+
+        let order = sortOrder;
+        if (order === null) {
+          const { data: maxItem } = await supabase
+            .from('module_lessons')
+            .select('order_index')
+            .eq('module_id', validModuleId)
+            .order('order_index', { ascending: false })
+            .limit(1)
+            .maybeSingle();
+          order = (maxItem?.order_index ?? 0) + 1;
+        }
+
+        const { data, error } = await supabase
+          .from('module_lessons')
+          .insert([{
+            module_id: validModuleId,
+            content_id: contentId,
+            section_name: 'محتوى تخصصي',
+            order_index: order
+          }])
+          .select(`
+            id, module_id, content_id, section_name, order_index, created_at,
+            content:content_id (
+              id, slug, language, title, description, content_type, status, featured_image, metadata
+            )
+          `)
+          .single();
+
+        if (error) throw error;
+        contentService.clearModuleCache(validModuleId);
+        contentService.clearModuleCache(moduleId);
+        contentService.clearAllModulesCache();
+        return {
+          ...data,
+          sort_order: data.order_index
+        };
+      } catch (err) {
+        console.error('addContentToModule error:', err);
+        throw err;
+      }
+    }
+
+    const mod = localStore.modules.find(m => m.id === moduleId || m.slug === moduleId);
+    if (mod) {
+      if (!mod.lessons) mod.lessons = [];
+      const existing = mod.lessons.find(l => l.content_id === contentId);
+      if (existing) {
+        return { ...existing, sort_order: existing.order_index };
+      }
+
+      const nextOrder = sortOrder ?? (mod.lessons.length + 1);
+      const contentObj = localStore.content?.find(c => c.id === contentId) || { id: contentId, title: 'صفحة محتوى', status: 'published', content_type: 'article' };
+      const newRecord = {
+        id: crypto.randomUUID(),
+        module_id: mod.id,
+        content_id: contentId,
+        section_name: 'محتوى تخصصي',
+        order_index: nextOrder,
+        sort_order: nextOrder,
+        created_at: new Date().toISOString(),
+        content: contentObj
+      };
+      mod.lessons.push(newRecord);
+      contentService.clearModuleCache(mod.id);
+      contentService.clearAllModulesCache();
+      return newRecord;
+    }
+    return null;
+  },
+
+  async removeContentFromModule(moduleId, contentId) {
+    if (isSupabaseConfigured) {
+      try {
+        let validModuleId = moduleId;
+        const isUUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(moduleId);
+        if (!isUUID) {
+          const { data: mod } = await supabase.from('modules').select('id').eq('slug', moduleId).maybeSingle();
+          if (mod?.id) validModuleId = mod.id;
+        }
+
+        const { error } = await supabase
+          .from('module_lessons')
+          .delete()
+          .eq('module_id', validModuleId)
+          .eq('content_id', contentId);
+
+        if (error) throw error;
+        contentService.clearModuleCache(validModuleId);
+        contentService.clearModuleCache(moduleId);
+        contentService.clearAllModulesCache();
+        return true;
+      } catch (err) {
+        console.error('removeContentFromModule error:', err);
+        throw err;
+      }
+    }
+
+    const mod = localStore.modules.find(m => m.id === moduleId || m.slug === moduleId);
+    if (mod && mod.lessons) {
+      mod.lessons = mod.lessons.filter(l => l.content_id !== contentId);
+    }
+    contentService.clearModuleCache(moduleId);
+    contentService.clearAllModulesCache();
+    return true;
+  },
+
+  async updateModuleContentOrder(moduleId, items = []) {
+    if (isSupabaseConfigured) {
+      try {
+        let validModuleId = moduleId;
+        const isUUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(moduleId);
+        if (!isUUID) {
+          const { data: mod } = await supabase.from('modules').select('id').eq('slug', moduleId).maybeSingle();
+          if (mod?.id) validModuleId = mod.id;
+        }
+
+        for (let i = 0; i < items.length; i++) {
+          const item = items[i];
+          const contentId = item.content_id || item.content?.id;
+          if (!contentId) continue;
+          await supabase
+            .from('module_lessons')
+            .update({ order_index: i + 1 })
+            .eq('module_id', validModuleId)
+            .eq('content_id', contentId);
+        }
+
+        contentService.clearModuleCache(validModuleId);
+        contentService.clearModuleCache(moduleId);
+        contentService.clearAllModulesCache();
+        return true;
+      } catch (err) {
+        console.error('updateModuleContentOrder error:', err);
+        throw err;
+      }
+    }
+
+    const mod = localStore.modules.find(m => m.id === moduleId || m.slug === moduleId);
+    if (mod && mod.lessons) {
+      items.forEach((item, idx) => {
+        const cId = item.content_id || item.content?.id;
+        const found = mod.lessons.find(l => l.content_id === cId);
+        if (found) {
+          found.order_index = idx + 1;
+          found.sort_order = idx + 1;
+        }
+      });
+    }
+    contentService.clearModuleCache(moduleId);
+    contentService.clearAllModulesCache();
+    return true;
   },
 
   /**

@@ -67,7 +67,7 @@ export default function MarkdownRenderer({ content, className }) {
   if (!content || typeof content !== 'string') return null;
 
   return (
-    <div className={cn("markdown-body prose dark:prose-invert max-w-none font-sans text-right", className)}>
+    <div className={cn("reading-surface markdown-body prose dark:prose-invert max-w-none font-sans text-right", className)}>
       <Markdown
         remarkPlugins={[remarkGfm, remarkDirective, remarkDirectiveRehype]}
         components={{

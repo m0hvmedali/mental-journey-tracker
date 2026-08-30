@@ -14,52 +14,175 @@ function getFallbackResponse(message) {
   return `أهلاً بك! بصفتي مساعدك النفسي الداعم، أنا هنا لنستكشف معاً أفكارك ومشاعرك ونطور أدوات للتكيف مستندة إلى العلاج المعرفي السلوكي (CBT) واليقظة الذهنية.\n\nكيف تجد حالتك المزاجية اليوم، وبماذا تود أن نبدأ الحديث؟`;
 }
 
-export const aiService = {
+// ---------------------------------------------------------
+// AI Provider Abstraction
+// ---------------------------------------------------------
+class AIProvider {
+  async chat() { throw new Error('Not implemented'); }
+  async formatMarkdown() { throw new Error('Not implemented'); }
+}
+
+class GeminiVercelProvider extends AIProvider {
+  async getAuthHeaders() {
+    // For Vercel Serverless API, we pass the Supabase session token if available
+    const { data: { session } } = await supabase.auth.getSession();
+    return {
+      'Content-Type': 'application/json',
+      'Authorization': session ? `Bearer ${session.access_token}` : 'Bearer anonymous'
+    };
+  }
+
+  async chat({ message, conversationId, history, userId }) {
+    const headers = await this.getAuthHeaders();
+    const response = await fetch('/api/ai/chat', {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({ message, conversationId, history, userId })
+    });
+
+    if (!response.ok) {
+      throw new Error(`Gemini Chat API error: ${response.statusText}`);
+    }
+
+    return await response.json();
+  }
+
+  async formatMarkdown({ rawText, instructions }) {
+    const headers = await this.getAuthHeaders();
+    const response = await fetch('/api/ai/format', {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({ rawText, instructions })
+    });
+
+    if (!response.ok) {
+      throw new Error(`Gemini Format API error: ${response.statusText}`);
+    }
+
+    return await response.json();
+  }
+}
+
+class OllamaLocalProvider extends AIProvider {
+  constructor(baseUrl = 'http://localhost:11434') {
+    super();
+    this.baseUrl = baseUrl;
+    this.model = 'llama3'; // Default local model, can be made configurable
+  }
+
+  async checkAvailability() {
+    try {
+      // Fast short-circuit timeout to not block the UI if Ollama is off
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 1000);
+      
+      const response = await fetch(`${this.baseUrl}/api/tags`, {
+        signal: controller.signal
+      });
+      clearTimeout(timeoutId);
+      return response.ok;
+    } catch {
+      return false; // Offline or CORS blocked
+    }
+  }
+
+  async chat({ message, conversationId, history }) {
+    const systemInstruction = `أنت "مساعد الرحلة النفسية" - رفيق ومساعد نفسي داعم ومتعاطف يعتمد على أسس العلاج المعرفي السلوكي (CBT)، علاج القبول والالتزام (ACT)، واليقظة الذهنية (Mindfulness).
+الأسلوب: دافئ، غير حكمي، محترم، واضح باللغة العربية الفصحى البسيطة.`;
+
+    let prompt = systemInstruction + '\\n\\n';
+    if (history && history.length > 0) {
+      prompt += history.map((h) => `${h.role === 'assistant' ? 'Assistant' : 'User'}: ${h.content}`).join('\\n') + '\\n';
+    }
+    prompt += `User: ${message}\\nAssistant:`;
+
+    const response = await fetch(`${this.baseUrl}/api/generate`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: this.model,
+        prompt: prompt,
+        stream: false
+      })
+    });
+
+    if (!response.ok) throw new Error(`Ollama API error: ${response.statusText}`);
+
+    const data = await response.json();
+    return {
+      success: true,
+      data: {
+        messageId: `msg_ollama_${Date.now()}`,
+        conversationId,
+        response: data.response
+      }
+    };
+  }
+
+  async formatMarkdown({ rawText, instructions }) {
+    const systemInstruction = `أنت مساعد ذكي مهمتك تنسيق النصوص وتحويلها إلى Markdown منظم وجذاب لمدونة للصحة النفسية.`;
+    const prompt = `${systemInstruction}\\n${instructions ? `تعليمات إضافية: ${instructions}\\n` : ''}الرجاء تنسيق هذا النص:\\n${rawText}`;
+
+    const response = await fetch(`${this.baseUrl}/api/generate`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: this.model,
+        prompt: prompt,
+        stream: false
+      })
+    });
+
+    if (!response.ok) throw new Error(`Ollama API error: ${response.statusText}`);
+
+    const data = await response.json();
+    return { markdown: data.response };
+  }
+}
+
+// ---------------------------------------------------------
+// Unified AI Service
+// ---------------------------------------------------------
+class UnifiedAIService {
+  constructor() {
+    this.gemini = new GeminiVercelProvider();
+    this.ollama = new OllamaLocalProvider();
+    
+    // Configurable provider chain order
+    this.providerChain = [
+      this.gemini,
+      this.ollama
+    ];
+  }
+
   /**
-   * Send a chat message to the AI Assistant via Supabase Edge Function with graceful fallback
+   * Send a chat message to the AI Assistant via configured providers with graceful fallback
    */
   async sendMessage({ message, conversationId, history = [], userId }) {
     if (!isSupabaseConfigured) {
-      return {
-        success: true,
-        data: {
-          messageId: `msg_${Date.now()}`,
-          conversationId,
-          response: getFallbackResponse(message)
-        }
-      };
+      return this._buildSafeFallback(message, conversationId);
     }
 
-    try {
-      const { data, error } = await supabase.functions.invoke('chat', {
-        body: { message, conversationId, history, userId }
-      });
+    for (const provider of this.providerChain) {
+      try {
+        if (provider instanceof OllamaLocalProvider) {
+          const isAvailable = await provider.checkAvailability();
+          if (!isAvailable) continue; // Skip quickly if Ollama is not running locally
+        }
 
-      if (error || (data && !data.success)) {
-        console.warn('Edge function error or non-2xx status, using intelligent fallback:', error || data?.error);
-        return {
-          success: true,
-          data: {
-            messageId: `msg_${Date.now()}`,
-            conversationId,
-            response: getFallbackResponse(message)
-          }
-        };
+        const result = await provider.chat({ message, conversationId, history, userId });
+        if (result && result.success) {
+          return result;
+        }
+      } catch (err) {
+        console.warn(`[AI Provider Error] ${provider.constructor.name}:`, err);
+        // Continue to the next fallback provider
       }
-
-      return data;
-    } catch (err) {
-      console.warn('Network or Edge function error, using intelligent fallback:', err);
-      return {
-        success: true,
-        data: {
-          messageId: `msg_${Date.now()}`,
-          conversationId,
-          response: getFallbackResponse(message)
-        }
-      };
     }
-  },
+
+    // If all providers fail, use safe fallback deterministic response
+    return this._buildSafeFallback(message, conversationId);
+  }
 
   /**
    * Format raw text to clean Markdown with Callouts
@@ -69,20 +192,36 @@ export const aiService = {
       return rawText;
     }
 
-    try {
-      const { data, error } = await supabase.functions.invoke('format-markdown', {
-        body: { rawText, instructions }
-      });
+    for (const provider of this.providerChain) {
+      try {
+        if (provider instanceof OllamaLocalProvider) {
+          const isAvailable = await provider.checkAvailability();
+          if (!isAvailable) continue;
+        }
 
-      if (error || (data && data.error)) {
-        console.warn('Format markdown edge function error, returning rawText:', error || data?.error);
-        return rawText;
+        const result = await provider.formatMarkdown({ rawText, instructions });
+        if (result && result.markdown) {
+          return result.markdown;
+        }
+      } catch (err) {
+        console.warn(`[AI Provider Error] ${provider.constructor.name}:`, err);
       }
-
-      return data?.markdown || rawText;
-    } catch (err) {
-      console.warn('Network error formatting markdown, returning rawText:', err);
-      return rawText;
     }
+
+    // Fallback: return raw text if all providers fail
+    return rawText;
   }
-};
+
+  _buildSafeFallback(message, conversationId) {
+    return {
+      success: true,
+      data: {
+        messageId: `msg_fallback_${Date.now()}`,
+        conversationId,
+        response: getFallbackResponse(message)
+      }
+    };
+  }
+}
+
+export const aiService = new UnifiedAIService();

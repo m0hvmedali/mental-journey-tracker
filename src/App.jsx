@@ -28,6 +28,7 @@ import Progress from './pages/Progress.jsx';
 import Community from './pages/Community.jsx';
 import DynamicContent from './pages/DynamicContent.jsx';
 import AdminRouteGuard from './components/admin/AdminRouteGuard.jsx';
+import ShortcutsManager from './pages/admin/ShortcutsManager.jsx';
 import AdminDashboard from './pages/admin/AdminDashboard.jsx';
 import ContentManager from './pages/admin/ContentManager.jsx';
 import ContentEditor from './pages/admin/ContentEditor.jsx';
@@ -43,6 +44,7 @@ import InstagramOnboarding from './components/wellness/InstagramOnboarding.jsx';
 import About from './pages/About.jsx';
 import ReferencesPage from './pages/Refrance.jsx';
 import Login from './pages/Login.jsx';
+import { SmartReadingEngine } from './accessibility/SmartReadingEngine/index.js';
 import { useState, useEffect } from 'react';
 import { authService } from './services/authService.js';
 
@@ -75,6 +77,7 @@ function AppContent({ session }) {
 
   return (
     <div className="flex flex-col min-h-screen">
+      <SmartReadingEngine />
       {!isAdminPage && <GlobalTimer />}
       <Routes>
         <Route path="/" element={<PublicOnlyRoute session={session}><Login /></PublicOnlyRoute>} /> 
@@ -110,6 +113,15 @@ function AppContent({ session }) {
         <Route path="/c/:slug" element={<ProtectedRoute session={session}><DynamicContent /></ProtectedRoute>} />
         
         {/* Admin Content Management Studio */}
+        
+        <Route
+          path="/admin/shortcuts"
+          element={
+            <AdminRouteGuard>
+              <ShortcutsManager />
+            </AdminRouteGuard>
+          }
+        />
         <Route
           path="/admin"
           element={

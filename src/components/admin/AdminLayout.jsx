@@ -25,6 +25,8 @@ export default function AdminLayout({ children, title, subtitle, actionButton })
   const navigate = useNavigate();
 
   const navItems = [
+    { to: '/admin/shortcuts', label: 'الرئيسية', icon: Home },
+
     { to: '/admin', label: 'لوحة التحكم', icon: LayoutDashboard, exact: true },
     { to: '/admin/content', label: 'إدارة المحتوى', icon: FileText },
     { to: '/admin/content/new', label: 'محتوى جديد', icon: PlusCircle },

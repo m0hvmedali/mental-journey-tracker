@@ -3,6 +3,8 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 @import "tw-animate-css";
+@import "./accessibility/SmartReadingEngine/readability-tokens.css";
+@import "./accessibility/SmartReadingEngine/reading-rhythm.css";
 
 @theme {
   --color-bg-app: var(--bg-app);

@@ -41,7 +41,11 @@ export function getTemplate(contentType) {
 export function RenderContentTemplate({ content, children }) {
   if (!content) return null;
   const TemplateComponent = getTemplate(content.content_type);
-  return <TemplateComponent content={content}>{children}</TemplateComponent>;
+  return (
+    <div className="reading-container reading-surface">
+      <TemplateComponent content={content}>{children}</TemplateComponent>
+    </div>
+  );
 }
 
 export default RenderContentTemplate;

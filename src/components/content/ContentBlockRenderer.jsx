@@ -15,7 +15,7 @@ export default function ContentBlockRenderer({ blocks = [] }) {
   const sortedBlocks = [...blocks].sort((a, b) => (Number(a?.position) || 0) - (Number(b?.position) || 0));
 
   return (
-    <div className="space-y-6 my-6 text-right">
+    <div className="reading-surface space-y-6 my-6 text-right">
       {sortedBlocks.map((block, idx) => {
         if (!block) return null;
         const blockType = block.block_type || 'markdown';

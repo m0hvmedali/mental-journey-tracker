@@ -1,0 +1,245 @@
+/**
+ * Reading Rhythm Stylesheet - SmartReadingEngine
+ * Semantic, CSS-first reading rhythm and accessibility layer.
+ */
+
+/* ==========================================================================
+   1. Typography & RTL Foundations (Non-destructive)
+   ========================================================================== */
+:lang(ar),
+[dir="rtl"] {
+  line-height: var(--reading-line-height-ar, 1.8);
+  letter-spacing: 0;
+}
+
+/* ==========================================================================
+   2. Reading Container (Responsive Line-Length Constraint)
+   ========================================================================== */
+.reading-container {
+  width: min(100%, var(--reading-content-max, 68ch));
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 3vw, 2rem);
+  box-sizing: border-box;
+}
+
+/* Modifier variants */
+[data-reading-wide] .reading-container,
+.reading-container[data-reading-wide] {
+  --reading-content-max: 82ch;
+}
+
+[data-reading-compact] {
+  --reading-paragraph-gap: clamp(0.5rem, 1vw, 0.75rem);
+  --reading-section-gap: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+[data-reading-dense] {
+  --reading-paragraph-gap: 0.375rem;
+  --reading-section-gap: 1rem;
+}
+
+/* ==========================================================================
+   3. Reading Surface (Semantic Editorial & CMS Content Container)
+   ========================================================================== */
+.reading-surface {
+  text-align: start;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Headings Rhythm */
+.reading-surface h1 {
+  margin-block-start: var(--reading-space-8, 2rem);
+  margin-block-end: var(--reading-space-4, 1rem);
+  line-height: 1.28;
+  font-family: var(--font-display, inherit);
+}
+
+.reading-surface h2 {
+  margin-block-start: var(--reading-heading-gap-top, 2rem);
+  margin-block-end: var(--reading-heading-gap-bottom, 0.75rem);
+  line-height: 1.35;
+  font-family: var(--font-display, inherit);
+}
+
+.reading-surface h3 {
+  margin-block-start: var(--reading-space-6, 1.5rem);
+  margin-block-end: var(--reading-space-2, 0.5rem);
+  line-height: 1.45;
+  font-family: var(--font-display, inherit);
+}
+
+.reading-surface h4,
+.reading-surface h5,
+.reading-surface h6 {
+  margin-block-start: var(--reading-space-4, 1rem);
+  margin-block-end: var(--reading-space-2, 0.5rem);
+  line-height: 1.5;
+}
+
+/* Immediate heading-to-paragraph pairing (closer relationship) */
+.reading-surface h1 + p,
+.reading-surface h2 + p,
+.reading-surface h3 + p,
+.reading-surface h4 + p {
+  margin-block-start: var(--reading-space-2, 0.5rem);
+}
+
+/* Paragraphs Rhythm */
+.reading-surface p {
+  line-height: inherit;
+  margin-block: 0;
+  max-inline-size: var(--reading-content-max, 68ch);
+}
+
+.reading-surface p + p {
+  margin-block-start: var(--reading-paragraph-gap, 1rem);
+}
+
+.reading-surface p + ul,
+.reading-surface p + ol,
+.reading-surface p + blockquote,
+.reading-surface p + figure {
+  margin-block-start: var(--reading-paragraph-gap, 1rem);
+}
+
+/* Lists Spacing */
+.reading-surface ul,
+.reading-surface ol {
+  margin-block: var(--reading-space-4, 1rem);
+  padding-inline-start: var(--reading-space-6, 1.5rem);
+  max-inline-size: var(--reading-content-max, 68ch);
+}
+
+.reading-surface li + li {
+  margin-block-start: var(--reading-space-2, 0.5rem);
+}
+
+.reading-surface li > ul,
+.reading-surface li > ol {
+  margin-block: var(--reading-space-2, 0.5rem);
+  padding-inline-start: var(--reading-space-4, 1rem);
+}
+
+/* Blockquotes */
+.reading-surface blockquote {
+  margin-block: var(--reading-space-6, 1.5rem);
+  padding-block: var(--reading-space-2, 0.5rem);
+  padding-inline-start: var(--reading-space-4, 1rem);
+  max-inline-size: var(--reading-content-max, 68ch);
+}
+
+.reading-surface blockquote p + p {
+  margin-block-start: var(--reading-space-2, 0.5rem);
+}
+
+/* Figures, Media & Tables */
+.reading-surface figure {
+  margin-block: var(--reading-space-6, 1.5rem);
+  margin-inline: 0;
+}
+
+.reading-surface figure img {
+  border-radius: 0.875rem;
+  max-width: 100%;
+  height: auto;
+}
+
+.reading-surface figcaption {
+  margin-block-start: var(--reading-space-2, 0.5rem);
+  font-size: 0.875rem;
+}
+
+.reading-surface table {
+  width: 100%;
+  margin-block: var(--reading-space-6, 1.5rem);
+  border-collapse: collapse;
+  display: block;
+  overflow-x: auto;
+}
+
+.reading-surface th,
+.reading-surface td {
+  padding-block: var(--reading-space-2, 0.5rem);
+  padding-inline: var(--reading-space-3, 0.75rem);
+}
+
+/* Code & Pre */
+.reading-surface pre {
+  margin-block: var(--reading-space-4, 1rem);
+  padding: var(--reading-space-4, 1rem);
+  overflow-x: auto;
+  border-radius: 0.75rem;
+}
+
+.reading-surface code {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.875em;
+}
+
+/* ==========================================================================
+   4. Explicit Exceptions & Safe Exclusions
+   ========================================================================== */
+[data-no-rhythm],
+[data-no-rhythm] * {
+  margin-block-start: revert;
+  margin-block-end: revert;
+  line-height: revert;
+}
+
+/* Protected UI Components (Prevent unrequested style cascade) */
+.admin-container,
+.admin-toolbar,
+.admin-table,
+.interactive-widget,
+#bottom-nav,
+.wellness-hub-canvas {
+  contain: layout style;
+}
+
+/* ==========================================================================
+   5. Accessible Focus Visible Styling
+   ========================================================================== */
+:focus-visible {
+  outline: var(--reading-focus-ring, 2px solid #0d9488);
+  outline-offset: var(--reading-focus-offset, 2px);
+}
+
+/* Buttons inside reading rhythm */
+.reading-surface button,
+.reading-surface a {
+  transition: color var(--reading-transition, 220ms ease),
+              background-color var(--reading-transition, 220ms ease),
+              border-color var(--reading-transition, 220ms ease);
+}
+
+/* ==========================================================================
+   6. Accessibility & Media Queries (Reduced Motion, Forced Colors, Print)
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  
+  .reading-surface {
+    max-width: 100% !important;
+  }
+  
+  #bottom-nav,
+  .floating-widget,
+  .admin-toolbar {
+    display: none !important;
+  }
+}
