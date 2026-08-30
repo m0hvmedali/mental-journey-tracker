@@ -314,14 +314,9 @@ export const contentService = {
           .order('sort_order', { referencedTable: 'homepage_shortcut_items', ascending: true });
         
         if (error) {
-          // If the table doesn't exist in Supabase schema cache yet (e.g. PGRST205 or relation missing)
-          if (error.code === 'PGRST205' || error.message?.includes('schema cache') || error.message?.includes('does not exist')) {
-            console.warn('homepage_shortcuts table not found in Supabase schema cache. Using fallback shortcuts.');
-            const fallbackData = getFallbackShortcuts();
-            setCache(cacheKey, fallbackData);
-            return fallbackData;
-          }
-          throw error;
+          const fallbackData = getFallbackShortcuts();
+          setCache(cacheKey, fallbackData);
+          return fallbackData;
         }
         
         // Filter out items where content is not published
@@ -335,7 +330,6 @@ export const contentService = {
         setCache(cacheKey, filteredData);
         return filteredData;
       } catch (err) {
-        console.warn('getHomepageShortcuts fallback applied:', err?.message || err);
         const fallbackData = getFallbackShortcuts();
         setCache(cacheKey, fallbackData);
         return fallbackData;
@@ -568,7 +562,7 @@ export const contentService = {
             module_lessons (
               id, section_name, order_index, created_at,
               content:content_id (
-                id, slug, title, description, content_type, featured_image, metadata, status, reading_time_minutes
+                id, slug, title, description, content_type, featured_image, metadata, status
               )
             )
           `)
@@ -625,7 +619,7 @@ export const contentService = {
             module_lessons (
               id, section_name, order_index, created_at,
               content:content_id (
-                id, slug, title, description, content_type, featured_image, metadata, status, reading_time_minutes
+                id, slug, title, description, content_type, featured_image, metadata, status
               )
             )
           `)
@@ -701,7 +695,7 @@ export const contentService = {
           .select(`
             id, module_id, content_id, section_name, order_index, created_at,
             content:content_id (
-              id, slug, language, title, description, content_type, featured_image, status, metadata, published_at, reading_time_minutes
+              id, slug, language, title, description, content_type, featured_image, status, metadata, published_at
             )
           `)
           .eq('module_id', moduleId)
@@ -752,7 +746,7 @@ export const contentService = {
           .select(`
             id, module_id, content_id, section_name, order_index, created_at,
             content:content_id (
-              id, slug, title, description, content_type, featured_image, metadata, status, reading_time_minutes
+              id, slug, title, description, content_type, featured_image, metadata, status
             )
           `)
           .eq('module_id', validModuleId)

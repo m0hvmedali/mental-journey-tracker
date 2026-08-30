@@ -217,24 +217,51 @@ export default function FloatingAIChat({ onClose }) {
     setError(null);
 
     try {
+      let assistantMsgId = `ai_${Date.now()}`;
+      let hasChunk = false;
+
       const result = await aiService.sendMessage({
         message: text,
         conversationId: convId,
         history: messages.slice(-10),
-        userId: username
+        userId: username,
+        stream: true,
+        onChunk: (token, fullText) => {
+          if (!hasChunk) {
+            hasChunk = true;
+            setTyping(false);
+            setMessages(prev => [
+              ...prev,
+              {
+                id: assistantMsgId,
+                conversationId: convId,
+                role: 'assistant',
+                content: fullText,
+                timestamp: Date.now()
+              }
+            ]);
+          } else {
+            setMessages(prev => prev.map(m => m.id === assistantMsgId ? { ...m, content: fullText } : m));
+          }
+        }
       });
 
       if (result && (result.success || result.response || result.data?.response)) {
         const replyText = result.data?.response || result.response || 'شكراً لتواصلك معي.';
+        const finalMsgId = result.data?.messageId || assistantMsgId;
         const assistantMsg = {
-          id: result.data?.messageId || `ai_${Date.now()}`,
+          id: finalMsgId,
           conversationId: convId,
           role: 'assistant',
           content: replyText,
           timestamp: Date.now()
         };
 
-        setMessages(prev => [...prev, assistantMsg]);
+        if (hasChunk) {
+          setMessages(prev => prev.map(m => m.id === assistantMsgId ? assistantMsg : m));
+        } else {
+          setMessages(prev => [...prev, assistantMsg]);
+        }
         conversationService.saveMessage(convId, assistantMsg).catch(() => {});
 
         if (!currentConversation?.title || currentConversation?.title === 'محادثة جديدة') {
@@ -280,24 +307,51 @@ export default function FloatingAIChat({ onClose }) {
     setError(null);
 
     try {
+      let assistantMsgId = `ai_${Date.now()}`;
+      let hasChunk = false;
+
       const result = await aiService.sendMessage({
         message: text,
         conversationId: convId,
         history: messages.slice(-10),
-        userId: username
+        userId: username,
+        stream: true,
+        onChunk: (token, fullText) => {
+          if (!hasChunk) {
+            hasChunk = true;
+            setTyping(false);
+            setMessages(prev => [
+              ...prev,
+              {
+                id: assistantMsgId,
+                conversationId: convId,
+                role: 'assistant',
+                content: fullText,
+                timestamp: Date.now()
+              }
+            ]);
+          } else {
+            setMessages(prev => prev.map(m => m.id === assistantMsgId ? { ...m, content: fullText } : m));
+          }
+        }
       });
 
       if (result && (result.success || result.response || result.data?.response)) {
         const replyText = result.data?.response || result.response || 'إليك تلخيص الصفحة المطلوبة.';
+        const finalMsgId = result.data?.messageId || assistantMsgId;
         const assistantMsg = {
-          id: result.data?.messageId || `ai_${Date.now()}`,
+          id: finalMsgId,
           conversationId: convId,
           role: 'assistant',
           content: replyText,
           timestamp: Date.now()
         };
 
-        setMessages(prev => [...prev, assistantMsg]);
+        if (hasChunk) {
+          setMessages(prev => prev.map(m => m.id === assistantMsgId ? assistantMsg : m));
+        } else {
+          setMessages(prev => [...prev, assistantMsg]);
+        }
         conversationService.saveMessage(convId, assistantMsg).catch(() => {});
 
         if (!currentConversation?.title || currentConversation?.title === 'محادثة جديدة') {

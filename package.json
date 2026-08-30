@@ -21,6 +21,7 @@
     "firebase": "^11.10.0",
     "framer-motion": "^12.23.5",
     "lucide-react": "^1.37.0",
+    "ollama": "^0.6.3",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-markdown": "^10.1.0",

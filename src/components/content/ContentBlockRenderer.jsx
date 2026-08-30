@@ -123,7 +123,7 @@ export default function ContentBlockRenderer({ blocks = [] }) {
 
             case 'code':
               return (
-                <div key={key} className="my-6 rounded-xl border border-border-subtle bg-surface-elevated overflow-hidden text-left" dir="ltr">
+                <div key={key} className="my-6 rounded-xl border border-border-subtle bg-surface-elevated overflow-hidden text-left vie-ignore" dir="ltr">
                   <div className="bg-surface px-4 py-2 border-b border-border-subtle flex items-center justify-between text-xs text-text-muted">
                     <span className="flex items-center gap-1.5 font-mono">
                       <Code2 className="w-3.5 h-3.5" />
@@ -131,7 +131,7 @@ export default function ContentBlockRenderer({ blocks = [] }) {
                     </span>
                     {payload.caption && <span className="text-[11px]">{payload.caption}</span>}
                   </div>
-                  <pre className="p-4 text-xs font-mono text-text-primary overflow-x-auto">
+                  <pre className="p-4 text-xs font-mono text-text-primary overflow-x-auto vie-ignore">
                     <code>{payload.code || ''}</code>
                   </pre>
                 </div>

@@ -1,6 +1,7 @@
 @import "tailwindcss/utilities.css";
 @import "tailwindcss/preflight.css";
 @import "tailwindcss";
+@import "./accessibility/vie/styles.css";
 @plugin "@tailwindcss/typography";
 @import "tw-animate-css";
 @import "./accessibility/SmartReadingEngine/readability-tokens.css";

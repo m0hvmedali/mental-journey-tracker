@@ -5,15 +5,25 @@ const LOCAL_STORAGE_KEY = 'user_sticky_notes';
 let isNotesTableAvailable = true;
 
 // Helper to get active user ID
-const getCurrentUserId = () => {
+const getCurrentUserId = async () => {
+  try {
+    const { data: { user } } = await supabase.auth.getUser();
+    if (user?.id) return user.id;
+  } catch {
+    // ignore
+  }
   return localStorage.getItem('username') || 'guest';
+};
+
+const isUUID = (str) => {
+  return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(str || '');
 };
 
 /**
   Fetch all sticky notes for the current user
 */
 export async function getNotes() {
-  const userId = getCurrentUserId();
+  const userId = await getCurrentUserId();
   let dbNotes = [];
 
   // Load local notes first as immediate source
@@ -26,7 +36,7 @@ export async function getNotes() {
   }
 
   // Try fetching from Supabase only if configured and table hasn't failed with 404
-  if (isSupabaseConfigured && isNotesTableAvailable) {
+  if (isSupabaseConfigured && isNotesTableAvailable && isUUID(userId)) {
     try {
       const { data, error } = await supabase
         .from('user_notes')
@@ -67,16 +77,20 @@ export async function getNotes() {
   Save or update a note
 */
 export async function saveNote(noteData) {
-  const userId = getCurrentUserId();
+  const userId = await getCurrentUserId();
   const now = new Date().toISOString();
 
+  const noteId = (noteData.id && isUUID(noteData.id)) 
+    ? noteData.id 
+    : (noteData.id || crypto.randomUUID());
+
   const note = {
-    id: noteData.id || `note_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`,
+    id: noteId,
     user_id: userId,
     content: noteData.content || '',
     color: noteData.color || 'emerald',
-    source_path: noteData.source_path || noteData.source?.path || window.location.pathname,
-    source_title: noteData.source_title || noteData.source?.title || document.title || 'ملاحظة عامة',
+    source_path: noteData.source_path || noteData.source?.path || (typeof window !== 'undefined' ? window.location.pathname : ''),
+    source_title: noteData.source_title || noteData.source?.title || (typeof document !== 'undefined' ? document.title : 'ملاحظة عامة'),
     source_type: noteData.source_type || 'page',
     position: noteData.position || { x: 20, y: 80 },
     created_at: noteData.created_at || now,
@@ -100,15 +114,15 @@ export async function saveNote(noteData) {
     console.error('Error saving note locally:', err);
   }
 
-  // 2. Try saving to Supabase
-  if (isSupabaseConfigured && isNotesTableAvailable) {
+  // 2. Try saving to Supabase if authenticated with valid UUID
+  if (isSupabaseConfigured && isNotesTableAvailable && isUUID(userId) && isUUID(note.id)) {
     try {
       const { error } = await supabase.from('user_notes').upsert([note]);
       if (error) {
-        isNotesTableAvailable = false;
+        console.warn('Supabase user_notes upsert warning:', error?.message || error);
       }
-    } catch {
-      isNotesTableAvailable = false;
+    } catch (err) {
+      console.warn('Supabase user_notes upsert error:', err?.message || err);
     }
   }
 
@@ -135,15 +149,12 @@ export async function deleteNote(noteId) {
     console.error('Error deleting local note:', err);
   }
 
-  // 2. Delete from Supabase
-  if (isSupabaseConfigured && isNotesTableAvailable) {
+  // 2. Delete from Supabase if valid UUID
+  if (isSupabaseConfigured && isNotesTableAvailable && isUUID(noteId)) {
     try {
-      const { error } = await supabase.from('user_notes').delete().eq('id', noteId);
-      if (error) {
-        isNotesTableAvailable = false;
-      }
+      await supabase.from('user_notes').delete().eq('id', noteId);
     } catch {
-      isNotesTableAvailable = false;
+      // ignore
     }
   }
 

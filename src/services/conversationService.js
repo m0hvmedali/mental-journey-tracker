@@ -110,7 +110,7 @@ export const conversationService = {
           .from('conversations')
           .insert([newConv])
           .select()
-          .single();
+          .maybeSingle();
 
         if (!error && data) {
           return data;
@@ -135,14 +135,14 @@ export const conversationService = {
           .from('conversations')
           .select('*')
           .eq('id', conversationId)
-          .single();
+          .maybeSingle();
 
         if (!convError && conversation) {
           const { data: messages } = await supabase
             .from('messages')
             .select('*')
             .eq('conversation_id', conversationId)
-            .order('timestamp', { ascending: true });
+            .order('created_at', { ascending: true });
 
           return {
             conversation,

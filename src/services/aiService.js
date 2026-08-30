@@ -1,4 +1,4 @@
-import { supabase, isSupabaseConfigured } from '@/supabaseClient';
+import { supabase } from '@/supabaseClient';
 
 function getFallbackResponse(message) {
   const msg = (message || '').toLowerCase();
@@ -14,202 +14,145 @@ function getFallbackResponse(message) {
   return `أهلاً بك! بصفتي مساعدك النفسي الداعم، أنا هنا لنستكشف معاً أفكارك ومشاعرك ونطور أدوات للتكيف مستندة إلى العلاج المعرفي السلوكي (CBT) واليقظة الذهنية.\n\nكيف تجد حالتك المزاجية اليوم، وبماذا تود أن نبدأ الحديث؟`;
 }
 
-// ---------------------------------------------------------
-// AI Provider Abstraction
-// ---------------------------------------------------------
-class AIProvider {
-  async chat() { throw new Error('Not implemented'); }
-  async formatMarkdown() { throw new Error('Not implemented'); }
-}
-
-class GeminiVercelProvider extends AIProvider {
+class UnifiedAIService {
   async getAuthHeaders() {
-    // For Vercel Serverless API, we pass the Supabase session token if available
-    const { data: { session } } = await supabase.auth.getSession();
+    try {
+      if (supabase && supabase.auth) {
+        const { data: { session } } = await supabase.auth.getSession();
+        return {
+          'Content-Type': 'application/json',
+          'Authorization': session ? `Bearer ${session.access_token}` : 'Bearer anonymous'
+        };
+      }
+    } catch {
+      // Ignore auth error if supabase session check fails
+    }
     return {
       'Content-Type': 'application/json',
-      'Authorization': session ? `Bearer ${session.access_token}` : 'Bearer anonymous'
+      'Authorization': 'Bearer anonymous'
     };
-  }
-
-  async chat({ message, conversationId, history, userId }) {
-    const headers = await this.getAuthHeaders();
-    const response = await fetch('/api/ai/chat', {
-      method: 'POST',
-      headers,
-      body: JSON.stringify({ message, conversationId, history, userId })
-    });
-
-    if (!response.ok) {
-      throw new Error(`Gemini Chat API error: ${response.statusText}`);
-    }
-
-    return await response.json();
-  }
-
-  async formatMarkdown({ rawText, instructions }) {
-    const headers = await this.getAuthHeaders();
-    const response = await fetch('/api/ai/format', {
-      method: 'POST',
-      headers,
-      body: JSON.stringify({ rawText, instructions })
-    });
-
-    if (!response.ok) {
-      throw new Error(`Gemini Format API error: ${response.statusText}`);
-    }
-
-    return await response.json();
-  }
-}
-
-class OllamaLocalProvider extends AIProvider {
-  constructor(baseUrl = 'http://localhost:11434') {
-    super();
-    this.baseUrl = baseUrl;
-    this.model = 'llama3'; // Default local model, can be made configurable
-  }
-
-  async checkAvailability() {
-    try {
-      // Fast short-circuit timeout to not block the UI if Ollama is off
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 1000);
-      
-      const response = await fetch(`${this.baseUrl}/api/tags`, {
-        signal: controller.signal
-      });
-      clearTimeout(timeoutId);
-      return response.ok;
-    } catch {
-      return false; // Offline or CORS blocked
-    }
-  }
-
-  async chat({ message, conversationId, history }) {
-    const systemInstruction = `أنت "مساعد الرحلة النفسية" - رفيق ومساعد نفسي داعم ومتعاطف يعتمد على أسس العلاج المعرفي السلوكي (CBT)، علاج القبول والالتزام (ACT)، واليقظة الذهنية (Mindfulness).
-الأسلوب: دافئ، غير حكمي، محترم، واضح باللغة العربية الفصحى البسيطة.`;
-
-    let prompt = systemInstruction + '\\n\\n';
-    if (history && history.length > 0) {
-      prompt += history.map((h) => `${h.role === 'assistant' ? 'Assistant' : 'User'}: ${h.content}`).join('\\n') + '\\n';
-    }
-    prompt += `User: ${message}\\nAssistant:`;
-
-    const response = await fetch(`${this.baseUrl}/api/generate`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: this.model,
-        prompt: prompt,
-        stream: false
-      })
-    });
-
-    if (!response.ok) throw new Error(`Ollama API error: ${response.statusText}`);
-
-    const data = await response.json();
-    return {
-      success: true,
-      data: {
-        messageId: `msg_ollama_${Date.now()}`,
-        conversationId,
-        response: data.response
-      }
-    };
-  }
-
-  async formatMarkdown({ rawText, instructions }) {
-    const systemInstruction = `أنت مساعد ذكي مهمتك تنسيق النصوص وتحويلها إلى Markdown منظم وجذاب لمدونة للصحة النفسية.`;
-    const prompt = `${systemInstruction}\\n${instructions ? `تعليمات إضافية: ${instructions}\\n` : ''}الرجاء تنسيق هذا النص:\\n${rawText}`;
-
-    const response = await fetch(`${this.baseUrl}/api/generate`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: this.model,
-        prompt: prompt,
-        stream: false
-      })
-    });
-
-    if (!response.ok) throw new Error(`Ollama API error: ${response.statusText}`);
-
-    const data = await response.json();
-    return { markdown: data.response };
-  }
-}
-
-// ---------------------------------------------------------
-// Unified AI Service
-// ---------------------------------------------------------
-class UnifiedAIService {
-  constructor() {
-    this.gemini = new GeminiVercelProvider();
-    this.ollama = new OllamaLocalProvider();
-    
-    // Configurable provider chain order
-    this.providerChain = [
-      this.gemini,
-      this.ollama
-    ];
   }
 
   /**
-   * Send a chat message to the AI Assistant via configured providers with graceful fallback
+   * Send a chat message to the AI Assistant via unified server endpoint (/api/ai/chat).
+   * Supports both non-streaming JSON and token-by-token SSE streaming via onChunk.
    */
-  async sendMessage({ message, conversationId, history = [], userId }) {
-    if (!isSupabaseConfigured) {
-      return this._buildSafeFallback(message, conversationId);
-    }
+  async sendMessage({ message, conversationId, history = [], userId, stream = false, onChunk }) {
+    try {
+      const headers = await this.getAuthHeaders();
+      const isStreaming = Boolean(stream || typeof onChunk === 'function');
 
-    for (const provider of this.providerChain) {
-      try {
-        if (provider instanceof OllamaLocalProvider) {
-          const isAvailable = await provider.checkAvailability();
-          if (!isAvailable) continue; // Skip quickly if Ollama is not running locally
+      const response = await fetch('/api/ai/chat', {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({
+          message,
+          conversationId,
+          history,
+          userId,
+          stream: isStreaming
+        })
+      });
+
+      if (!response.ok) {
+        let errData;
+        try {
+          errData = await response.json();
+        } catch {
+          errData = { error: response.statusText };
+        }
+        throw new Error(errData.error || `AI Chat API error (${response.status})`);
+      }
+
+      if (isStreaming && response.body) {
+        const reader = response.body.getReader();
+        const decoder = new TextDecoder();
+        let accumulatedText = '';
+        let provider = null;
+        let messageId = null;
+        let buffer = '';
+
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+
+          buffer += decoder.decode(value, { stream: true });
+          const lines = buffer.split('\n');
+          buffer = lines.pop() || ''; // Keep trailing incomplete line in buffer
+
+          for (const line of lines) {
+            const trimmed = line.trim();
+            if (!trimmed.startsWith('data: ')) continue;
+            const jsonStr = trimmed.slice(6);
+            if (!jsonStr) continue;
+
+            try {
+              const event = JSON.parse(jsonStr);
+              if (event.type === 'token' && event.content) {
+                accumulatedText += event.content;
+                if (typeof onChunk === 'function') {
+                  onChunk(event.content, accumulatedText);
+                }
+              } else if (event.type === 'done') {
+                provider = event.provider;
+                messageId = event.messageId;
+                if (event.response && !accumulatedText) {
+                  accumulatedText = event.response;
+                }
+              } else if (event.type === 'error') {
+                throw new Error(event.error || 'Stream processing error');
+              }
+            } catch (pErr) {
+              console.warn('[AI Service Stream Parse Error]', pErr);
+            }
+          }
         }
 
-        const result = await provider.chat({ message, conversationId, history, userId });
+        return {
+          success: true,
+          data: {
+            messageId: messageId || `msg_stream_${Date.now()}`,
+            conversationId,
+            response: accumulatedText || getFallbackResponse(message),
+            provider
+          }
+        };
+      } else {
+        const result = await response.json();
         if (result && result.success) {
           return result;
+        } else {
+          throw new Error(result.error || 'Invalid API response format');
         }
-      } catch (err) {
-        console.warn(`[AI Provider Error] ${provider.constructor.name}:`, err);
-        // Continue to the next fallback provider
       }
+    } catch (err) {
+      console.warn('[AI Service] API request failed, using safe fallback:', err.message);
+      return this._buildSafeFallback(message, conversationId);
     }
-
-    // If all providers fail, use safe fallback deterministic response
-    return this._buildSafeFallback(message, conversationId);
   }
 
   /**
    * Format raw text to clean Markdown with Callouts
    */
   async formatMarkdown({ rawText, instructions }) {
-    if (!isSupabaseConfigured) {
+    try {
+      const headers = await this.getAuthHeaders();
+      const response = await fetch('/api/ai/format', {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({ rawText, instructions })
+      });
+
+      if (!response.ok) {
+        throw new Error(`Format API error: ${response.statusText}`);
+      }
+
+      const data = await response.json();
+      return data.markdown || rawText;
+    } catch (err) {
+      console.warn('[AI Service Format Error]:', err.message);
       return rawText;
     }
-
-    for (const provider of this.providerChain) {
-      try {
-        if (provider instanceof OllamaLocalProvider) {
-          const isAvailable = await provider.checkAvailability();
-          if (!isAvailable) continue;
-        }
-
-        const result = await provider.formatMarkdown({ rawText, instructions });
-        if (result && result.markdown) {
-          return result.markdown;
-        }
-      } catch (err) {
-        console.warn(`[AI Provider Error] ${provider.constructor.name}:`, err);
-      }
-    }
-
-    // Fallback: return raw text if all providers fail
-    return rawText;
   }
 
   _buildSafeFallback(message, conversationId) {
